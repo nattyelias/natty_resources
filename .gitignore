@@ -1,1 +1,3 @@
 class-tool/
+node_modules/
+dist/
