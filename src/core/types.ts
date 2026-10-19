@@ -76,6 +76,8 @@ export interface Course {
   sectionsByTerm?: Partial<Record<string, Section[]>>;
   /** From the sheet category (data/courses-extra.json only): one of the Level values, or empty. Missing on the classes in courses.json. A plain string so the JSON imports cleanly. */
   level?: string;
+  /** True for independent study and dissertation classes (ATLS 4900, 5900, 7900, 8990). Their instructors are individual mentors, so a UI should not list them. The data is kept. */
+  independentStudy?: boolean;
 }
 
 /** A class as stored in data/courses.json and data/courses-extra.json: a Course before photos are merged in at load. */

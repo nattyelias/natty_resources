@@ -8,7 +8,7 @@ Filled from the merged sheet + class search data: `id`, `code`, `title`, `termsO
 
 Always empty on every record: `description`, `category` and `categorySecondary` (focus areas), `countsToward`, `prereqRequired`, `prereqRecommended`, `restriction`, `consentRequired`, `extraCost`, `format`, `sessionLength`, `unlocks`, `searchKeywords`, `tools`, `image`, `classNumber`, `instructor`, `instructorFullName`, `instructorTitle`, `instructorUrl`, `instructors`, `advisorConfirmation` (null). `noRequiredPrereqs` and `openToNonMajors` are `false` because nothing says otherwise. A record is not a statement that a class has no prerequisites.
 
-Rules: groups are by course code, and also by normalized title for ATLS 3519, 4519, 4539 and 5519. Titles drop "(Lec)", "(Rec)", "(Lab)" and credit tags. `specialTopic` is true for codes 3519, 4519 and 5519. Instructors are written "F. Last". `level` is the sheet category and is empty for sections found only in the class search pull. The classes already in courses.json keep no `level`, and their cross-listings are not updated with the new graduate twins.
+Rules: groups are by course code, and also by normalized title for ATLS 3519, 4519, 4539 and 5519. Titles drop "(Lec)", "(Rec)", "(Lab)" and credit tags. `specialTopic` is true for codes 3519, 4519 and 5519. Instructors are written "F. Last". `level` is the sheet category and is empty for sections found only in the class search pull. `independentStudy: true` is set on ATLS 4900, 5900, 7900 and 8990 (their sections and instructors stay in the data; a UI should not list the instructors). The classes already in courses.json keep no `level`, and their cross-listings are not updated with the new graduate twins.
 
 ## Records
 

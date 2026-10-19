@@ -1,7 +1,7 @@
 // Prints a quick summary of courses.json. Run: node data/verify.mjs
 import { existsSync, readFileSync } from 'node:fs';
 import { defaultConfig, termContext } from '../src/core/config.ts';
-import { allCourses, filterCourses, offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
+import { allCourses, filterCourses, gradCourses, offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
 
 const file = new URL('./courses.json', import.meta.url);
 const courses = JSON.parse(readFileSync(file, 'utf8'));
@@ -88,4 +88,13 @@ if (existsSync(extraFile)) {
   const bad = extra.filter((c) => c.termsOffered.join() !== 'Spring 2027' || !c.sectionsByTerm?.['Spring 2027']?.length);
   console.log(`  Extra records not exactly Spring 2027 with sections: ${bad.length}`);
   if (bad.length) process.exitCode = 1;
+
+  // Graduate view (gradCourses in src/core/courses.ts)
+  const grad = gradCourses(all, ctx);
+  const byReason = (r) => grad.filter((g) => g.reason === r).length;
+  console.log('\nGraduate view:');
+  console.log(`  In the view: ${grad.length} (grad-only ${byReason('grad-only')}, 5000-level twin ${byReason('5000-level twin')})`);
+  console.log(`  Left out: ${all.length - grad.length}`);
+  console.log(`  Independent study records: ${all.filter((c) => c.independentStudy).length}`);
+  if (byReason('grad-only') + byReason('5000-level twin') !== grad.length) process.exitCode = 1;
 }

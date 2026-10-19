@@ -23,3 +23,10 @@ Different jobs built on core and profile, for example class planning. Each mode 
 
 - Only public, unauthenticated CU data. No logins, no grades or enrollment.
 - Stored plans keep loading. If the stored shape changes, bump the version and write a migration.
+
+## Data caveats
+
+- **Extra records have placeholder booleans.** The records in `data/courses-extra.json` come only from the Spring 2027 schedule. `noRequiredPrereqs` and `openToNonMajors` are `false` on every one of them because nothing says otherwise. The `Course` type is `boolean`, not `boolean | null`, so they could not be set to null. **No filter may use `noRequiredPrereqs` or `openToNonMajors` on the extra records.** A record from `courses.json` has real values; an extra one does not. (A cleaner fix later is to allow `null` in the type and set both to null on the extra records.)
+- **Level exists only on the extra records.** The 52 classes in `data/courses.json` have no `level`, so a level filter never matches them.
+- **Independent study.** Records with `independentStudy: true` (ATLS 4900, 5900, 7900, 8990) keep their sections and instructors in the data, but a UI should not list the instructors. Use `showInstructors()` in `src/core/courses.ts`.
+- **Graduate view.** `gradCourses()` works the view out from the data (level, own code, cross-list codes on upcoming-term sections). It is not hand-labelled. See `docs/grad-view.md`.

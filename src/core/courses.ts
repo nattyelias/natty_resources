@@ -43,3 +43,47 @@ export function filterCourses(courses: CourseData[], filter: CourseFilter, ctx: 
     return true;
   });
 }
+
+// ─── Graduate view ───────────────────────────────────────────────────────────
+// Worked out from the data, never labelled by hand. A class is a graduate option when its level is
+// Grad or Grad/Focus, or when its own code, or any cross-list code on its sections in an upcoming
+// term, has a course number of 5000 or higher.
+//   "5000-level twin": the class is cross-listed across the 5000 line (one code under 5000 and one at
+//                      5000 or above), e.g. ATLS 4040 and ATLS 5040. Both sides of the pair count.
+//   "grad-only":       it qualifies with no undergraduate counterpart.
+export type GradReason = 'grad-only' | '5000-level twin';
+export interface GradCourse<C extends CourseData = CourseData> { course: C; reason: GradReason }
+
+const GRAD_LEVELS = ['Grad', 'Grad/Focus'];
+const courseNumber = (code: string) => {
+  const m = code.match(/\b(\d{4})\b/);
+  return m ? Number(m[1]) : null;
+};
+
+/** Why this class counts as a graduate option, or null if it doesn't. Ignores whether it is offered. */
+export function gradReason(course: CourseData, ctx: TermContext): GradReason | null {
+  const codes = [course.code];
+  for (const term of upcomingTerms(course.termsOffered, ctx)) {
+    for (const s of course.sectionsByTerm?.[term] ?? []) if (s.crossListCode) codes.push(s.crossListCode);
+  }
+  const numbers = codes.map(courseNumber).filter((n): n is number => n !== null);
+  const hasGrad = numbers.some((n) => n >= 5000);
+  const hasUnder = numbers.some((n) => n < 5000);
+  if (hasGrad && hasUnder) return '5000-level twin';
+  if (hasGrad || (course.level !== undefined && GRAD_LEVELS.includes(course.level))) return 'grad-only';
+  return null;
+}
+
+/** Classes a graduate student can take in an upcoming term, each with the reason it qualifies. */
+export function gradCourses<C extends CourseData>(all: C[], ctx: TermContext): GradCourse<C>[] {
+  const out: GradCourse<C>[] = [];
+  for (const course of all) {
+    if (!upcomingTerms(course.termsOffered, ctx).length) continue;
+    const reason = gradReason(course, ctx);
+    if (reason) out.push({ course, reason });
+  }
+  return out;
+}
+
+/** False for independent study and dissertation classes: a UI should not list their instructors. */
+export const showInstructors = (course: CourseData) => !course.independentStudy;

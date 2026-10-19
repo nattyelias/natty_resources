@@ -2136,7 +2136,8 @@
         }
       ]
     },
-    "level": ""
+    "level": "",
+    "independentStudy": true
   },
   {
     "id": "atls-5040-game-design",
@@ -3940,7 +3941,8 @@
         }
       ]
     },
-    "level": ""
+    "level": "",
+    "independentStudy": true
   },
   {
     "id": "atls-6900-professional-internship",
@@ -4488,7 +4490,8 @@
         }
       ]
     },
-    "level": ""
+    "level": "",
+    "independentStudy": true
   },
   {
     "id": "atls-8990-doctoral-dissertation",
@@ -4724,6 +4727,7 @@
         }
       ]
     },
-    "level": ""
+    "level": "",
+    "independentStudy": true
   }
 ]
