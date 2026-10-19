@@ -35,3 +35,30 @@ export function findClass(rec, courses) {
   if (subset.length === 1) return { course: subset[0] };
   return { reason: cands.length > 1 ? `shared code, no unique title match among ${cands.length} classes` : 'special-topics code, title does not match' };
 }
+
+// One merged record -> a Section as stored in courses.json (see attach-spring2027.mjs).
+export function toSection(r) {
+  const s = {
+    classNumber: r.classNumber,
+    title: r.title,
+    section: r.section,
+    type: r.type,
+    campus: '',
+    days: r.conflict ? '' : r.days,
+    start: r.conflict ? '' : r.start,
+    end: r.conflict ? '' : r.end,
+    meets: r.conflict ? `Sheet: ${r.sheetDays} ${r.time} / Pull: ${r.meets}` : r.meets || [r.sheetDays, r.time].filter(Boolean).join(' '),
+    instructor: displayName(r.instructor),
+    dates: r.dates,
+    online: r.online,
+    variesBySection: false,
+  };
+  // Extra detail the merge carries; only written when there is something to say.
+  if (r.room) s.room = r.room;
+  if (r.mode) s.mode = r.mode;
+  if (r.notes) s.notes = r.notes;
+  if (r.crossListCode) s.crossListCode = r.crossListCode;
+  s.source = r.source;
+  if (r.conflict) s.conflict = true;
+  return s;
+}

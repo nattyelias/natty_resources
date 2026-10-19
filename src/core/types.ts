@@ -30,6 +30,9 @@ export interface Section {
   conflict?: boolean;
 }
 
+/** The sheet's category for a section: Core, Focus, HT (how-to), CPT (critical perspectives), Grad, Grad/Focus. Empty when the sheet has none. */
+export type Level = 'Core' | 'Focus' | 'HT' | 'CPT' | 'Grad' | 'Grad/Focus' | '';
+
 export interface Course {
   id: string;
   code: string;
@@ -71,4 +74,9 @@ export interface Course {
   photoCredit: string;
   /** Posted meeting times by term. A class with none has no entry. */
   sectionsByTerm?: Partial<Record<string, Section[]>>;
+  /** From the sheet category (data/courses-extra.json only): one of the Level values, or empty. Missing on the classes in courses.json. A plain string so the JSON imports cleanly. */
+  level?: string;
 }
+
+/** A class as stored in data/courses.json and data/courses-extra.json: a Course before photos are merged in at load. */
+export type CourseData = Omit<Course, 'photo' | 'photoAlt' | 'photoCredit'>;

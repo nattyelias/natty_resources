@@ -18,7 +18,7 @@
 // "Rankin, D." becomes "D. Rankin". Several names are joined with ", ".
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { displayName, findClass, termRank } from './lib/match-spring2027.mjs';
+import { displayName, findClass, termRank, toSection } from './lib/match-spring2027.mjs';
 
 const TERM = 'Spring 2027';
 const dryRun = process.argv.includes('--dry-run');
@@ -28,32 +28,6 @@ const courses = JSON.parse(readFileSync(coursesPath, 'utf8'));
 const merged = JSON.parse(readFileSync(here('../spring2027.json'), 'utf8')).sections;
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
-function toSection(r) {
-  const s = {
-    classNumber: r.classNumber,
-    title: r.title,
-    section: r.section,
-    type: r.type,
-    campus: '',
-    days: r.conflict ? '' : r.days,
-    start: r.conflict ? '' : r.start,
-    end: r.conflict ? '' : r.end,
-    meets: r.conflict ? `Sheet: ${r.sheetDays} ${r.time} / Pull: ${r.meets}` : r.meets || [r.sheetDays, r.time].filter(Boolean).join(' '),
-    instructor: displayName(r.instructor),
-    dates: r.dates,
-    online: r.online,
-    variesBySection: false,
-  };
-  // Extra detail the merge carries; only written when there is something to say.
-  if (r.room) s.room = r.room;
-  if (r.mode) s.mode = r.mode;
-  if (r.notes) s.notes = r.notes;
-  if (r.crossListCode) s.crossListCode = r.crossListCode;
-  s.source = r.source;
-  if (r.conflict) s.conflict = true;
-  return s;
-}
-
 // ─── Match ───────────────────────────────────────────────────────────────────
 const bySection = new Map(); // course id -> merged records
 const unmatched = [];

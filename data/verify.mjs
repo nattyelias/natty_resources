@@ -1,7 +1,7 @@
 // Prints a quick summary of courses.json. Run: node data/verify.mjs
 import { existsSync, readFileSync } from 'node:fs';
 import { defaultConfig, termContext } from '../src/core/config.ts';
-import { offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
+import { allCourses, filterCourses, offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
 
 const file = new URL('./courses.json', import.meta.url);
 const courses = JSON.parse(readFileSync(file, 'utf8'));
@@ -67,4 +67,25 @@ if (existsSync(mergedFile)) {
   console.log(`  Terms in the data with no status: ${unknown.length}${unknown.length ? ' (' + unknown.join(', ') + ')' : ''}`);
   if (upcoming.length + pastOnly.length + neverRan.length !== courses.length) { console.log('  Counts do not add up'); process.exitCode = 1; }
   if (unknown.length) process.exitCode = 1;
+}
+
+// ─── Extra courses (data/courses-extra.json, made by build-extra-courses.mjs) ───
+const extraFile = new URL('./courses-extra.json', import.meta.url);
+if (existsSync(extraFile)) {
+  const extra = JSON.parse(readFileSync(extraFile, 'utf8'));
+  const ctx = termContext(defaultConfig);
+  const all = allCourses(courses, extra);
+  console.log('\nAll courses (courses.json + courses-extra.json):');
+  console.log(`  courses.json: ${courses.length}, courses-extra.json: ${extra.length}`);
+  console.log(`  Overall total: ${all.length}`);
+  console.log('  Per level:');
+  for (const level of ['Core', 'Focus', 'HT', 'CPT', 'Grad', 'Grad/Focus']) console.log(`    ${level}: ${filterCourses(all, { level }, ctx).length}`);
+  console.log(`    (no level): ${all.filter((c) => !c.level).length}`);
+  console.log(`  Offered in upcoming terms: ${filterCourses(all, { upcoming: true }, ctx).length}`);
+  const levelled = ['Core', 'Focus', 'HT', 'CPT', 'Grad', 'Grad/Focus'].reduce((n, level) => n + filterCourses(all, { level }, ctx).length, 0);
+  if (levelled + all.filter((c) => !c.level).length !== all.length) { console.log('  Level counts do not add up'); process.exitCode = 1; }
+  if (all.length !== courses.length + extra.length) process.exitCode = 1;
+  const bad = extra.filter((c) => c.termsOffered.join() !== 'Spring 2027' || !c.sectionsByTerm?.['Spring 2027']?.length);
+  console.log(`  Extra records not exactly Spring 2027 with sections: ${bad.length}`);
+  if (bad.length) process.exitCode = 1;
 }
