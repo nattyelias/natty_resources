@@ -139,7 +139,10 @@
           "instructor": "M. Leahy",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 104",
+          "mode": "In Person",
+          "source": "both"
         }
       ]
     }
@@ -304,7 +307,8 @@
           "instructor": "H. Kramer",
           "dates": "02-08 to 04-23",
           "online": true,
-          "variesBySection": false
+          "variesBySection": false,
+          "source": "pull"
         },
         {
           "classNumber": "25578",
@@ -319,7 +323,8 @@
           "instructor": "H. Kramer",
           "dates": "02-08 to 04-23",
           "online": true,
-          "variesBySection": false
+          "variesBySection": false,
+          "source": "pull"
         }
       ]
     }
@@ -345,7 +350,7 @@
     },
     "instructorsByTerm": {
       "Spring 2026": "Team-taught",
-      "Spring 2027": "Osnes/Boykoff"
+      "Spring 2027": "M. Osnes, M. Boyoff"
     },
     "instructor": "Team-taught",
     "instructorFullName": "Team-taught",
@@ -397,10 +402,13 @@
           "start": "09:30",
           "end": "10:45",
           "meets": "TTh 9:30-10:45a",
-          "instructor": "Osnes/Boykoff",
+          "instructor": "M. Osnes, M. Boyoff",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "University Theatre C370",
+          "mode": "In Person",
+          "source": "both"
         }
       ]
     }
@@ -666,7 +674,7 @@
       "Spring 2027": [
         {
           "classNumber": "21870",
-          "title": "Game Design",
+          "title": "Game Design (Lec)",
           "section": "010",
           "type": "LEC",
           "campus": "",
@@ -677,11 +685,15 @@
           "instructor": "D. Rankin",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 1B31",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5040-010",
+          "source": "both"
         },
         {
           "classNumber": "21871",
-          "title": "Game Design",
+          "title": "Game Design (Lab)",
           "section": "011",
           "type": "LAB",
           "campus": "",
@@ -692,7 +704,11 @@
           "instructor": "D. Rankin",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 1B31",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5040-011",
+          "source": "both"
         }
       ]
     }
@@ -841,7 +857,7 @@
       "Spring 2027": [
         {
           "classNumber": "21909",
-          "title": "Tiny Games",
+          "title": "Tiny Games (Lec)",
           "section": "010",
           "type": "LEC",
           "campus": "",
@@ -852,11 +868,15 @@
           "instructor": "L. Striegl",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 1B31",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5060-010",
+          "source": "both"
         },
         {
           "classNumber": "21910",
-          "title": "Tiny Games",
+          "title": "Tiny Games (Lab)",
           "section": "011",
           "type": "LAB",
           "campus": "",
@@ -867,7 +887,11 @@
           "instructor": "L. Striegl",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 1B31",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5060-011",
+          "source": "both"
         }
       ]
     }
@@ -1351,7 +1375,11 @@
           "instructor": "M. Alistar",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 104",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5201-001",
+          "source": "both"
         }
       ]
     }
@@ -1413,7 +1441,11 @@
           "instructor": "M. Rivera",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 104",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5202-001",
+          "source": "both"
         }
       ]
     }
@@ -1593,7 +1625,11 @@
           "instructor": "G. Greenstreet",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 100",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5214-001",
+          "source": "both"
         }
       ]
     }
@@ -1675,7 +1711,11 @@
           "instructor": "D. Schaal",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 104",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5221-001",
+          "source": "both"
         }
       ]
     }
@@ -1746,7 +1786,7 @@
       "Spring 2027": [
         {
           "classNumber": "21882",
-          "title": "Empathy and Technology",
+          "title": "Empathy & Technology",
           "section": "001",
           "type": "LEC",
           "campus": "",
@@ -1757,7 +1797,11 @@
           "instructor": "A. Margaret",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 1B31",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5244-001",
+          "source": "both"
         }
       ]
     }
@@ -1779,7 +1823,7 @@
     "advisorConfirmation": null,
     "instructorsByTerm": {
       "Spring 2026": "Z. Weaver",
-      "Spring 2027": "Z. Jacobson-Weaver"
+      "Spring 2027": "Z. Weaver"
     },
     "instructor": "Zack Weaver",
     "instructorFullName": "Zack Weaver",
@@ -1851,10 +1895,14 @@
           "start": "12:20",
           "end": "13:10",
           "meets": "MWF 12:20-1:10p",
-          "instructor": "Z. Jacobson-Weaver",
+          "instructor": "Z. Weaver",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "Miramontes Baca Education Bld. 33",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5279-001",
+          "source": "both"
         },
         {
           "classNumber": "21887",
@@ -1866,10 +1914,14 @@
           "start": "12:20",
           "end": "13:10",
           "meets": "MWF 12:20-1:10p",
-          "instructor": "Z. Jacobson-Weaver",
+          "instructor": "Z. Weaver",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "Meets Remotely",
+          "mode": "Remote",
+          "crossListCode": "ATLS 5279-002",
+          "source": "both"
         }
       ]
     }
@@ -2126,7 +2178,7 @@
       "Spring 2027": [
         {
           "classNumber": "21917",
-          "title": "Applied AI Ethics",
+          "title": "Applied AI: Ethics",
           "section": "001",
           "type": "LEC",
           "campus": "",
@@ -2137,7 +2189,11 @@
           "instructor": "N. Klassen",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 100",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5400-001",
+          "source": "both"
         }
       ]
     }
@@ -2290,7 +2346,8 @@
           "instructor": "H. Kramer",
           "dates": "02-08 to 04-23",
           "online": true,
-          "variesBySection": false
+          "variesBySection": false,
+          "source": "pull"
         }
       ]
     }
@@ -2398,7 +2455,7 @@
     },
     "instructorsByTerm": {
       "Spring 2026": "M. Gross",
-      "Spring 2027": "M. Gross"
+      "Spring 2027": "A. Mahajan, M. Gross"
     },
     "instructor": "Mark D. Gross",
     "instructorFullName": "Mark D. Gross",
@@ -2447,7 +2504,7 @@
       "Spring 2027": [
         {
           "classNumber": "21729",
-          "title": "Advanced Special Topics: Design a Science Exhibit",
+          "title": "Design a Science Exhibit",
           "section": "001",
           "type": "LEC",
           "campus": "",
@@ -2455,10 +2512,14 @@
           "start": "09:50",
           "end": "12:20",
           "meets": "M 9:50a-12:20p",
-          "instructor": "M. Gross",
+          "instructor": "A. Mahajan, M. Gross",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ENVD 234A",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5519-001",
+          "source": "both"
         }
       ]
     }
@@ -2835,7 +2896,7 @@
       "Spring 2027": [
         {
           "classNumber": "21734",
-          "title": "Advanced Special Topics: NeuroDesign",
+          "title": "NeuroDesign",
           "section": "006",
           "type": "LEC",
           "campus": "",
@@ -2846,7 +2907,11 @@
           "instructor": "S. Zamore",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 104",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5519-006",
+          "source": "both"
         }
       ]
     }
@@ -2928,7 +2993,8 @@
     "categorySecondary": "",
     "countsToward": "Focus Elective",
     "termsOffered": [
-      "Spring 2026"
+      "Spring 2026",
+      "Spring 2027"
     ],
     "notOfferedRecently": false,
     "advisorConfirmation": {
@@ -2937,7 +3003,8 @@
       "auditMayNotListIt": false
     },
     "instructorsByTerm": {
-      "Spring 2026": "J. Swanson"
+      "Spring 2026": "J. Swanson",
+      "Spring 2027": "J. Swanson"
     },
     "instructor": "Joel Swanson",
     "instructorFullName": "Joel Swanson",
@@ -2981,6 +3048,28 @@
           "dates": "01-08 to 04-24",
           "online": false,
           "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21730",
+          "title": "Visual Identity & Branding",
+          "section": "002",
+          "type": "LEC",
+          "campus": "",
+          "days": "MW",
+          "start": "10:15",
+          "end": "12:05",
+          "meets": "MW 10:15a-12:05p",
+          "instructor": "J. Swanson",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false,
+          "room": "ATLS 1B25",
+          "mode": "In Person",
+          "notes": "*Please note this course was just updated from a different elective.",
+          "crossListCode": "ATLS 5519-002",
+          "source": "both"
         }
       ]
     }
@@ -3197,7 +3286,7 @@
     "instructorsByTerm": {
       "Spring 2026": "Various",
       "Fall 2026": "Various",
-      "Spring 2027": "A. Chopra, A. Pinter"
+      "Spring 2027": "A. Chopra, D. Hunt, S. Stoller, A. Pinter"
     },
     "instructor": "Aidan Chopra, Anthony Pinter, Suzanne Stoller, Sheiva Rezvani",
     "instructorFullName": "Aidan Chopra, Anthony Pinter, Suzanne Stoller, Sheiva Rezvani",
@@ -3455,7 +3544,7 @@
       "Spring 2027": [
         {
           "classNumber": "21899",
-          "title": "AdvTopics: How-to: Take Better Photos",
+          "title": "How To: Take Better Photos (1cr - 1st 7 weeks)",
           "section": "001",
           "type": "LEC",
           "campus": "",
@@ -3466,11 +3555,14 @@
           "instructor": "A. Chopra",
           "dates": "01-07 to 02-26",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 208",
+          "mode": "In Person",
+          "source": "both"
         },
         {
           "classNumber": "21902",
-          "title": "AdvTopics: How-to: Portfolios",
+          "title": "How To: Portfolios (1cr - 2nd 7 weeks)",
           "section": "002",
           "type": "LEC",
           "campus": "",
@@ -3481,11 +3573,14 @@
           "instructor": "A. Chopra",
           "dates": "03-01 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 208",
+          "mode": "In Person",
+          "source": "both"
         },
         {
           "classNumber": "37853",
-          "title": "AdvTopics: How-to: Portfolios",
+          "title": "How To: Portfolios (1cr - 1st 7 weeks)",
           "section": "003",
           "type": "LEC",
           "campus": "",
@@ -3493,14 +3588,53 @@
           "start": "12:30",
           "end": "14:15",
           "meets": "Th 12:30-2:15p",
-          "instructor": "",
+          "instructor": "D. Hunt",
           "dates": "01-07 to 02-26",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 208",
+          "mode": "In Person",
+          "source": "both"
+        },
+        {
+          "classNumber": "",
+          "title": "How To: Become Job Ready (1cr - 1st 7 weeks)",
+          "section": "004",
+          "type": "",
+          "campus": "",
+          "days": "R",
+          "start": "10:00",
+          "end": "11:45",
+          "meets": "Th 10:00 - 11:45",
+          "instructor": "S. Stoller",
+          "dates": "",
+          "online": false,
+          "variesBySection": false,
+          "room": "ATLS 208",
+          "mode": "In Person",
+          "source": "sheet"
+        },
+        {
+          "classNumber": "",
+          "title": "How To: Become Job Ready (1cr - 2nd 7 weeks)",
+          "section": "005",
+          "type": "",
+          "campus": "",
+          "days": "R",
+          "start": "10:00",
+          "end": "11:45",
+          "meets": "Th 10:00 - 11:45",
+          "instructor": "S. Stoller",
+          "dates": "",
+          "online": false,
+          "variesBySection": false,
+          "room": "ATLS 208",
+          "mode": "In Person",
+          "source": "sheet"
         },
         {
           "classNumber": "37856",
-          "title": "AdvTopics: How-to: Portfolios",
+          "title": "How To: Portfolios (1cr - 1st 7 weeks)",
           "section": "008",
           "type": "LEC",
           "campus": "",
@@ -3511,7 +3645,10 @@
           "instructor": "A. Pinter",
           "dates": "01-07 to 02-26",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 104",
+          "mode": "In Person",
+          "source": "both"
         }
       ]
     }
@@ -3633,7 +3770,7 @@
     "instructorsByTerm": {
       "Spring 2026": "B. VanHorssen",
       "Fall 2026": "B. VanHorssen",
-      "Spring 2027": "B. VanHorssen"
+      "Spring 2027": "B. Urich"
     },
     "instructor": "Brittney Urich VanHorssen",
     "instructorFullName": "Brittney Urich VanHorssen",
@@ -3699,7 +3836,7 @@
       "Spring 2027": [
         {
           "classNumber": "21915",
-          "title": "User-Experience Design 1",
+          "title": "User Experience Design 1",
           "section": "001",
           "type": "LEC",
           "campus": "",
@@ -3707,10 +3844,14 @@
           "start": "17:05",
           "end": "19:35",
           "meets": "M 5:05-7:35p",
-          "instructor": "B. VanHorssen",
+          "instructor": "B. Urich",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 104",
+          "mode": "In Person",
+          "crossListCode": "ATLS 5620-001",
+          "source": "both"
         }
       ]
     }
@@ -3773,7 +3914,7 @@
     "instructorsByTerm": {
       "Spring 2026": "Y. Benari",
       "Fall 2026": "J. Weiss",
-      "Spring 2027": "Y. Benari"
+      "Spring 2027": "T. Benari"
     },
     "instructor": "John Weiss",
     "instructorFullName": "John Weiss",
@@ -3839,7 +3980,7 @@
       "Spring 2027": [
         {
           "classNumber": "21916",
-          "title": "User-Experience Design 2",
+          "title": "User Experience Design 2",
           "section": "001",
           "type": "LEC",
           "campus": "",
@@ -3847,10 +3988,13 @@
           "start": "12:30",
           "end": "13:45",
           "meets": "TTh 12:30-1:45p",
-          "instructor": "Y. Benari",
+          "instructor": "T. Benari",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "Meets Remotely",
+          "mode": "Remote",
+          "source": "both"
         }
       ]
     }
@@ -3951,7 +4095,10 @@
           "instructor": "S. Crowder",
           "dates": "01-07 to 04-23",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ENVD 234A",
+          "mode": "In Person",
+          "source": "both"
         }
       ]
     }
@@ -4043,7 +4190,7 @@
       "Spring 2027": [
         {
           "classNumber": "21745",
-          "title": "Advanced Special Topics: Pedagogy 1",
+          "title": "Pedagogy 1 (1cr - 1st 7 weeks)",
           "section": "801",
           "type": "LEC",
           "campus": "",
@@ -4054,11 +4201,14 @@
           "instructor": "A. Pinter",
           "dates": "01-07 to 02-26",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 104",
+          "mode": "In Person",
+          "source": "both"
         },
         {
           "classNumber": "21746",
-          "title": "Advanced Special Topics: Pedagogy 2",
+          "title": "Pedagogy 2 (1cr - 1st 7 weeks)",
           "section": "802",
           "type": "LEC",
           "campus": "",
@@ -4069,7 +4219,10 @@
           "instructor": "A. Pinter",
           "dates": "01-07 to 02-26",
           "online": false,
-          "variesBySection": false
+          "variesBySection": false,
+          "room": "ATLS 208",
+          "mode": "In Person",
+          "source": "both"
         }
       ]
     }

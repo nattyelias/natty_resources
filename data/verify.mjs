@@ -1,5 +1,5 @@
 // Prints a quick summary of courses.json. Run: node data/verify.mjs
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const file = new URL('./courses.json', import.meta.url);
 const courses = JSON.parse(readFileSync(file, 'utf8'));
@@ -18,3 +18,34 @@ for (const t of [...perTerm.keys()].sort((a, b) => termRank(a) - termRank(b))) c
 console.log(`With sectionsByTerm: ${courses.filter((c) => c.sectionsByTerm && Object.keys(c.sectionsByTerm).length).length}`);
 console.log(`notOfferedRecently: ${courses.filter((c) => c.notOfferedRecently).length}`);
 console.log(`No category: ${courses.filter((c) => !c.category?.trim()).length}`);
+
+// ─── Spring 2027 merge (data/spring2027.json, made by merge-spring2027.mjs) ───
+const mergedFile = new URL('./spring2027.json', import.meta.url);
+if (existsSync(mergedFile)) {
+  const m = JSON.parse(readFileSync(mergedFile, 'utf8')).sections;
+  const n = (f) => m.filter(f).length;
+  const T = 'Spring 2027';
+  const withTerm = courses.filter((c) => c.sectionsByTerm?.[T]?.length);
+  const attached = withTerm.reduce((sum, c) => sum + c.sectionsByTerm[T].length, 0);
+  console.log('\nSpring 2027 merge:');
+  console.log(`  Sections merged: ${m.length}`);
+  console.log(`  Source both: ${n((r) => r.source === 'both')}, sheet only: ${n((r) => r.source === 'sheet')}, pull only: ${n((r) => r.source === 'pull')}`);
+  console.log(`  Day/time conflicts: ${n((r) => r.conflict)}`);
+  console.log(`  Unconfirmed ambiguous times: ${n((r) => r.timeAmbiguous)}`);
+  console.log(`  Classes in courses.json with ${T} sections: ${withTerm.length} (${attached} sections)`);
+  console.log(`  Sections not attached to a class: ${m.length - attached}`);
+  // courses.json must agree with itself: termsOffered, instructorsByTerm and sectionsByTerm for the term
+  const problems = [];
+  for (const c of courses) {
+    const has = c.sectionsByTerm?.[T]?.length > 0;
+    if (c.termsOffered.filter((t) => t === T).length > 1) problems.push(`${c.id}: ${T} listed twice in termsOffered`);
+    if (has !== c.termsOffered.includes(T)) problems.push(`${c.id}: termsOffered and sectionsByTerm disagree about ${T}`);
+    if (has && !c.instructorsByTerm?.[T] && c.sectionsByTerm[T].some((s) => s.instructor)) problems.push(`${c.id}: sections name an instructor but instructorsByTerm has none`);
+    if (c.notOfferedRecently && c.termsOffered.length) problems.push(`${c.id}: notOfferedRecently is true but it has terms`);
+  }
+  const keys = m.map((r) => r.key);
+  if (new Set(keys).size !== keys.length) problems.push('data/spring2027.json has duplicate section keys');
+  console.log(`  Consistency problems: ${problems.length}`);
+  for (const p of problems) console.log(`    ${p}`);
+  if (problems.length) process.exitCode = 1;
+}

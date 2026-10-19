@@ -19,6 +19,15 @@ export interface Section {
   dates: string;
   online: boolean;
   variesBySection: boolean;
+  /** The next fields come from the merged Spring 2027 schedule (data/spring2027.json) and are only present when it has a value. */
+  room?: string;
+  mode?: string;
+  notes?: string;
+  crossListCode?: string;
+  /** Where the section was found: "sheet" (ATLAS sheet), "pull" (CU class search) or "both". A plain string so courses.json imports cleanly. */
+  source?: string;
+  /** True when the sheet and the pull disagree on days or times; days, start and end are then empty. */
+  conflict?: boolean;
 }
 
 export interface Course {
