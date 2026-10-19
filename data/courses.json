@@ -1,0 +1,4077 @@
+[
+  {
+    "id": "atls-3040-introduction-to-games-and-play",
+    "code": "ATLS 3040",
+    "specialTopic": false,
+    "title": "Introduction to Games and Play",
+    "credits": "3",
+    "category": "Game Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "D. Rankin"
+    },
+    "instructor": "Danny Rankin",
+    "instructorFullName": "Danny Rankin",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/danny-rankin-0",
+    "instructors": [
+      {
+        "name": "Danny Rankin",
+        "url": "https://www.colorado.edu/atlas/danny-rankin-0"
+      }
+    ],
+    "description": "Intro to game and play concepts, culture and history through playing, analysis and design exercises.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 1100 or ENVD 1004 (can be taken at same time)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "38353",
+          "title": "Introduction to Games and Play",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "TR",
+          "start": "14:05",
+          "end": "15:55",
+          "meets": "TTh 2:05-3:55p",
+          "instructor": "D. Rankin",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-3110-motion-design",
+    "code": "ATLS 3110",
+    "specialTopic": false,
+    "title": "Motion Design",
+    "credits": "3",
+    "category": "3D / Animation",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "M. Leahy",
+      "Spring 2027": "M. Leahy"
+    },
+    "instructor": "Megan Friesth (Leahy)",
+    "instructorFullName": "Megan Friesth (Leahy)",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/megan-leahy-friesth",
+    "instructors": [
+      {
+        "name": "Megan Friesth (Leahy)",
+        "url": "https://www.colorado.edu/atlas/megan-leahy-friesth"
+      }
+    ],
+    "description": "Animation projects exploring motion design and how moving media shapes culture.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "After Effects, motion graphics, animation",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2100 (Image)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24123",
+          "title": "Motion Design",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "17:05",
+          "end": "19:35",
+          "meets": "M 5:05-7:35p",
+          "instructor": "M. Leahy",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21723",
+          "title": "Motion Design",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "T",
+          "start": "17:00",
+          "end": "19:30",
+          "meets": "T 5-7:30p",
+          "instructor": "M. Leahy",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-3120-creative-web-development",
+    "code": "ATLS 3120",
+    "specialTopic": false,
+    "title": "Creative Web Development",
+    "credits": "3",
+    "category": "UX / Product Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Build conceptual net-art sites while studying internet culture past and present.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2000 and ATLS 2200 (Web)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "CTD majors and minors only",
+    "openToNonMajors": false
+  },
+  {
+    "id": "atls-3150-universal-design-for-digital-media",
+    "code": "ATLS 3150",
+    "specialTopic": false,
+    "title": "Universal Design for Digital Media",
+    "credits": "3",
+    "category": "Accessibility",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Fall 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "D. Schaal",
+      "Spring 2027": "H. Kramer"
+    },
+    "instructor": "David Schaal",
+    "instructorFullName": "David Schaal",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/david-schaal",
+    "instructors": [
+      {
+        "name": "David Schaal",
+        "url": "https://www.colorado.edu/atlas/david-schaal"
+      }
+    ],
+    "description": "Make websites and media accessible and usable for everyone, including people with disabilities.",
+    "tools": [],
+    "image": "",
+    "crossListings": "CSCI 3150",
+    "sessionLength": "",
+    "format": "In person (D. Schaal) or online through Continuing Education (H. Kramer)",
+    "extraCost": "Yes, online CE section only",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "accessibility, universal design, web, disability",
+    "classNumber": "",
+    "prereqRequired": "ATLS 1300 or CSCI 1300",
+    "prereqRecommended": "Some web page building experience",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17826",
+          "title": "Universal Design for Digital Media",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "15:35",
+          "end": "18:05",
+          "meets": "M 3:35-6:05p",
+          "instructor": "D. Schaal",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "23179",
+          "title": "Universal Design for Digital Media",
+          "section": "581",
+          "type": "LEC",
+          "campus": "CE",
+          "days": "",
+          "start": "",
+          "end": "",
+          "meets": "Meets online (see class notes)",
+          "instructor": "H. Kramer",
+          "dates": "09-21 to 12-04",
+          "online": true,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2026": [
+        {
+          "classNumber": "30098",
+          "title": "Universal Design for Digital Media",
+          "section": "581",
+          "type": "LEC",
+          "campus": "CE",
+          "days": "",
+          "start": "",
+          "end": "",
+          "meets": "Meets online (see class notes)",
+          "instructor": "H. Kramer",
+          "dates": "02-09 to 04-24",
+          "online": true,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "30099",
+          "title": "Universal Design for Digital Media",
+          "section": "582",
+          "type": "LEC",
+          "campus": "CE",
+          "days": "",
+          "start": "",
+          "end": "",
+          "meets": "Meets online (see class notes)",
+          "instructor": "H. Kramer",
+          "dates": "02-09 to 04-24",
+          "online": true,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "25577",
+          "title": "Universal Design for Digital Media",
+          "section": "581",
+          "type": "LEC",
+          "campus": "",
+          "days": "",
+          "start": "",
+          "end": "",
+          "meets": "Meets online (see class notes)",
+          "instructor": "H. Kramer",
+          "dates": "02-08 to 04-23",
+          "online": true,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "25578",
+          "title": "Universal Design for Digital Media",
+          "section": "582",
+          "type": "LEC",
+          "campus": "",
+          "days": "",
+          "start": "",
+          "end": "",
+          "meets": "Meets online (see class notes)",
+          "instructor": "H. Kramer",
+          "dates": "02-08 to 04-23",
+          "online": true,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-3173-creative-climate-communication",
+    "code": "ATLS 3173",
+    "specialTopic": false,
+    "title": "Creative Climate Communication",
+    "credits": "3",
+    "category": "",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "Team-taught",
+      "Spring 2027": "Osnes/Boykoff"
+    },
+    "instructor": "Team-taught",
+    "instructorFullName": "Team-taught",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Create multimedia work about climate change and study how it gets communicated.",
+    "tools": [],
+    "image": "",
+    "crossListings": "ENVS 3173, THTR 4173",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "ENVS 1000",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "36321",
+          "title": "Creative Climate Communication",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "TR",
+          "start": "09:30",
+          "end": "11:15",
+          "meets": "TTh 9:30-11:15a",
+          "instructor": "Team",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21869",
+          "title": "Creative Climate Communication",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "TR",
+          "start": "09:30",
+          "end": "10:45",
+          "meets": "TTh 9:30-10:45a",
+          "instructor": "Osnes/Boykoff",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-3500-client-projects-in-creative-technology-and-design",
+    "code": "ATLS 3500",
+    "specialTopic": false,
+    "title": "Client Projects in Creative Technology and Design",
+    "credits": "1-3",
+    "category": "Branding & Strategy",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Team projects for real external clients under faculty supervision.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2000",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true
+  },
+  {
+    "id": "atls-3519-makers-media-machines",
+    "code": "ATLS 3519",
+    "specialTopic": true,
+    "title": "Makers, Media, Machines",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "G. Leslie"
+    },
+    "instructor": "Grace Leslie",
+    "instructorFullName": "Grace Leslie",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/grace-leslie",
+    "instructors": [
+      {
+        "name": "Grace Leslie",
+        "url": "https://www.colorado.edu/atlas/grace-leslie"
+      }
+    ],
+    "description": "",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "making, media, machines, physical computing",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24124",
+          "title": "Special Topics: Makers, Media, Machines",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "12:30",
+          "end": "13:45",
+          "meets": "Th 12:30-1:45p",
+          "instructor": "G. Leslie",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-3710-material-studies-and-practice",
+    "code": "ATLS 3710",
+    "specialTopic": false,
+    "title": "Material Studies and Practice",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "Z. Weaver"
+    },
+    "instructor": "Zack Weaver",
+    "instructorFullName": "Zack Weaver",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/zack-weaver",
+    "instructors": [
+      {
+        "name": "Zack Weaver",
+        "url": "https://www.colorado.edu/atlas/zack-weaver"
+      }
+    ],
+    "description": "Hands-on fabrication across wood, plastics, ceramics, concrete, fibers and metals.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "wood, metal, ceramics, concrete, fabrication shop",
+    "classNumber": "",
+    "prereqRequired": "ATLS 1100 or ENVD 1004",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17827",
+          "title": "Material Studies and Practice",
+          "section": "010",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "12:35",
+          "end": "14:25",
+          "meets": "M 12:35-2:25p",
+          "instructor": "Z. Jacobson-Weaver",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "17828",
+          "title": "Material Studies and Practice",
+          "section": "011",
+          "type": "LAB",
+          "campus": "Main",
+          "days": "W",
+          "start": "12:35",
+          "end": "14:25",
+          "meets": "W 12:35-2:25p",
+          "instructor": "Z. Jacobson-Weaver",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4040-game-design",
+    "code": "ATLS 4040",
+    "specialTopic": false,
+    "title": "Game Design",
+    "credits": "3",
+    "category": "Game Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "D. Rankin",
+      "Spring 2027": "D. Rankin"
+    },
+    "instructor": "Danny Rankin",
+    "instructorFullName": "Danny Rankin",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/danny-rankin-0",
+    "instructors": [
+      {
+        "name": "Danny Rankin",
+        "url": "https://www.colorado.edu/atlas/danny-rankin-0"
+      }
+    ],
+    "description": "Design non-digital games while studying game history, theory and culture.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "ATLS 4140 Game Development",
+    "searchKeywords": "board games, tabletop, game design, non-digital",
+    "classNumber": "",
+    "prereqRequired": "ATLS 1100 or ENVD 1004",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24278",
+          "title": "Game Design",
+          "section": "010",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "T",
+          "start": "10:25",
+          "end": "12:15",
+          "meets": "T 10:25a-12:15p",
+          "instructor": "D. Rankin",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "24279",
+          "title": "Game Design",
+          "section": "011",
+          "type": "LAB",
+          "campus": "Main",
+          "days": "R",
+          "start": "10:25",
+          "end": "12:15",
+          "meets": "Th 10:25a-12:15p",
+          "instructor": "D. Rankin",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21870",
+          "title": "Game Design",
+          "section": "010",
+          "type": "LEC",
+          "campus": "",
+          "days": "T",
+          "start": "10:25",
+          "end": "12:15",
+          "meets": "T 10:25a-12:15p",
+          "instructor": "D. Rankin",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "21871",
+          "title": "Game Design",
+          "section": "011",
+          "type": "LAB",
+          "campus": "",
+          "days": "R",
+          "start": "10:25",
+          "end": "12:15",
+          "meets": "Th 10:25a-12:15p",
+          "instructor": "D. Rankin",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4050-alt-arcade-interfaces",
+    "code": "ATLS 4050",
+    "specialTopic": false,
+    "title": "Alt Arcade Interfaces",
+    "credits": "3",
+    "category": "Game Design",
+    "categorySecondary": "Fabrication & Making",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "D. Rankin"
+    },
+    "instructor": "Danny Rankin",
+    "instructorFullName": "Danny Rankin",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/danny-rankin-0",
+    "instructors": [
+      {
+        "name": "Danny Rankin",
+        "url": "https://www.colorado.edu/atlas/danny-rankin-0"
+      }
+    ],
+    "description": "Build games with custom physical controllers for public exhibition.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "arcade, alt controllers, custom controllers, installation",
+    "classNumber": "",
+    "prereqRequired": "ATLS 1300, 1350 or CSCI 1300",
+    "prereqRecommended": "ATLS 3300 (Object) and Game Development",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "39147",
+          "title": "Alt Arcade Interfaces",
+          "section": "002",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MW",
+          "start": "09:35",
+          "end": "10:50",
+          "meets": "MW 9:35-10:50a",
+          "instructor": "D. Rankin",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4060-tiny-games",
+    "code": "ATLS 4060",
+    "specialTopic": false,
+    "title": "Tiny Games",
+    "credits": "3",
+    "category": "Game Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "L. Striegl",
+      "Spring 2027": "L. Striegl"
+    },
+    "instructor": "Libi Striegl",
+    "instructorFullName": "Libi Striegl",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [
+      {
+        "name": "Libi Striegl",
+        "url": ""
+      }
+    ],
+    "description": "Make small, tightly constrained games fast using tools like Bitsy and Pico-8.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "Pico-8, Bitsy, PuzzleScript, small games, game jam",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "ATLS 1100 plus ATLS 1300/1350 or CSCI 1300",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24326",
+          "title": "Tiny Games",
+          "section": "010",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "15:35",
+          "end": "17:25",
+          "meets": "M 3:35-5:25p",
+          "instructor": "L. Striegl",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "24327",
+          "title": "Tiny Games",
+          "section": "011",
+          "type": "LAB",
+          "campus": "Main",
+          "days": "W",
+          "start": "15:35",
+          "end": "17:25",
+          "meets": "W 3:35-5:25p",
+          "instructor": "L. Striegl",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21909",
+          "title": "Tiny Games",
+          "section": "010",
+          "type": "LEC",
+          "campus": "",
+          "days": "M",
+          "start": "15:35",
+          "end": "17:25",
+          "meets": "M 3:35-5:25p",
+          "instructor": "L. Striegl",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "21910",
+          "title": "Tiny Games",
+          "section": "011",
+          "type": "LAB",
+          "campus": "",
+          "days": "W",
+          "start": "15:35",
+          "end": "17:25",
+          "meets": "W 3:35-5:25p",
+          "instructor": "L. Striegl",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4112-neurohacking",
+    "code": "ATLS 4112",
+    "specialTopic": false,
+    "title": "Neurohacking",
+    "credits": "3",
+    "category": "AI / Emerging Tech",
+    "categorySecondary": "",
+    "countsToward": "Critical Perspectives",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "A. Margaret"
+    },
+    "instructor": "Annie Margaret",
+    "instructorFullName": "Annie Margaret",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/annie-margaret",
+    "instructors": [
+      {
+        "name": "Annie Margaret",
+        "url": "https://www.colorado.edu/atlas/annie-margaret"
+      }
+    ],
+    "description": "Neuroscience, cognitive science and philosophy applied to building practices for focus, mindfulness and creativity.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "mindfulness, neuroscience, cognition",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2000 (can be taken at same time)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17824",
+          "title": "Neurohacking",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MW",
+          "start": "15:35",
+          "end": "16:50",
+          "meets": "MW 3:35-4:50p",
+          "instructor": "A. Margaret",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4120-mobile-application-development",
+    "code": "ATLS 4120",
+    "specialTopic": false,
+    "title": "Mobile Application Development",
+    "credits": "3",
+    "category": "UX / Product Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Design and build mobile apps and look at their cultural effects.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "ATLS 4320 Mobile App Dev: Advanced",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 1300 or CSCI 1300/1320",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true
+  },
+  {
+    "id": "atls-4130-experimental-typography",
+    "code": "ATLS 4130",
+    "specialTopic": false,
+    "title": "Experimental Typography",
+    "credits": "3",
+    "category": "Branding & Strategy",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "J. Swanson"
+    },
+    "instructor": "Joel Swanson",
+    "instructorFullName": "Joel Swanson",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/joel-swanson",
+    "instructors": [
+      {
+        "name": "Joel Swanson",
+        "url": "https://www.colorado.edu/atlas/joel-swanson"
+      }
+    ],
+    "description": "Experimental type projects across materials, technology and design.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "type, typography, letterpress, graphic design",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2200 (Web) and ATLS 2300 (Text)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "CTD majors and minors only",
+    "openToNonMajors": false,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17806",
+          "title": "Experimental Typography",
+          "section": "010",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "T",
+          "start": "10:50",
+          "end": "12:40",
+          "meets": "T 10:50a-12:40p",
+          "instructor": "J. Swanson",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "17807",
+          "title": "Experimental Typography",
+          "section": "011",
+          "type": "LAB",
+          "campus": "Main",
+          "days": "R",
+          "start": "10:50",
+          "end": "12:40",
+          "meets": "Th 10:50a-12:40p",
+          "instructor": "J. Swanson",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4131-computational-typography",
+    "code": "ATLS 4131",
+    "specialTopic": false,
+    "title": "Computational Typography",
+    "credits": "3",
+    "category": "Branding & Strategy",
+    "categorySecondary": "",
+    "countsToward": "Not on audit list",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Create and manipulate type with code; parametric and systems-based typography.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "ATLS 1300 or programming experience, and ATLS 2300 (Text)",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true
+  },
+  {
+    "id": "atls-4140-game-development",
+    "code": "ATLS 4140",
+    "specialTopic": false,
+    "title": "Game Development",
+    "credits": "3",
+    "category": "Game Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "J. Wills"
+    },
+    "instructor": "Jonas Wills",
+    "instructorFullName": "Jonas Wills",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/jonas-wills",
+    "instructors": [
+      {
+        "name": "Jonas Wills",
+        "url": "https://www.colorado.edu/atlas/jonas-wills"
+      }
+    ],
+    "description": "Build digital games: flow, mechanics, 2D/3D graphics and game AI. Follows ATLS 4040.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "Unity, video games, digital games, game dev",
+    "classNumber": "",
+    "prereqRequired": "ATLS 4040 (Game Design)",
+    "prereqRecommended": "ATLS 1300 or programming experience",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17810",
+          "title": "Game Development",
+          "section": "010",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "13:00",
+          "end": "14:50",
+          "meets": "M 1-2:50p",
+          "instructor": "J. Wills",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "17811",
+          "title": "Game Development",
+          "section": "011",
+          "type": "LAB",
+          "campus": "Main",
+          "days": "W",
+          "start": "13:00",
+          "end": "14:50",
+          "meets": "W 1-2:50p",
+          "instructor": "J. Wills",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4141-color",
+    "code": "ATLS 4141",
+    "specialTopic": false,
+    "title": "Color",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Study color through physics, chemistry, biology and psychology, then make dyes and pigments.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2000",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true
+  },
+  {
+    "id": "atls-4151-flow-visualization",
+    "code": "ATLS 4151",
+    "specialTopic": false,
+    "title": "Flow Visualization",
+    "credits": "3",
+    "category": "Sound & Music / Visual Systems",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "L. Sunberg"
+    },
+    "instructor": "Laura Sunberg",
+    "instructorFullName": "Laura Sunberg",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [
+      {
+        "name": "Laura Sunberg",
+        "url": ""
+      }
+    ],
+    "description": "Photograph and film fluid physics using dyes, particles and optical techniques.",
+    "tools": [],
+    "image": "",
+    "crossListings": "MCEN 4151, CVEN 4153",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "photography, fluids, physics, video",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "Juniors and above (57+ credits)",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "32625",
+          "title": "Flow Visualization",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MWF",
+          "start": "09:05",
+          "end": "09:55",
+          "meets": "MWF 9:05-9:55a",
+          "instructor": "L. Sunberg",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "40938",
+          "title": "Flow Visualization",
+          "section": "003",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MWF",
+          "start": "09:05",
+          "end": "09:55",
+          "meets": "MWF 9:05-9:55a",
+          "instructor": "L. Sunberg",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4201-biodesign",
+    "code": "ATLS 4201",
+    "specialTopic": false,
+    "title": "Biodesign",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "M. Alistar",
+      "Spring 2027": "M. Alistar"
+    },
+    "instructor": "Mirela Alistar",
+    "instructorFullName": "Mirela Alistar",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/mirela-alistar",
+    "instructors": [
+      {
+        "name": "Mirela Alistar",
+        "url": "https://www.colorado.edu/atlas/mirela-alistar"
+      }
+    ],
+    "description": "Design with living organisms like bacteria, algae and fungi in a wet lab.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "biology, wet lab, bacteria, fungi, biomaterials",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24330",
+          "title": "Biodesign",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "14:05",
+          "end": "16:45",
+          "meets": "M 2:05-4:45p",
+          "instructor": "M. Alistar",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21913",
+          "title": "Biodesign",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "M",
+          "start": "14:05",
+          "end": "16:35",
+          "meets": "M 2:05-4:35p",
+          "instructor": "M. Alistar",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4202-computational-fabrication",
+    "code": "ATLS 4202",
+    "specialTopic": false,
+    "title": "Computational Fabrication",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": true
+    },
+    "instructorsByTerm": {
+      "Spring 2027": "M. Rivera"
+    },
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Use code plus 3D printers and laser cutters to make functional objects.",
+    "tools": [],
+    "image": "",
+    "crossListings": "CSCI 4012",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2270 or CSCI 2270, and ATLS 1300 or CSCI 1300",
+    "prereqRecommended": "Python/C++ and ATLS 3100 (Form) or CAD experience",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2027": [
+        {
+          "classNumber": "37829",
+          "title": "Computational Fabrication",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "T",
+          "start": "14:00",
+          "end": "16:30",
+          "meets": "T 2-4:30p",
+          "instructor": "M. Rivera",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4203-light-and-perception",
+    "code": "ATLS 4203",
+    "specialTopic": false,
+    "title": "Light and Perception",
+    "credits": "3",
+    "category": "AR / VR",
+    "categorySecondary": "",
+    "countsToward": "Not on audit list",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Experiments with light and perception across drawing, AR/VR, interactive sculpture and immersive media.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "ATLS 2100 (Image)",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true
+  },
+  {
+    "id": "atls-4204-product-development-studio",
+    "code": "ATLS 4204",
+    "specialTopic": false,
+    "title": "Product Development Studio",
+    "credits": "3",
+    "category": "UX / Product Design",
+    "categorySecondary": "",
+    "countsToward": "Not on audit list",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "J. Bacus"
+    },
+    "instructor": "John Bacus",
+    "instructorFullName": "John Bacus",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/john-bacus",
+    "instructors": [
+      {
+        "name": "John Bacus",
+        "url": "https://www.colorado.edu/atlas/john-bacus"
+      }
+    ],
+    "description": "Take a software product to launch from a product manager's point of view, in a studio format.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "product management, startup, launch, software product",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "38367",
+          "title": "Product Development Studio",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "17:00",
+          "end": "19:30",
+          "meets": "Th 5-7:30p",
+          "instructor": "J. Bacus",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4214-big-data-architecture",
+    "code": "ATLS 4214",
+    "specialTopic": false,
+    "title": "Big Data Architecture",
+    "credits": "3",
+    "category": "AI / Emerging Tech",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "G. Greenstreet",
+      "Spring 2027": "G. Greenstreet"
+    },
+    "instructor": "Greg Greenstreet",
+    "instructorFullName": "Greg Greenstreet",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/greg-greenstreet",
+    "instructors": [
+      {
+        "name": "Greg Greenstreet",
+        "url": "https://www.colorado.edu/atlas/greg-greenstreet"
+      }
+    ],
+    "description": "Semester team project on collecting, storing, processing and displaying big data.",
+    "tools": [],
+    "image": "",
+    "crossListings": "CSCI 4214",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "data, databases, big data, cloud",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2270 or CSCI 2270/2275",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "CTD majors/minors and CS majors only",
+    "openToNonMajors": false,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24273",
+          "title": "Big Data Architecture",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MW",
+          "start": "17:05",
+          "end": "18:20",
+          "meets": "MW 5:05-6:20p",
+          "instructor": "G. Greenstreet",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21867",
+          "title": "Big Data Architecture",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "MW",
+          "start": "17:05",
+          "end": "18:20",
+          "meets": "MW 5:05-6:20p",
+          "instructor": "G. Greenstreet",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4221-interactive-sound",
+    "code": "ATLS 4221",
+    "specialTopic": false,
+    "title": "Interactive Sound",
+    "credits": "3",
+    "category": "Sound & Music / Visual Systems",
+    "categorySecondary": "Fabrication & Making",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "D. Schaal",
+      "Spring 2027": "D. Schaal"
+    },
+    "instructor": "David Schaal",
+    "instructorFullName": "David Schaal",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/david-schaal",
+    "instructors": [
+      {
+        "name": "David Schaal",
+        "url": "https://www.colorado.edu/atlas/david-schaal"
+      }
+    ],
+    "description": "Build generative audio-visual systems in Max with sensors and microcontrollers.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "Max, audio, sound, Arduino, installation",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "ATLS 3200 (Sound) or music tech experience",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24324",
+          "title": "Interactive Sound",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "TR",
+          "start": "09:30",
+          "end": "10:45",
+          "meets": "TTh 9:30-10:45a",
+          "instructor": "D. Schaal",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21907",
+          "title": "Interactive Sound",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "TR",
+          "start": "09:30",
+          "end": "10:45",
+          "meets": "TTh 9:30-10:45a",
+          "instructor": "D. Schaal",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4244-empathy-and-technology",
+    "code": "ATLS 4244",
+    "specialTopic": false,
+    "title": "Empathy and Technology",
+    "credits": "3",
+    "category": "UX / Product Design",
+    "categorySecondary": "",
+    "countsToward": "Critical Perspectives",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "A. Margaret",
+      "Spring 2027": "A. Margaret"
+    },
+    "instructor": "Annie Margaret",
+    "instructorFullName": "Annie Margaret",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/annie-margaret",
+    "instructors": [
+      {
+        "name": "Annie Margaret",
+        "url": "https://www.colorado.edu/atlas/annie-margaret"
+      }
+    ],
+    "description": "How empathy and compassion can shape design and technology, with personal practice and critique.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2000",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24291",
+          "title": "Empathy and Technology",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "TR",
+          "start": "14:00",
+          "end": "15:15",
+          "meets": "TTh 2-3:15p",
+          "instructor": "A. Margaret",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21882",
+          "title": "Empathy and Technology",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "TR",
+          "start": "14:00",
+          "end": "15:15",
+          "meets": "TTh 2-3:15p",
+          "instructor": "A. Margaret",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4279-aesthetics-in-design",
+    "code": "ATLS 4279",
+    "specialTopic": false,
+    "title": "Aesthetics in Design",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "Z. Weaver",
+      "Spring 2027": "Z. Jacobson-Weaver"
+    },
+    "instructor": "Zack Weaver",
+    "instructorFullName": "Zack Weaver",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/zack-weaver",
+    "instructors": [
+      {
+        "name": "Zack Weaver",
+        "url": "https://www.colorado.edu/atlas/zack-weaver"
+      }
+    ],
+    "description": "Design-build artifacts while studying design movements, critique and sketching.",
+    "tools": [],
+    "image": "",
+    "crossListings": "MCEN 4279",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24295",
+          "title": "Aesthetics in Design",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MWF",
+          "start": "12:20",
+          "end": "13:10",
+          "meets": "MWF 12:20-1:10p",
+          "instructor": "Z. Jacobson-Weaver",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "24296",
+          "title": "Aesthetics in Design",
+          "section": "002",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MWF",
+          "start": "12:20",
+          "end": "13:10",
+          "meets": "MWF 12:20-1:10p",
+          "instructor": "Z. Jacobson-Weaver",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21886",
+          "title": "Aesthetics in Design",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "MWF",
+          "start": "12:20",
+          "end": "13:10",
+          "meets": "MWF 12:20-1:10p",
+          "instructor": "Z. Jacobson-Weaver",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "21887",
+          "title": "Aesthetics in Design",
+          "section": "002",
+          "type": "LEC",
+          "campus": "",
+          "days": "MWF",
+          "start": "12:20",
+          "end": "13:10",
+          "meets": "MWF 12:20-1:10p",
+          "instructor": "Z. Jacobson-Weaver",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4320-mobile-application-development-advanced-topics",
+    "code": "ATLS 4320",
+    "specialTopic": false,
+    "title": "Mobile Application Development: Advanced Topics",
+    "credits": "3",
+    "category": "UX / Product Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Advanced app design: data structures, storage and interaction models.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 4120 (Mobile App Dev)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "College of Engineering undergrads only",
+    "openToNonMajors": false
+  },
+  {
+    "id": "atls-4330-wearable-technologies",
+    "code": "ATLS 4330",
+    "specialTopic": false,
+    "title": "Wearable Technologies",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "UX / Product Design",
+    "countsToward": "Focus Elective",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Embed electronics into clothing and accessories and build a wearable project.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 3300 (Object)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true
+  },
+  {
+    "id": "atls-4340-experimental-textiles",
+    "code": "ATLS 4340",
+    "specialTopic": false,
+    "title": "Experimental Textiles",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "Sound & Music / Visual Systems",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": true
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "E. Sandry",
+      "Fall 2026": "L. Devendorf"
+    },
+    "instructor": "Laura Devendorf",
+    "instructorFullName": "Laura Devendorf",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/laura-devendorf",
+    "instructors": [
+      {
+        "name": "Laura Devendorf",
+        "url": "https://www.colorado.edu/atlas/laura-devendorf"
+      }
+    ],
+    "description": "Design soft interactive objects through weaving and textile structures with built-in electronics.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "weaving, textiles, e-textiles, soft circuits",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "38359",
+          "title": "Experimental Textiles",
+          "section": "010",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "T",
+          "start": "08:55",
+          "end": "10:45",
+          "meets": "T 8:55-10:45a",
+          "instructor": "L. Devendorf",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "38361",
+          "title": "Experimental Textiles",
+          "section": "011",
+          "type": "LAB",
+          "campus": "Main",
+          "days": "R",
+          "start": "08:55",
+          "end": "10:45",
+          "meets": "Th 8:55-10:45a",
+          "instructor": "L. Devendorf",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2026": [
+        {
+          "classNumber": "24317",
+          "title": "Experimental Textiles",
+          "section": "010",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "09:00",
+          "end": "10:50",
+          "meets": "M 9-10:50a",
+          "instructor": "E. Sandry",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "24318",
+          "title": "Experimental Textiles",
+          "section": "011",
+          "type": "LAB",
+          "campus": "Main",
+          "days": "W",
+          "start": "09:00",
+          "end": "10:50",
+          "meets": "W 9-10:50a",
+          "instructor": "E. Sandry",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4400-applied-ai-ethics",
+    "code": "ATLS 4400",
+    "specialTopic": false,
+    "title": "Applied AI Ethics",
+    "credits": "3",
+    "category": "AI / Emerging Tech",
+    "categorySecondary": "",
+    "countsToward": "Critical Perspectives",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "N. Klassen",
+      "Spring 2027": "N. Klassen"
+    },
+    "instructor": "Nikolaus Klassen",
+    "instructorFullName": "Nikolaus Klassen",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/nikolaus-klassen",
+    "instructors": [
+      {
+        "name": "Nikolaus Klassen",
+        "url": "https://www.colorado.edu/atlas/nikolaus-klassen"
+      }
+    ],
+    "description": "Case studies and design sprints on AI ethics: bias, alignment and the politics of tech systems.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "40765",
+          "title": "Applied AI Ethics",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MW",
+          "start": "12:35",
+          "end": "13:50",
+          "meets": "MW 12:35-1:50p",
+          "instructor": "N. Klassen",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21917",
+          "title": "Applied AI Ethics",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "MW",
+          "start": "12:35",
+          "end": "13:50",
+          "meets": "MW 12:35-1:50p",
+          "instructor": "N. Klassen",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-atlas-light-tower-as-a-theater",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "ATLAS Light Tower as a Theater",
+    "credits": "3",
+    "category": "Sound & Music / Visual Systems",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "W. Seltzer"
+    },
+    "instructor": "Wayne Seltzer",
+    "instructorFullName": "Wayne Seltzer",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/wayne-seltzer",
+    "instructors": [
+      {
+        "name": "Wayne Seltzer",
+        "url": "https://www.colorado.edu/atlas/wayne-seltzer"
+      }
+    ],
+    "description": "Turn the LED glass tower on top of the ATLAS building into a theater: experiment with lights (DMX), sound and interaction, and stage a public show at semester's end.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "Department consent (email the instructor for approval)",
+    "unlocks": "",
+    "searchKeywords": "light, tower, theater, DMX, LED, installation",
+    "classNumber": "",
+    "prereqRequired": "Department consent (email the instructor for approval)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24139",
+          "title": "Advanced Special Topics: ATLAS Light Tower as a Theater",
+          "section": "801",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "15:30",
+          "end": "18:00",
+          "meets": "Th 3:30-6p",
+          "instructor": "W. Seltzer",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-accessible-web-design",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Accessible Web Design",
+    "credits": "3",
+    "category": "Accessibility",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "H. Kramer",
+      "Spring 2027": "H. Kramer"
+    },
+    "instructor": "Howard Kramer",
+    "instructorFullName": "Howard Kramer",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [
+      {
+        "name": "Howard Kramer",
+        "url": ""
+      }
+    ],
+    "description": "Online course on designing and building accessible websites.",
+    "tools": [],
+    "image": "",
+    "crossListings": "CSCI 4830",
+    "sessionLength": "10 weeks (Feb 9 - Apr 24 in Spring 2026)",
+    "format": "Online (Continuing Education)",
+    "extraCost": "Yes, CE billing",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "accessibility, web, WCAG, screen reader",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "29691",
+          "title": "Advanced Special Topics: Accessible Web Design",
+          "section": "581",
+          "type": "LEC",
+          "campus": "CE",
+          "days": "",
+          "start": "",
+          "end": "",
+          "meets": "Meets online (see class notes)",
+          "instructor": "H. Kramer",
+          "dates": "02-09 to 04-24",
+          "online": true,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "25160",
+          "title": "Advanced Special Topics: Accessible Web Design",
+          "section": "581",
+          "type": "LEC",
+          "campus": "",
+          "days": "",
+          "start": "",
+          "end": "",
+          "meets": "Meets online (see class notes)",
+          "instructor": "H. Kramer",
+          "dates": "02-08 to 04-23",
+          "online": true,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-b2-collaboratory",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "B2 Collaboratory",
+    "credits": "3",
+    "category": "Sound & Music / Visual Systems",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "B. Gallagher"
+    },
+    "instructor": "Brad (Jonathan) Gallagher",
+    "instructorFullName": "Brad (Jonathan) Gallagher",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/brad-gallagher-0",
+    "instructors": [
+      {
+        "name": "Brad (Jonathan) Gallagher",
+        "url": "https://www.colorado.edu/atlas/brad-gallagher-0"
+      }
+    ],
+    "description": "Hands-on work in the B2 studios with interactive lighting, spatial sound, projection mapping and motion capture, ending in a short intermedia project.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester (meets every other week)",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "Contact the instructor to enroll",
+    "unlocks": "",
+    "searchKeywords": "B2, performance, media arts, motion capture",
+    "classNumber": "",
+    "prereqRequired": "Contact the instructor to enroll",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "40870",
+          "title": "Advanced Special Topics: B2 Collaboratory",
+          "section": "041",
+          "type": "LAB",
+          "campus": "Main",
+          "days": "F",
+          "start": "13:00",
+          "end": "14:50",
+          "meets": "F 1-2:50p",
+          "instructor": "J. Gallagher",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "40857",
+          "title": "Advanced Special Topics: B2 Collaboratory",
+          "section": "040",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "11:05",
+          "end": "12:55",
+          "meets": "M 11:05a-12:55p",
+          "instructor": "J. Gallagher",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-design-a-science-exhibit",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Design a Science Exhibit",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "M. Gross",
+      "Spring 2027": "M. Gross"
+    },
+    "instructor": "Mark D. Gross",
+    "instructorFullName": "Mark D. Gross",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/mark-d-gross",
+    "instructors": [
+      {
+        "name": "Mark D. Gross",
+        "url": "https://www.colorado.edu/atlas/mark-d-gross"
+      }
+    ],
+    "description": "Team project with a real client (a museum or science institution) and scientists: design, build, install and test a digital or physical science exhibit.",
+    "tools": [],
+    "image": "",
+    "crossListings": "CSCI 4830, CSCI 7000",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "exhibit, museum, science communication, installation",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24130",
+          "title": "Advanced Special Topics: Design a Science Exhibit",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "09:50",
+          "end": "12:20",
+          "meets": "M 9:50a-12:20p",
+          "instructor": "M. Gross",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21729",
+          "title": "Advanced Special Topics: Design a Science Exhibit",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "M",
+          "start": "09:50",
+          "end": "12:20",
+          "meets": "M 9:50a-12:20p",
+          "instructor": "M. Gross",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-generative-ai",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Generative AI",
+    "credits": "3",
+    "category": "AI / Emerging Tech",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "R. Suzuki",
+      "Fall 2026": "R. Suzuki"
+    },
+    "instructor": "Ryo Suzuki",
+    "instructorFullName": "Ryo Suzuki",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/ryo-suzuki",
+    "instructors": [
+      {
+        "name": "Ryo Suzuki",
+        "url": "https://www.colorado.edu/atlas/ryo-suzuki"
+      }
+    ],
+    "description": "Lecture course on how modern generative AI works (LLMs, diffusion, agents, multimodal models) and its impacts, with two short team projects.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "LLM, GPT, diffusion, agents, machine learning, AI",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17668",
+          "title": "Advanced Special Topics: Generative AI",
+          "section": "052",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "12:35",
+          "end": "15:05",
+          "meets": "W 12:35-3:05p",
+          "instructor": "R. Suzuki",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2026": [
+        {
+          "classNumber": "24131",
+          "title": "Advanced Special Topics: Generative AI",
+          "section": "002",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "11:20",
+          "end": "13:50",
+          "meets": "M 11:20a-1:50p",
+          "instructor": "R. Suzuki",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "42342",
+          "title": "Advanced Special Topics: Generative AI",
+          "section": "024",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "11:20",
+          "end": "13:50",
+          "meets": "M 11:20a-1:50p",
+          "instructor": "R. Suzuki",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-hacking-the-apocalypse",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Hacking the Apocalypse",
+    "credits": "3",
+    "category": "Fabrication & Making",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Fall 2026": "Z. Jacobson-Weaver"
+    },
+    "instructor": "Zack Jacobson-Weaver",
+    "instructorFullName": "Zack Jacobson-Weaver",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/zack-weaver",
+    "instructors": [
+      {
+        "name": "Zack Jacobson-Weaver",
+        "url": "https://www.colorado.edu/atlas/zack-weaver"
+      }
+    ],
+    "description": "Design off-grid, open-source systems for survival needs using Arduino, electronics and fabrication. Each semester has a new theme; Fall 2026 is counter-surveillance and private communication.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "Arduino, off-grid, survival, electronics, open source, counter surveillance",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17658",
+          "title": "Advanced Special Topics: Hacking the Apocalypse: Part 3",
+          "section": "004",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MW",
+          "start": "09:35",
+          "end": "10:50",
+          "meets": "MW 9:35-10:50a",
+          "instructor": "Z. Jacobson-Weaver",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-inventing-interactive-systems",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Inventing Interactive Systems",
+    "credits": "3",
+    "category": "AI / Emerging Tech",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Fall 2026": "M. Rivera"
+    },
+    "instructor": "Michael Rivera",
+    "instructorFullName": "Michael Rivera",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/michael-rivera",
+    "instructors": [
+      {
+        "name": "Michael Rivera",
+        "url": "https://www.colorado.edu/atlas/michael-rivera"
+      }
+    ],
+    "description": "Design and build working interactive hardware and software systems (sensing, haptics, wearables, shape-changing interfaces) while studying technical HCI research.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "HCI, haptics, wearables, sensors, embedded systems, hardware",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2270 or CSCI 2270/2275 (listed in class notes only)",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17665",
+          "title": "Advanced Special Topics: Inventing Interactive Systems",
+          "section": "013",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "12:35",
+          "end": "15:05",
+          "meets": "W 12:35-3:05p",
+          "instructor": "M. Rivera",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-learn-vibe-build",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Learn, Vibe, Build",
+    "credits": "3",
+    "category": "AI / Emerging Tech",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Fall 2026": "A. Neyer"
+    },
+    "instructor": "Aaron Neyer",
+    "instructorFullName": "Aaron Neyer",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/aaron-neyer",
+    "instructors": [
+      {
+        "name": "Aaron Neyer",
+        "url": "https://www.colorado.edu/atlas/aaron-neyer"
+      }
+    ],
+    "description": "Learn to build working software with AI tools, for all experience levels, from apps to personal tools that support a more balanced, creative life.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "AI, vibe coding, no-code, build apps, beginners",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "39152",
+          "title": "Advanced Special Topics: Learn, Vibe, Build",
+          "section": "005",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "17:05",
+          "end": "19:35",
+          "meets": "M 5:05-7:35p",
+          "instructor": "A. Neyer",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-neurodesign",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "NeuroDesign",
+    "credits": "3",
+    "category": "AI / Emerging Tech",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "S. Zamore",
+      "Spring 2027": "S. Zamore"
+    },
+    "instructor": "Shaz (Sharri) Zamore",
+    "instructorFullName": "Shaz (Sharri) Zamore",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/shaz-zamore",
+    "instructors": [
+      {
+        "name": "Shaz (Sharri) Zamore",
+        "url": "https://www.colorado.edu/atlas/shaz-zamore"
+      }
+    ],
+    "description": "Use control theory to design for nervous systems like the visual system, from sensors to an inclusive, minimally harmful product or experiment.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "neuroscience, brain, design",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24134",
+          "title": "Advanced Special Topics: NeuroDesign",
+          "section": "006",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MW",
+          "start": "09:35",
+          "end": "10:50",
+          "meets": "MW 9:35-10:50a",
+          "instructor": "S. Zamore",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21734",
+          "title": "Advanced Special Topics: NeuroDesign",
+          "section": "006",
+          "type": "LEC",
+          "campus": "",
+          "days": "MW",
+          "start": "09:35",
+          "end": "10:50",
+          "meets": "MW 9:35-10:50a",
+          "instructor": "S. Zamore",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-touchdesigner",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "TouchDesigner",
+    "credits": "3",
+    "category": "Sound & Music / Visual Systems",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Fall 2026": "A. Homer"
+    },
+    "instructor": "Abraham (Abe) Homer",
+    "instructorFullName": "Abraham (Abe) Homer",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/abraham-homer",
+    "instructors": [
+      {
+        "name": "Abraham (Abe) Homer",
+        "url": "https://www.colorado.edu/atlas/abraham-homer"
+      }
+    ],
+    "description": "Build real-time visuals that react to data, sound and live input: generative graphics, live performance visuals and interactive installations in TouchDesigner.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "TouchDesigner, real-time, generative, projection, live visuals, installation",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17654",
+          "title": "Advanced Special Topics: Touch Designer",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "17:05",
+          "end": "19:35",
+          "meets": "W 5:05-7:35p",
+          "instructor": "A. Homer",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-visual-identity-branding",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Visual Identity & Branding",
+    "credits": "3",
+    "category": "Branding & Strategy",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "J. Swanson"
+    },
+    "instructor": "Joel Swanson",
+    "instructorFullName": "Joel Swanson",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/joel-swanson",
+    "instructors": [
+      {
+        "name": "Joel Swanson",
+        "url": "https://www.colorado.edu/atlas/joel-swanson"
+      }
+    ],
+    "description": "Build complete brand identity systems (typography, color, logos, grids, style guides), including dynamic identities coded in p5.js, while studying how branding shapes culture.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "Full semester",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "branding, logo, identity, graphic design, p5.js, style guide",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24135",
+          "title": "Advanced Special Topics: Visual Identity & Branding",
+          "section": "007",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "MW",
+          "start": "15:35",
+          "end": "16:50",
+          "meets": "MW 3:35-4:50p",
+          "instructor": "J. Swanson",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-whaaat-lab-studio",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Whaaat!? Lab Studio",
+    "credits": "1",
+    "category": "Game Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Fall 2026": "D. Rankin"
+    },
+    "instructor": "Danny (Daniel) Rankin",
+    "instructorFullName": "Danny (Daniel) Rankin",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/danny-rankin-0",
+    "instructors": [
+      {
+        "name": "Danny (Daniel) Rankin",
+        "url": "https://www.colorado.edu/atlas/danny-rankin-0"
+      }
+    ],
+    "description": "Weekly studio with the Whaaat!? Lab: help run the Whaaat!? Festival and pitch and build experimental games, alt controllers and playful installations.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "First 7 weeks (Aug 20 - Oct 9 in Fall 2026)",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "Whaaat, festival, experimental games, alt controllers, playful",
+    "classNumber": "",
+    "prereqRequired": "None (motivation and curiosity); design, coding or fabrication background helps",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17655",
+          "title": "Advanced Special Topics: Whaaat!? Lab Studio",
+          "section": "002",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "15:35",
+          "end": "17:20",
+          "meets": "W 3:35-5:20p",
+          "instructor": "D. Rankin",
+          "dates": "08-20 to 10-09",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4529-community-driven-technology",
+    "code": "ATLS 4529",
+    "specialTopic": false,
+    "title": "Adv Critical Topics: Community-Driven Technology",
+    "credits": "1-3",
+    "category": "",
+    "categorySecondary": "",
+    "countsToward": "Critical Perspectives",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "S. Zamore"
+    },
+    "instructor": "Shaz Zamore",
+    "instructorFullName": "Shaz Zamore",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/shaz-zamore",
+    "instructors": [
+      {
+        "name": "Shaz Zamore",
+        "url": "https://www.colorado.edu/atlas/shaz-zamore"
+      }
+    ],
+    "description": "",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17799",
+          "title": "Adv Critical Topics: Community-Driven Technology",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "09:50",
+          "end": "12:20",
+          "meets": "M 9:50a-12:20p",
+          "instructor": "S. Zamore",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4529-games-as-culture",
+    "code": "ATLS 4529",
+    "specialTopic": false,
+    "title": "Adv Critical Topics: Games As Culture",
+    "credits": "1-3",
+    "category": "Game Design",
+    "categorySecondary": "",
+    "countsToward": "Critical Perspectives",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "C. Floyd"
+    },
+    "instructor": "Chris Floyd",
+    "instructorFullName": "Chris Floyd",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/chris-floyd",
+    "instructors": [
+      {
+        "name": "Chris Floyd",
+        "url": "https://www.colorado.edu/atlas/chris-floyd"
+      }
+    ],
+    "description": "",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "38565",
+          "title": "Adv Critical Topics: Games As Culture",
+          "section": "002",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "TR",
+          "start": "14:00",
+          "end": "15:15",
+          "meets": "TTh 2-3:15p",
+          "instructor": "C. Floyd",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4539-how-to-series-photos-portfolios-tooling-job-ready-creative-practice-pedagogy",
+    "code": "ATLS 4539",
+    "specialTopic": false,
+    "title": "How-to Series (Photos, Portfolios, Tooling, Job Ready, Creative Practice, Pedagogy)",
+    "credits": "1 each",
+    "category": "",
+    "categorySecondary": "",
+    "countsToward": "How-To requirement",
+    "termsOffered": [
+      "Spring 2026",
+      "Fall 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "Various",
+      "Fall 2026": "Various",
+      "Spring 2027": "A. Chopra, A. Pinter"
+    },
+    "instructor": "Aidan Chopra, Anthony Pinter, Suzanne Stoller, Sheiva Rezvani",
+    "instructorFullName": "Aidan Chopra, Anthony Pinter, Suzanne Stoller, Sheiva Rezvani",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [
+      {
+        "name": "Aidan Chopra",
+        "url": "https://www.colorado.edu/atlas/aidan-chopra"
+      },
+      {
+        "name": "Anthony Pinter",
+        "url": "https://www.colorado.edu/atlas/anthony-pinter"
+      },
+      {
+        "name": "Suzanne Stoller",
+        "url": "https://www.colorado.edu/atlas/suzanne-stoller"
+      },
+      {
+        "name": "Sheiva Rezvani",
+        "url": "https://www.colorado.edu/atlas/sheiva-rezvani"
+      }
+    ],
+    "description": "",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None listed",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Spring 2026": [
+        {
+          "classNumber": "24308",
+          "title": "Advanced Topics: How-to: Take Better Photos",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "09:35",
+          "end": "11:20",
+          "meets": "M 9:35-11:20a",
+          "instructor": "A. Chopra",
+          "dates": "01-08 to 02-27",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "24313",
+          "title": "Advanced Topics: How-to: Portfolios",
+          "section": "002",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "09:35",
+          "end": "11:20",
+          "meets": "M 9:35-11:20a",
+          "instructor": "A. Chopra",
+          "dates": "03-02 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "40361",
+          "title": "Advanced Topics: How-to: Computer Tooling",
+          "section": "003",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "11:05",
+          "end": "12:50",
+          "meets": "W 11:05a-12:50p",
+          "instructor": "A. Pinter",
+          "dates": "01-08 to 02-27",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "41161",
+          "title": "Advanced Topics: How-to: Become Job Ready",
+          "section": "004",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "10:00",
+          "end": "11:45",
+          "meets": "Th 10-11:45a",
+          "instructor": "S. Stoller",
+          "dates": "01-08 to 02-27",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "41841",
+          "title": "Advanced Topics: How-to: Build a Creative Practice",
+          "section": "005",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "12:20",
+          "end": "14:05",
+          "meets": "W 12:20-2:05p",
+          "instructor": "S. Rezvani",
+          "dates": "01-08 to 02-27",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "42578",
+          "title": "Advanced Topics: How-to: Creative Practice",
+          "section": "006",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "12:20",
+          "end": "14:05",
+          "meets": "W 12:20-2:05p",
+          "instructor": "S. Rezvani",
+          "dates": "03-02 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "24314",
+          "title": "Advanced Topics: How-to: Become Job Ready",
+          "section": "008",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "10:00",
+          "end": "11:45",
+          "meets": "Th 10-11:45a",
+          "instructor": "S. Stoller",
+          "dates": "03-02 to 04-24",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "24311",
+          "title": "Advanced Topics: How-to: Pedagogy 1",
+          "section": "801",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "17:00",
+          "end": "18:45",
+          "meets": "Th 5-6:45p",
+          "instructor": "A. Pinter",
+          "dates": "01-08 to 02-27",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "24312",
+          "title": "Advanced Topics: How-to: Pedagogy 2",
+          "section": "802",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "17:00",
+          "end": "18:45",
+          "meets": "Th 5-6:45p",
+          "instructor": "A. Pinter",
+          "dates": "01-08 to 02-27",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Fall 2026": [
+        {
+          "classNumber": "39062",
+          "title": "AdvTopics: How-to: Build a Creative Practice",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "13:35",
+          "end": "15:20",
+          "meets": "W 1:35-3:20p",
+          "instructor": "S. Rezvani",
+          "dates": "08-20 to 10-09",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "17841",
+          "title": "AdvTopics: How-to: Portfolios",
+          "section": "004",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "T",
+          "start": "14:15",
+          "end": "16:00",
+          "meets": "T 2:15-4p",
+          "instructor": "A. Chopra",
+          "dates": "10-12 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "17835",
+          "title": "AdvTopics: How-to: Take Better Photos",
+          "section": "005",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "14:15",
+          "end": "16:00",
+          "meets": "Th 2:15-4p",
+          "instructor": "A. Chopra",
+          "dates": "10-12 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "17842",
+          "title": "AdvTopics: How-to: Become Job Ready",
+          "section": "008",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "13:00",
+          "end": "14:45",
+          "meets": "M 1-2:45p",
+          "instructor": "S. Stoller",
+          "dates": "10-12 to 12-04",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "17838",
+          "title": "AdvTopics: How-to: Become Job Ready",
+          "section": "009",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "13:00",
+          "end": "15:00",
+          "meets": "M 1-3p",
+          "instructor": "S. Stoller",
+          "dates": "08-20 to 10-09",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21899",
+          "title": "AdvTopics: How-to: Take Better Photos",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "M",
+          "start": "09:35",
+          "end": "11:35",
+          "meets": "M 9:35-11:35a",
+          "instructor": "A. Chopra",
+          "dates": "01-07 to 02-26",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "21902",
+          "title": "AdvTopics: How-to: Portfolios",
+          "section": "002",
+          "type": "LEC",
+          "campus": "",
+          "days": "M",
+          "start": "09:35",
+          "end": "11:20",
+          "meets": "M 9:35-11:20a",
+          "instructor": "A. Chopra",
+          "dates": "03-01 to 04-23",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "37853",
+          "title": "AdvTopics: How-to: Portfolios",
+          "section": "003",
+          "type": "LEC",
+          "campus": "",
+          "days": "R",
+          "start": "12:30",
+          "end": "14:15",
+          "meets": "Th 12:30-2:15p",
+          "instructor": "",
+          "dates": "01-07 to 02-26",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "37856",
+          "title": "AdvTopics: How-to: Portfolios",
+          "section": "008",
+          "type": "LEC",
+          "campus": "",
+          "days": "R",
+          "start": "11:00",
+          "end": "12:45",
+          "meets": "Th 11a-12:45p",
+          "instructor": "A. Pinter",
+          "dates": "01-07 to 02-26",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4606-critical-technical-practice",
+    "code": "ATLS 4606",
+    "specialTopic": false,
+    "title": "Critical Technical Practice",
+    "credits": "3",
+    "category": "",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective + Critical Perspectives",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Design exercises that question how technology, culture and environment relate.",
+    "tools": [],
+    "image": "",
+    "crossListings": "INFO 4606",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true
+  },
+  {
+    "id": "atls-4616-introduction-to-mixed-reality",
+    "code": "ATLS 4616",
+    "specialTopic": false,
+    "title": "Introduction to Mixed Reality",
+    "credits": "3",
+    "category": "AR / VR",
+    "categorySecondary": "AI / Emerging Tech",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Fall 2026"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Fall 2026": "R. Suzuki"
+    },
+    "instructor": "Ryo Suzuki",
+    "instructorFullName": "Ryo Suzuki",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/ryo-suzuki",
+    "instructors": [
+      {
+        "name": "Ryo Suzuki",
+        "url": "https://www.colorado.edu/atlas/ryo-suzuki"
+      }
+    ],
+    "description": "VR/MR history, 3D math, perception and tools for building immersive experiences.",
+    "tools": [],
+    "image": "",
+    "crossListings": "CSCI 4616",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "VR, AR, XR, mixed reality, virtual reality, augmented reality",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2270 or CSCI 2270",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "CTD majors and minors only",
+    "openToNonMajors": false,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17816",
+          "title": "Introduction to Mixed Reality",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "T",
+          "start": "16:10",
+          "end": "18:40",
+          "meets": "T 4:10-6:40p",
+          "instructor": "R. Suzuki",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4620-user-experience-design-1",
+    "code": "ATLS 4620",
+    "specialTopic": false,
+    "title": "User Experience Design 1",
+    "credits": "3",
+    "category": "UX / Product Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Fall 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "B. VanHorssen",
+      "Fall 2026": "B. VanHorssen",
+      "Spring 2027": "B. VanHorssen"
+    },
+    "instructor": "Brittney Urich VanHorssen",
+    "instructorFullName": "Brittney Urich VanHorssen",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/brittney-vanhorssen",
+    "instructors": [
+      {
+        "name": "Brittney Urich VanHorssen",
+        "url": "https://www.colorado.edu/atlas/brittney-vanhorssen"
+      }
+    ],
+    "description": "End-to-end UX process, ending with a portfolio piece.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "ATLS 4720 UX Design 2",
+    "searchKeywords": "UX, user experience, Figma, portfolio, product design",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "CTD majors, minors and UX Certificate students only until a registration date ATLAS sets each semester; then open to all",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17854",
+          "title": "User-Experience Design 1",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "17:05",
+          "end": "19:35",
+          "meets": "W 5:05-7:35p",
+          "instructor": "B. VanHorssen",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2026": [
+        {
+          "classNumber": "41580",
+          "title": "UX Design 1",
+          "section": "002",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "W",
+          "start": "17:00",
+          "end": "19:30",
+          "meets": "W 5-7:30p",
+          "instructor": "B. VanHorssen",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21915",
+          "title": "User-Experience Design 1",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "M",
+          "start": "17:05",
+          "end": "19:35",
+          "meets": "M 5:05-7:35p",
+          "instructor": "B. VanHorssen",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4630-web-front-end-development",
+    "code": "ATLS 4630",
+    "specialTopic": false,
+    "title": "Web Front-End Development",
+    "credits": "3",
+    "category": "UX / Product Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [],
+    "notOfferedRecently": true,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {},
+    "instructor": "",
+    "instructorFullName": "",
+    "instructorTitle": "",
+    "instructorUrl": "",
+    "instructors": [],
+    "description": "Build interactive web apps, games and narratives with JavaScript and APIs.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "ATLS 2200 (Web) and ATLS 1300 or CSCI 1300/1320",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true
+  },
+  {
+    "id": "atls-4720-user-experience-design-2",
+    "code": "ATLS 4720",
+    "specialTopic": false,
+    "title": "User Experience Design 2",
+    "credits": "3",
+    "category": "UX / Product Design",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Fall 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": true
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "Y. Benari",
+      "Fall 2026": "J. Weiss",
+      "Spring 2027": "Y. Benari"
+    },
+    "instructor": "John Weiss",
+    "instructorFullName": "John Weiss",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/john-weiss",
+    "instructors": [
+      {
+        "name": "John Weiss",
+        "url": "https://www.colorado.edu/atlas/john-weiss"
+      }
+    ],
+    "description": "Deeper UX research and prototyping for products and branded experiences. Follows UX Design 1.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "UX, research, prototyping, user experience",
+    "classNumber": "",
+    "prereqRequired": "ATLS 4620 (UX Design 1), grade C or better",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17855",
+          "title": "User-Experience Design 2",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "F",
+          "start": "16:30",
+          "end": "19:00",
+          "meets": "F 4:30-7p",
+          "instructor": "J. Weiss",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2026": [
+        {
+          "classNumber": "42211",
+          "title": "UX Design 2",
+          "section": "002",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "TR",
+          "start": "12:30",
+          "end": "13:45",
+          "meets": "TuTh 12:30-1:45p",
+          "instructor": "Y. Benari",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21916",
+          "title": "User-Experience Design 2",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "TR",
+          "start": "12:30",
+          "end": "13:45",
+          "meets": "TTh 12:30-1:45p",
+          "instructor": "Y. Benari",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4809-computer-animation",
+    "code": "ATLS 4809",
+    "specialTopic": false,
+    "title": "Computer Animation",
+    "credits": "3",
+    "category": "3D / Animation",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Fall 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": null,
+    "instructorsByTerm": {
+      "Spring 2026": "S. Crowder",
+      "Fall 2026": "S. Crowder",
+      "Spring 2027": "S. Crowder"
+    },
+    "instructor": "Sammie Crowder",
+    "instructorFullName": "Sammie Crowder",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/sammie-crowder",
+    "instructors": [
+      {
+        "name": "Sammie Crowder",
+        "url": "https://www.colorado.edu/atlas/sammie-crowder"
+      }
+    ],
+    "description": "Modeling, materials, lighting, keyframe animation and rendering.",
+    "tools": [],
+    "image": "",
+    "crossListings": "CSCI 4809",
+    "sessionLength": "",
+    "format": "",
+    "extraCost": "",
+    "consentRequired": "",
+    "unlocks": "",
+    "searchKeywords": "3D, Maya, modeling, rendering, animation",
+    "classNumber": "",
+    "prereqRequired": "None",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": true,
+    "restriction": "None",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "17779",
+          "title": "Computer Animation",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "17:05",
+          "end": "19:35",
+          "meets": "M 5:05-7:35p",
+          "instructor": "S. Crowder",
+          "dates": "08-20 to 12-04",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2026": [
+        {
+          "classNumber": "24255",
+          "title": "Computer Animation",
+          "section": "001",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "M",
+          "start": "17:05",
+          "end": "19:35",
+          "meets": "M 5:05-7:35p",
+          "instructor": "S. Crowder",
+          "dates": "01-08 to 04-24",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21850",
+          "title": "Computer Animation",
+          "section": "001",
+          "type": "LEC",
+          "campus": "",
+          "days": "M",
+          "start": "17:05",
+          "end": "19:35",
+          "meets": "M 5:05-7:35p",
+          "instructor": "S. Crowder",
+          "dates": "01-07 to 04-23",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "atls-4519-pedagogy-1-and-2",
+    "code": "ATLS 4519",
+    "specialTopic": true,
+    "title": "Pedagogy 1 and 2",
+    "credits": "1 each",
+    "category": "",
+    "categorySecondary": "",
+    "countsToward": "Focus Elective",
+    "termsOffered": [
+      "Spring 2026",
+      "Fall 2026",
+      "Spring 2027"
+    ],
+    "notOfferedRecently": false,
+    "advisorConfirmation": {
+      "by": "BS-CTD advisor",
+      "date": "2026-09-29",
+      "auditMayNotListIt": false
+    },
+    "instructorsByTerm": {
+      "Spring 2026": "A. Pinter",
+      "Fall 2026": "A. Pinter",
+      "Spring 2027": "A. Pinter"
+    },
+    "instructor": "Anthony Pinter",
+    "instructorFullName": "Anthony Pinter",
+    "instructorTitle": "",
+    "instructorUrl": "https://www.colorado.edu/atlas/anthony-pinter",
+    "instructors": [
+      {
+        "name": "Anthony Pinter",
+        "url": "https://www.colorado.edu/atlas/anthony-pinter"
+      }
+    ],
+    "description": "Two 1-credit, 7-week courses on teaching. Details not published in class notes; ask the instructor.",
+    "tools": [],
+    "image": "",
+    "crossListings": "",
+    "sessionLength": "First 7 weeks",
+    "format": "In person",
+    "extraCost": "No",
+    "consentRequired": "Department consent",
+    "unlocks": "",
+    "searchKeywords": "",
+    "classNumber": "",
+    "prereqRequired": "Department consent required",
+    "prereqRecommended": "",
+    "noRequiredPrereqs": false,
+    "restriction": "Department consent",
+    "openToNonMajors": true,
+    "sectionsByTerm": {
+      "Fall 2026": [
+        {
+          "classNumber": "38376",
+          "title": "Advanced Special Topics: Pedagogy 1",
+          "section": "801",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "17:00",
+          "end": "18:45",
+          "meets": "Th 5-6:45p",
+          "instructor": "A. Pinter",
+          "dates": "08-20 to 10-09",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "38377",
+          "title": "Advanced Special Topics: Pedagogy 2",
+          "section": "802",
+          "type": "LEC",
+          "campus": "Main",
+          "days": "R",
+          "start": "17:00",
+          "end": "18:45",
+          "meets": "Th 5-6:45p",
+          "instructor": "A. Pinter",
+          "dates": "08-20 to 10-09",
+          "online": false,
+          "variesBySection": false
+        }
+      ],
+      "Spring 2027": [
+        {
+          "classNumber": "21745",
+          "title": "Advanced Special Topics: Pedagogy 1",
+          "section": "801",
+          "type": "LEC",
+          "campus": "",
+          "days": "R",
+          "start": "17:15",
+          "end": "19:00",
+          "meets": "Th 5:15-7p",
+          "instructor": "A. Pinter",
+          "dates": "01-07 to 02-26",
+          "online": false,
+          "variesBySection": false
+        },
+        {
+          "classNumber": "21746",
+          "title": "Advanced Special Topics: Pedagogy 2",
+          "section": "802",
+          "type": "LEC",
+          "campus": "",
+          "days": "R",
+          "start": "16:45",
+          "end": "18:30",
+          "meets": "Th 4:45-6:30p",
+          "instructor": "A. Pinter",
+          "dates": "01-07 to 02-26",
+          "online": false,
+          "variesBySection": false
+        }
+      ]
+    }
+  }
+]
