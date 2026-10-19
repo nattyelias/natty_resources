@@ -2,6 +2,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { defaultConfig, termContext } from '../src/core/config.ts';
 import { allCourses, filterCourses, gradCourses, offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
+import { verificationFor, verificationLabel } from '../src/core/verification.ts';
 
 const file = new URL('./courses.json', import.meta.url);
 const courses = JSON.parse(readFileSync(file, 'utf8'));
@@ -97,4 +98,16 @@ if (existsSync(extraFile)) {
   console.log(`  Left out: ${all.length - grad.length}`);
   console.log(`  Independent study records: ${all.filter((c) => c.independentStudy).length}`);
   if (byReason('grad-only') + byReason('5000-level twin') !== grad.length) process.exitCode = 1;
+
+  // Verification against CU class search (data/verification.json)
+  const vFile = new URL('./verification.json', import.meta.url);
+  const vctx = { verification: existsSync(vFile) ? JSON.parse(readFileSync(vFile, 'utf8')) : null };
+  const byStatus = { confirmed: 0, mismatch: 0, pending: 0, unchecked: 0 };
+  for (const c of all) byStatus[verificationFor(c.id, vctx).status]++;
+  console.log(`\nVerification (class level, across all ${all.length} classes)${vctx.verification ? `, last check ${vctx.verification.meta.checkedAt}` : ', no check file'}:`);
+  for (const [s, n] of Object.entries(byStatus)) console.log(`  ${s}: ${n}  (${verificationLabel(s, vctx.verification?.meta.checkedAt)})`);
+  if (Object.values(byStatus).reduce((a, b) => a + b, 0) !== all.length) process.exitCode = 1;
+  const known = new Set(all.map((c) => c.id));
+  const orphans = Object.keys(vctx.verification?.sections ?? {}).filter((id) => !known.has(id));
+  console.log(`  Verification entries for no class in the data: ${orphans.length}${orphans.length ? ' (' + orphans.join(', ') + ')' : ''}`);
 }

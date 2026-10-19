@@ -82,3 +82,34 @@ export interface Course {
 
 /** A class as stored in data/courses.json and data/courses-extra.json: a Course before photos are merged in at load. */
 export type CourseData = Omit<Course, 'photo' | 'photoAlt' | 'photoCredit'>;
+
+// ─── Verification against CU class search (data/verification.json, from check-class-search.mjs) ───
+
+/** One field where our data and CU class search disagree. Class search is the source of truth. */
+export interface MismatchedField { field: string; classSearch: string; ours: string }
+
+export interface SectionVerification {
+  code: string;
+  /** "confirmed", "mismatch", "pending" (not in class search yet), "new" or "cancelled". A plain string so the JSON imports cleanly. */
+  status: string;
+  /** The America/Denver date of the check, YYYY-MM-DD. */
+  checkedAt: string;
+  mismatchedFields: MismatchedField[];
+  skipped: string[];
+  notes: string[];
+}
+
+export interface VerificationFile {
+  meta: { checkedAt: string; input: string; srcdb: string; term: string; counts: Record<string, number> } & Record<string, unknown>;
+  /** course id -> section number -> result */
+  sections: Record<string, Record<string, SectionVerification>>;
+}
+
+/** What a class says about how far to trust its Spring 2027 times. */
+export type VerificationStatus = 'confirmed' | 'mismatch' | 'pending' | 'unchecked';
+
+export interface ClassVerification {
+  status: VerificationStatus;
+  /** Latest check date among the class's sections (YYYY-MM-DD), or null when unchecked. */
+  checkedAt: string | null;
+}
