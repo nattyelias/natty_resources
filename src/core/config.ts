@@ -2,6 +2,7 @@
 // and pass it into the functions that need it.
 
 import type { TermContext, TermStatusMap } from './terms.ts';
+import type { ViewMode } from './types.ts';
 
 export interface CoreConfig {
   /** The term classes are running in right now, e.g. "Fall 2026". Update every term. */
@@ -20,6 +21,9 @@ export interface CoreConfig {
    */
   termStatus: TermStatusMap;
 }
+
+/** The mode shown when nothing valid has been saved. */
+export const DEFAULT_MODE: ViewMode = 'grad';
 
 export const defaultConfig: CoreConfig = {
   currentTermName: 'Fall 2026',

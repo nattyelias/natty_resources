@@ -113,3 +113,6 @@ export interface ClassVerification {
   /** Latest check date among the class's sections (YYYY-MM-DD), or null when unchecked. */
   checkedAt: string | null;
 }
+
+/** Which side of the catalog the app shows: graduate options or undergraduate options. */
+export type ViewMode = 'grad' | 'undergrad';

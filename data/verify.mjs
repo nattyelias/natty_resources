@@ -1,7 +1,7 @@
 // Prints a quick summary of courses.json. Run: node data/verify.mjs
 import { existsSync, readFileSync } from 'node:fs';
 import { defaultConfig, termContext } from '../src/core/config.ts';
-import { allCourses, filterCourses, gradCourses, offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
+import { allCourses, coursesForMode, filterCourses, gradCourses, offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
 import { verificationFor, verificationLabel } from '../src/core/verification.ts';
 
 const file = new URL('./courses.json', import.meta.url);
@@ -98,6 +98,23 @@ if (existsSync(extraFile)) {
   console.log(`  Left out: ${all.length - grad.length}`);
   console.log(`  Independent study records: ${all.filter((c) => c.independentStudy).length}`);
   if (byReason('grad-only') + byReason('5000-level twin') !== grad.length) process.exitCode = 1;
+
+  // View modes (coursesForMode in src/core/courses.ts)
+  const gradMode = coursesForMode(all, 'grad', ctx);
+  const underMode = coursesForMode(all, 'undergrad', ctx);
+  const gradIds = new Set(gradMode.map((m) => m.course.id));
+  const bothIds = underMode.filter((m) => gradIds.has(m.course.id));
+  const distinct = (list) => new Set(list.map((m) => m.displayCode)).size;
+  console.log('\nView modes:');
+  console.log(`  grad: ${gradMode.length} classes (${distinct(gradMode)} distinct display codes)`);
+  console.log(`  undergrad: ${underMode.length} classes (${distinct(underMode)} distinct display codes)`);
+  console.log(`  In both modes: ${bothIds.length}`);
+  console.log(`  Grad only: ${gradMode.length - bothIds.length}, undergrad only: ${underMode.length - bothIds.length}`);
+  if (gradMode.length !== grad.length || gradMode.some((m, i) => m.course.id !== grad[i].course.id)) { console.log('  Grad mode is not exactly gradCourses()'); process.exitCode = 1; }
+  const wrongGrad = gradMode.filter((m) => !/\b[5-9]\d{3}$/.test(m.displayCode) && !m.course.level?.startsWith('Grad'));
+  const wrongUnder = underMode.filter((m) => !/\b[0-4]\d{3}$/.test(m.displayCode));
+  console.log(`  Display codes out of range: grad ${wrongGrad.length}, undergrad ${wrongUnder.length}`);
+  if (wrongGrad.length || wrongUnder.length) process.exitCode = 1;
 
   // Verification against CU class search (data/verification.json)
   const vFile = new URL('./verification.json', import.meta.url);
