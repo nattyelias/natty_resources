@@ -27,7 +27,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const coursesPath = path.join(root, 'src/data/courses.json');
 const outDir = path.join(root, 'data-sources/class-search');
 const semesterPath = path.join(root, 'src/config/semester.ts');
-const ENDPOINT = 'https://classes.colorado.edu/api/?page=fose&route=search';
+export const ENDPOINT = 'https://classes.colorado.edu/api/?page=fose&route=search';
 
 // ─── Parsing helpers (exported so the round-trip check can reuse them) ───────
 

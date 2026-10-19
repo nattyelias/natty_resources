@@ -1,0 +1,1669 @@
+{
+  "meta": {
+    "checkedAt": "2026-10-19",
+    "input": "file:2271.json",
+    "srcdb": "2271",
+    "term": "Spring 2027",
+    "classSearchSections": 173,
+    "duplicateClassSearchKeys": 0,
+    "counts": {
+      "confirmed": 160,
+      "mismatch": 13,
+      "pending": 4,
+      "new": 0,
+      "cancelled": 0
+    }
+  },
+  "sections": {
+    "atls-1100-design-foundations": {
+      "010": {
+        "code": "ATLS 1100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 1100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "012": {
+        "code": "ATLS 1100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "013": {
+        "code": "ATLS 1100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "014": {
+        "code": "ATLS 1100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "015": {
+        "code": "ATLS 1100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-2000-meaning-of-info-technology": {
+      "001": {
+        "code": "ATLS 2000",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-2002-design-technologies-process": {
+      "001": {
+        "code": "ATLS 2002",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-2036-introduction-to-media-studies-in-the-humanities": {
+      "001": {
+        "code": "ATLS 2036",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-2100-image": {
+      "010": {
+        "code": "ATLS 2100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 2100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "012": {
+        "code": "ATLS 2100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "013": {
+        "code": "ATLS 2100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "014": {
+        "code": "ATLS 2100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "015": {
+        "code": "ATLS 2100",
+        "status": "pending",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "016": {
+        "code": "ATLS 2100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-2200-web": {
+      "010": {
+        "code": "ATLS 2200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 2200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "012": {
+        "code": "ATLS 2200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "013": {
+        "code": "ATLS 2200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "014": {
+        "code": "ATLS 2200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "015": {
+        "code": "ATLS 2200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-2270-computational-foundations-2": {
+      "010": {
+        "code": "ATLS 2270",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 2270",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "012": {
+        "code": "ATLS 2270",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "013": {
+        "code": "ATLS 2270",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-3100-form": {
+      "010": {
+        "code": "ATLS 3100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 3100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "012": {
+        "code": "ATLS 3100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "013": {
+        "code": "ATLS 3100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "014": {
+        "code": "ATLS 3100",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-3110-motion-design": {
+      "001": {
+        "code": "ATLS 3110",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-3150-universal-design-for-digital-media": {
+      "581": {
+        "code": "ATLS 3150",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "582": {
+        "code": "ATLS 3150",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-3173-creative-climate-communication": {
+      "001": {
+        "code": "ATLS 3173",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Osnes/Boykoff",
+            "ours": "Osnes, M., Boyoff, M."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-3200-sound": {
+      "010": {
+        "code": "ATLS 3200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 3200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "012": {
+        "code": "ATLS 3200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "013": {
+        "code": "ATLS 3200",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-3300-object": {
+      "010": {
+        "code": "ATLS 3300",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 3300",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "012": {
+        "code": "ATLS 3300",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "013": {
+        "code": "ATLS 3300",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "014": {
+        "code": "ATLS 3300",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4010-capstone-projects": {
+      "001": {
+        "code": "ATLS 4010",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "002": {
+        "code": "ATLS 4010",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "003": {
+        "code": "ATLS 4010",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "004": {
+        "code": "ATLS 4010",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4040-game-design": {
+      "010": {
+        "code": "ATLS 4040",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 4040",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4060-tiny-games": {
+      "010": {
+        "code": "ATLS 4060",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 4060",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4201-biodesign": {
+      "001": {
+        "code": "ATLS 4201",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4202-computational-fabrication": {
+      "001": {
+        "code": "ATLS 4202",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4214-big-data-architecture": {
+      "001": {
+        "code": "ATLS 4214",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4221-interactive-sound": {
+      "001": {
+        "code": "ATLS 4221",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4244-empathy-and-technology": {
+      "001": {
+        "code": "ATLS 4244",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4279-aesthetics-in-design": {
+      "001": {
+        "code": "ATLS 4279",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Z. Jacobson-Weaver",
+            "ours": "Weaver, Z."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      },
+      "002": {
+        "code": "ATLS 4279",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Z. Jacobson-Weaver",
+            "ours": "Weaver, Z."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4400-applied-ai-ethics": {
+      "001": {
+        "code": "ATLS 4400",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-accessible-web-design": {
+      "581": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-brain-body-music-interfaces": {
+      "011": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-design-a-science-exhibit": {
+      "001": {
+        "code": "ATLS 4519",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "M. Gross",
+            "ours": "Mahajan, A., Gross, M."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-design-bookkeeping": {
+      "008": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-designing-change": {
+      "010": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-designing-design-tools": {
+      "003": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [
+          "instructor: class search blank"
+        ],
+        "notes": []
+      }
+    },
+    "atls-4519-designing-for-climate": {
+      "004": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [
+          "instructor: class search blank"
+        ],
+        "notes": []
+      }
+    },
+    "atls-4519-green-machines-studio": {
+      "804": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [
+          "instructor: class search blank"
+        ],
+        "notes": []
+      }
+    },
+    "atls-4519-neurodesign": {
+      "006": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-pedagogy-1-and-2": {
+      "801": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "802": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-programmable-reality-seminar": {
+      "009": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4519-visual-identity-branding": {
+      "002": {
+        "code": "ATLS 4519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4529-the-games-canon": {
+      "001": {
+        "code": "ATLS 4529",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [
+          "instructor: class search blank"
+        ],
+        "notes": []
+      }
+    },
+    "atls-4539-how-to-series-photos-portfolios-tooling-job-ready-creative-practice-pedagogy": {
+      "001": {
+        "code": "ATLS 4539",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "002": {
+        "code": "ATLS 4539",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "003": {
+        "code": "ATLS 4539",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [
+          "instructor: class search blank"
+        ],
+        "notes": []
+      },
+      "004": {
+        "code": "ATLS 4539",
+        "status": "pending",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "005": {
+        "code": "ATLS 4539",
+        "status": "pending",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "008": {
+        "code": "ATLS 4539",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4620-user-experience-design-1": {
+      "001": {
+        "code": "ATLS 4620",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "B. VanHorssen",
+            "ours": "Urich, B."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4720-user-experience-design-2": {
+      "001": {
+        "code": "ATLS 4720",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Y. Benari",
+            "ours": "Benari, T."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4809-computer-animation": {
+      "001": {
+        "code": "ATLS 4809",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-4900-undergraduate-independent-study": {
+      "901": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "902": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "903": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "904": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "905": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "906": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "907": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "908": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "909": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "910": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "911": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "912": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "913": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "914": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "915": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "916": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "917": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "918": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "919": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "920": {
+        "code": "ATLS 4900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5040-game-design": {
+      "010": {
+        "code": "ATLS 5040",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 5040",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5060-tiny-games": {
+      "010": {
+        "code": "ATLS 5060",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "011": {
+        "code": "ATLS 5060",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5201-biodesign": {
+      "001": {
+        "code": "ATLS 5201",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5202-computational-fabrication": {
+      "001": {
+        "code": "ATLS 5202",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5214-big-data-architecture": {
+      "001": {
+        "code": "ATLS 5214",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5221-interactive-sound": {
+      "001": {
+        "code": "ATLS 5221",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5244-empathy-and-technology": {
+      "001": {
+        "code": "ATLS 5244",
+        "status": "pending",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5250-fieldwork-methods-tech-social-impact": {
+      "001": {
+        "code": "ATLS 5250",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5279-aesthetics-in-design": {
+      "001": {
+        "code": "ATLS 5279",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Z. Jacobson-Weaver",
+            "ours": "Weaver, Z."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      },
+      "002": {
+        "code": "ATLS 5279",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Z. Jacobson-Weaver",
+            "ours": "Weaver, Z."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5400-applied-ai-ethics": {
+      "001": {
+        "code": "ATLS 5400",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5410-creative-technologies": {
+      "001": {
+        "code": "ATLS 5410",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Z. Jacobson-Weaver",
+            "ours": "Weaver, Z."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5519-brain-body-music-interfaces": {
+      "011": {
+        "code": "ATLS 5519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5519-design-a-science-exhibit": {
+      "001": {
+        "code": "ATLS 5519",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "M. Gross",
+            "ours": "Mahajan, A., Gross, M."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5519-design-bookkeeping": {
+      "008": {
+        "code": "ATLS 5519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5519-designing-for-climate": {
+      "004": {
+        "code": "ATLS 5519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [
+          "instructor: class search blank"
+        ],
+        "notes": []
+      }
+    },
+    "atls-5519-green-machines-studio": {
+      "804": {
+        "code": "ATLS 5519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [
+          "instructor: class search blank"
+        ],
+        "notes": []
+      }
+    },
+    "atls-5519-neurodesign": {
+      "006": {
+        "code": "ATLS 5519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5519-programmable-reality-seminar": {
+      "009": {
+        "code": "ATLS 5519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5519-user-centered-design-and-development-1": {
+      "039": {
+        "code": "ATLS 5519",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Y. Do",
+            "ours": "Do, E."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5519-user-experience-research": {
+      "020": {
+        "code": "ATLS 5519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5519-visual-identity-and-branding": {
+      "002": {
+        "code": "ATLS 5519",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5620-user-experience-design-1": {
+      "001": {
+        "code": "ATLS 5620",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "B. VanHorssen",
+            "ours": "Urich, B."
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-5900-masters-level-independent-study": {
+      "901": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "902": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "903": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "904": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "905": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "906": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "907": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "908": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "909": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "910": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "911": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "912": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "913": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "914": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "915": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "916": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "917": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "918": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "919": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "920": {
+        "code": "ATLS 5900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-6900-professional-internship": {
+      "001": {
+        "code": "ATLS 6900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-6910-social-impact-practicum": {
+      "001": {
+        "code": "ATLS 6910",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-6920-creative-industries-final-project": {
+      "001": {
+        "code": "ATLS 6920",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "002": {
+        "code": "ATLS 6920",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-7000-atlas-colloquium": {
+      "001": {
+        "code": "ATLS 7000",
+        "status": "mismatch",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [
+          {
+            "field": "instructor",
+            "classSearch": "Y. Do",
+            "ours": "Do., E"
+          }
+        ],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-7600-atlas-research-career-development": {
+      "002": {
+        "code": "ATLS 7600",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-7900-doctoral-level-independent-study": {
+      "901": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "902": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "903": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "904": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "905": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "906": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "907": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "908": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "909": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "910": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "911": {
+        "code": "ATLS 7900",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    },
+    "atls-8990-doctoral-dissertation": {
+      "901": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "902": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "903": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "904": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "905": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "906": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "907": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "908": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "909": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "910": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "911": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      },
+      "912": {
+        "code": "ATLS 8990",
+        "status": "confirmed",
+        "checkedAt": "2026-10-19",
+        "mismatchedFields": [],
+        "skipped": [],
+        "notes": []
+      }
+    }
+  }
+}
