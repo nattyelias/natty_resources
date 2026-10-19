@@ -27,26 +27,35 @@ export function typicalPattern(termsOffered: string[]) {
 }
 
 // ─── Availability ────────────────────────────────────────────────────────────
-// One place decides what a class says about when it runs, so cards, class pages and the home
-// page notice always agree. `short` fits a card; `full` is the class page line.
-export interface TermContext { currentTermName: string; nextTermName: string; nextTermPosted: boolean }
-export interface Availability { kind: 'now' | 'next' | 'past' | 'none'; short: string; full: string }
+// ─── Term status ─────────────────────────────────────────────────────────────
+// "upcoming" terms are open for planning: what a student can still take. "past" terms are history
+// (including a term that is still running but no longer open for planning). History still feeds the
+// season check in plans.ts through seasonsOffered, which looks at every term. A term missing from
+// the map is not treated as upcoming.
+export type TermStatus = 'past' | 'upcoming';
+export type TermStatusMap = Record<string, TermStatus>;
 
-export function availability(course: { termsOffered: string[]; notOfferedRecently: boolean }, ctx: TermContext): Availability {
-  const { currentTermName: now, nextTermName: next, nextTermPosted } = ctx;
-  if (course.notOfferedRecently || !course.termsOffered.length) {
-    return { kind: 'none', short: 'Not offered recently', full: 'Not offered recently' };
-  }
-  if (course.termsOffered.includes(now)) {
-    const line = `Running now (${now})`;
-    return { kind: 'now', short: line, full: line };
-  }
-  if (nextTermPosted && course.termsOffered.includes(next)) {
-    const line = `Offered ${next}`;
-    return { kind: 'next', short: line, full: line };
-  }
-  const last = `Last offered ${lastOffered(course.termsOffered)}`;
-  return { kind: 'past', short: last, full: nextTermPosted ? `${last}. Not listed for ${next}` : `${last}. ${next} isn't posted yet` };
+export const isUpcoming = (term: string, ctx: TermContext) => ctx.termStatus[term] === 'upcoming';
+
+/** The terms a student can still take this class in, oldest to newest. */
+export const upcomingTerms = (termsOffered: string[], ctx: TermContext) => termsOffered.filter((t) => isUpcoming(t, ctx));
+
+/** True when the class has no upcoming term. Past terms (and the stored notOfferedRecently flag) don't count. */
+export const notOfferedRecently = (course: { termsOffered: string[] }, ctx: TermContext) =>
+  upcomingTerms(course.termsOffered, ctx).length === 0;
+
+// ─── Availability ────────────────────────────────────────────────────────────
+// One place decides what a class says about when it runs, so cards, class pages and the home
+// page notice always agree. `short` fits a card; `full` is the class page line. Only upcoming
+// terms are mentioned: past terms are hidden here.
+export interface TermContext { currentTermName: string; nextTermName: string; nextTermPosted: boolean; termStatus: TermStatusMap }
+export interface Availability { kind: 'next' | 'none'; short: string; full: string }
+
+export function availability(course: { termsOffered: string[] }, ctx: TermContext): Availability {
+  const upcoming = upcomingTerms(course.termsOffered, ctx);
+  if (!upcoming.length) return { kind: 'none', short: 'Not offered recently', full: 'Not offered recently' };
+  const line = `Offered ${upcoming.join(', ')}`;
+  return { kind: 'next', short: line, full: line };
 }
 
 // Shown on the home page and next to the class search link while the next term has no class search code.
@@ -60,5 +69,5 @@ export function searchTermNote(a: Availability, ctx: TermContext): string {
   if (ctx.nextTermPosted) {
     return a.kind === 'next' ? '' : `Search shows ${ctx.nextTermName} only. If it finds 0 courses, this class isn't scheduled for ${ctx.nextTermName}.`;
   }
-  return a.kind === 'now' ? '' : `Search shows ${ctx.currentTermName} only. If it finds 0 courses, this class isn't scheduled this term, and ${ctx.nextTermName} isn't posted yet.`;
+  return `Search shows ${ctx.currentTermName} only. If it finds 0 courses, this class isn't scheduled this term, and ${ctx.nextTermName} isn't posted yet.`;
 }

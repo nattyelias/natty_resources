@@ -1,5 +1,7 @@
 // Prints a quick summary of courses.json. Run: node data/verify.mjs
 import { existsSync, readFileSync } from 'node:fs';
+import { defaultConfig, termContext } from '../src/core/config.ts';
+import { offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
 
 const file = new URL('./courses.json', import.meta.url);
 const courses = JSON.parse(readFileSync(file, 'utf8'));
@@ -48,4 +50,21 @@ if (existsSync(mergedFile)) {
   console.log(`  Consistency problems: ${problems.length}`);
   for (const p of problems) console.log(`    ${p}`);
   if (problems.length) process.exitCode = 1;
+}
+
+// ─── Term status (src/core/config.ts) ───
+{
+  const ctx = termContext(defaultConfig);
+  const upcoming = offeredInUpcomingTerms(courses, ctx);
+  const pastOnly = ranOnlyInPastTerms(courses, ctx);
+  const neverRan = courses.filter((c) => !c.termsOffered.length);
+  console.log('\nTerm status:');
+  for (const [t, st] of Object.entries(defaultConfig.termStatus)) console.log(`  ${t}: ${st}`);
+  console.log(`  Offered in upcoming terms: ${upcoming.length} of ${courses.length}`);
+  console.log(`  Ran only in past terms: ${pastOnly.length}`);
+  console.log(`  No terms at all: ${neverRan.length}`);
+  const unknown = [...new Set(courses.flatMap((c) => c.termsOffered))].filter((t) => !(t in defaultConfig.termStatus));
+  console.log(`  Terms in the data with no status: ${unknown.length}${unknown.length ? ' (' + unknown.join(', ') + ')' : ''}`);
+  if (upcoming.length + pastOnly.length + neverRan.length !== courses.length) { console.log('  Counts do not add up'); process.exitCode = 1; }
+  if (unknown.length) process.exitCode = 1;
 }
