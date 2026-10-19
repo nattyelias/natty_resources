@@ -2,7 +2,7 @@
 
 import { upcomingTerms } from './terms.ts';
 import type { TermContext } from './terms.ts';
-import type { CourseData, Level, ViewMode } from './types.ts';
+import type { CourseData, Level, Section, ViewMode } from './types.ts';
 
 type HasTerms = { termsOffered: string[] };
 
@@ -136,4 +136,24 @@ export function coursesForMode<C extends CourseData>(all: C[], mode: ViewMode, c
     if (under) out.push({ course, displayCode: under.code });
   }
   return out;
+}
+
+// ─── What a list row shows ───────────────────────────────────────────────────
+
+/** The class's first section in its first upcoming term that has sections, by section number. */
+export function firstUpcomingSection(course: CourseData, ctx: TermContext): Section | null {
+  for (const term of upcomingTerms(course.termsOffered, ctx)) {
+    const sections = [...(course.sectionsByTerm?.[term] ?? [])].sort((a, b) => a.section.localeCompare(b.section));
+    if (sections.length) return sections[0];
+  }
+  return null;
+}
+
+/** The instructor line for the class's first upcoming term, or '' when none is posted. Callers check showInstructors first. */
+export function upcomingInstructors(course: CourseData, ctx: TermContext): string {
+  for (const term of upcomingTerms(course.termsOffered, ctx)) {
+    const names = course.instructorsByTerm?.[term];
+    if (names) return names;
+  }
+  return '';
 }
