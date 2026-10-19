@@ -1,0 +1,157 @@
+// Compares data/sources/atlas-spring2027.json (the ATLAS sheet) with data/sources/2271.json
+// (the CU class search pull) and writes docs/spring2027-comparison.md.
+// Run: node data/scripts/compare-atlas-pull.mjs
+// Both sources are matched on course code + section. A sheet row with a graduate twin
+// (e.g. ATLS 4040-010 / ATLS 5040-010) is treated as two sections with the same posted data.
+import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+
+const here = (p) => fileURLToPath(new URL(p, import.meta.url));
+const sheet = JSON.parse(readFileSync(here('../sources/atlas-spring2027.json'), 'utf8'));
+const pull = JSON.parse(readFileSync(here('../sources/2271.json'), 'utf8'));
+
+// ─── Index both sides by "ATLS 4040-010" ─────────────────────────────────────
+const sheetRecs = new Map();
+for (const s of sheet.sections) {
+  sheetRecs.set(`${s.courseCode}-${s.section}`, { ...s, via: 'listed' });
+  if (s.crossListCode) sheetRecs.set(`${s.crossListCode}-${s.crossListSection}`, { ...s, courseCode: s.crossListCode, section: s.crossListSection, via: `twin of ${s.courseCode}-${s.section}` });
+}
+const pullRecs = new Map(pull.sections.map((p) => [`${p.code}-${p.section}`, p]));
+const codeOf = (key) => key.slice(0, 9);
+
+// ─── Instructor comparison (last names; the two sources format names differently) ──
+const norm = (s) => s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z-]/g, '');
+function sheetNames(text) {
+  // "Mahajan, A., Gross, M." -> mahajan, gross.  "Do., E, Gross., M." -> do, gross.
+  const out = [];
+  const re = /([A-Za-z][A-Za-z'-]*)\.?\s*,\s*[A-Za-z]\.?/g;
+  let m;
+  while ((m = re.exec(text))) out.push(norm(m[1]));
+  return out;
+}
+function pullNames(text) {
+  // "D. Rankin", "Osnes/Boykoff", "Z. Jacobson-Weaver"
+  return text.split('/').map((n) => norm(n.replace(/^[A-Z]\.\s*/, ''))).filter(Boolean);
+}
+const sameName = (a, b) => a === b || a.split('-').includes(b) || b.split('-').includes(a);
+function compareInstructors(sheetText, pullText) {
+  if (!sheetText && !pullText) return 'same';
+  if (!sheetText) return 'sheet-blank';
+  if (!pullText) return 'pull-blank';
+  const a = sheetNames(sheetText), b = pullNames(pullText);
+  const aInB = a.every((x) => b.some((y) => sameName(x, y)));
+  const bInA = b.every((y) => a.some((x) => sameName(x, y)));
+  if (aInB && bInA) return 'same';
+  if (bInA) return 'sheet-lists-more';
+  if (aInB) return 'pull-lists-more';
+  return 'different';
+}
+
+// ─── Compare matched sections ────────────────────────────────────────────────
+const issues = new Map(); // class code -> [{ key, kind, text }]
+const add = (key, kind, text) => {
+  const c = codeOf(key);
+  if (!issues.has(c)) issues.set(c, []);
+  issues.get(c).push({ key, kind, text, title: sheetRecs.get(key)?.title ?? '' });
+};
+let matched = 0, fullyAgree = 0;
+const rule = { checked: 0, wrong: [] };
+for (const [key, s] of sheetRecs) {
+  const p = pullRecs.get(key);
+  if (!p) continue;
+  matched++;
+  const before = (issues.get(codeOf(key)) ?? []).length;
+  if (s.daysCode !== p.days) add(key, 'days', `days: sheet ${s.days || '(none)'} (${s.daysCode || '-'}), pull ${p.days || '(none)'}`);
+  if (s.start24 !== p.start || s.end24 !== p.end) {
+    add(key, 'time', `time: sheet "${s.time}" (${s.start24 || '-'}-${s.end24 || '-'}), pull ${p.meets} (${p.start || '-'}-${p.end || '-'})`);
+    if (p.start && s.start24) rule.wrong.push(key);
+  }
+  if (p.start && s.start24) rule.checked++;
+  const ic = compareInstructors(s.instructor, p.instructor);
+  if (ic !== 'same') add(key, `instructor:${ic}`, `instructor (${ic}): sheet "${s.instructor || '(blank)'}", pull "${p.instructor || '(blank)'}"`);
+  if ((issues.get(codeOf(key)) ?? []).length === before) fullyAgree++;
+}
+
+// ─── Classes only on one side ────────────────────────────────────────────────
+const group = (keys, recs) => {
+  const m = new Map();
+  for (const k of keys) {
+    const c = codeOf(k);
+    if (!m.has(c)) m.set(c, []);
+    m.get(c).push(recs.get(k));
+  }
+  return m;
+};
+const pullClasses = new Set([...pullRecs.keys()].map(codeOf));
+const sheetClasses = new Set([...sheetRecs.keys()].map(codeOf));
+const sheetOnlyClasses = [...sheetClasses].filter((c) => !pullClasses.has(c));
+const pullOnlyClasses = [...pullClasses].filter((c) => !sheetClasses.has(c));
+const sheetOnlySections = group([...sheetRecs.keys()].filter((k) => !pullRecs.has(k) && pullClasses.has(codeOf(k))), sheetRecs);
+const pullOnlySections = group([...pullRecs.keys()].filter((k) => !sheetRecs.has(k) && sheetClasses.has(codeOf(k))), pullRecs);
+
+// ─── Write the report ────────────────────────────────────────────────────────
+const L = [];
+const titleOfPull = (c) => pull.sections.find((p) => p.code === c)?.title ?? '';
+const titleOfSheet = (c) => [...sheetRecs.values()].find((s) => s.courseCode === c)?.title ?? '';
+const secs = (arr) => arr.map((r) => r.section).sort().join(', ');
+
+L.push('# Spring 2027: ATLAS sheet vs CU class search pull', '');
+L.push('Generated by `data/scripts/compare-atlas-pull.mjs`. Sources: `data/sources/atlas-spring2027.json` (parsed from the published ATLAS sheet) and `data/sources/2271.json` (class search pull, term code 2271). Matched on course code + section. A sheet row with a graduate twin counts as two sections.', '');
+L.push('## Totals', '');
+L.push(`- Sheet: ${sheet.count} course rows, ${sheetRecs.size} sections once graduate twins are counted, ${sheetClasses.size} class codes.`);
+L.push(`- Pull: ${pullRecs.size} sections, ${pullClasses.size} class codes.`);
+const count = (k) => [...issues.values()].flat().filter((i) => i.kind.startsWith(k)).length;
+L.push(`- Sections in both: ${matched}. ${fullyAgree} agree on days, time and instructor; the other ${matched - fullyAgree} differ in at least one (most are a blank instructor on the sheet).`);
+L.push(`- Day disagreements: ${count('days')}. Time disagreements: ${count('time')}. Instructor: ${count('instructor:sheet-blank')} sheet-blank, ${count('instructor:pull-blank')} pull-blank, ${count('instructor:sheet-lists-more')} sheet-lists-more, ${count('instructor:pull-lists-more')} pull-lists-more, ${count('instructor:different')} different.`);
+L.push(`- Sheet sections missing from the pull: ${[...sheetRecs.keys()].filter((k) => !pullRecs.has(k)).length}. Pull sections missing from the sheet: ${[...pullRecs.keys()].filter((k) => !sheetRecs.has(k)).length} (most are independent study, internships and similar with no posted time).`, '');
+L.push('Instructor key: `sheet-blank` = the sheet leaves it empty (usually a recitation) but the pull names someone; `pull-blank` = the reverse; `sheet-lists-more` / `pull-lists-more` = one side names an extra person; `different` = no overlap in last names. Names are compared by last name only because the sheet writes "Rankin, D." and the pull writes "D. Rankin".', '');
+
+L.push('## In the sheet but not in the pull', '');
+L.push('### Whole classes', '');
+if (!sheetOnlyClasses.length) L.push('None. Every class code on the sheet has at least one section in the pull.', '');
+for (const c of sheetOnlyClasses.sort()) L.push(`- **${c}** ${titleOfSheet(c)}: ${[...sheetRecs.values()].filter((s) => s.courseCode === c).length} section(s)`);
+if (sheetOnlyClasses.length) L.push('');
+L.push('### Sections of classes that are in the pull', '');
+if (!sheetOnlySections.size) L.push('None.', '');
+for (const [c, arr] of [...sheetOnlySections].sort()) L.push(`- **${c}** ${arr[0].title}: sheet has section(s) ${secs(arr)} that the pull does not (${arr.map((r) => r.time).join('; ')}).`);
+if (sheetOnlySections.size) L.push('');
+
+L.push('## In the pull but not in the sheet', '');
+L.push('### Whole classes', '');
+const noTime = (arr) => arr.filter((p) => !p.start).length;
+const pullByClass = group([...pullRecs.keys()].filter((k) => pullOnlyClasses.includes(codeOf(k))), pullRecs);
+const rowsOut = [...pullByClass].sort().map(([c, arr]) => {
+  const inCourses = arr.some((p) => p.courseId) ? ` (in courses.json as ${arr.find((p) => p.courseId).courseId})` : '';
+  return `- **${c}** ${titleOfPull(c)}: ${arr.length} section(s)${noTime(arr) === arr.length ? ', no meeting time posted' : noTime(arr) ? `, ${noTime(arr)} with no time` : ''}${inCourses}`;
+});
+L.push(...rowsOut, '');
+L.push('### Sections of classes that are on the sheet', '');
+if (!pullOnlySections.size) L.push('None.', '');
+for (const [c, arr] of [...pullOnlySections].sort()) L.push(`- **${c}** ${arr[0].title}: pull has section(s) ${secs(arr)} that the sheet does not (${arr.map((r) => r.meets).join('; ')}).`);
+L.push('');
+
+L.push('## Where days, times or instructor disagree', '');
+const byKind = (arr, k) => arr.filter((i) => i.kind.startsWith(k));
+const real = [...issues].map(([c, arr]) => [c, arr.filter((i) => !['instructor:sheet-blank'].includes(i.kind))]).filter(([, arr]) => arr.length);
+const blankOnly = [...issues].map(([c, arr]) => [c, arr.filter((i) => i.kind === 'instructor:sheet-blank')]).filter(([, arr]) => arr.length);
+L.push('### Real disagreements (per class)', '');
+if (!real.length) L.push('None.', '');
+for (const [c, arr] of real.sort()) {
+  const title = titleOfSheet(c) || titleOfPull(c);
+  L.push(`- **${c}** ${title}: ${arr.length} section(s) with differences`);
+  for (const i of arr) L.push(`  - ${i.key.slice(10)} (${i.title}): ${i.text}`);
+}
+L.push('');
+L.push('### Sheet leaves the instructor blank, pull names one (per class)', '');
+if (!blankOnly.length) L.push('None.', '');
+for (const [c, arr] of blankOnly.sort()) {
+  const names = [...new Set(arr.map((i) => /pull "([^"]*)"/.exec(i.text)?.[1]))].join(', ');
+  L.push(`- **${c}** ${titleOfSheet(c)}: sections ${arr.map((i) => i.key.slice(10)).join(', ')} blank on the sheet; pull lists ${names}.`);
+}
+L.push('');
+
+L.push('## Check on the AM/PM rule', '');
+L.push(`The sheet has no AM/PM, so \`start24\`/\`end24\` come from a rule (hour 8-11 AM, 12 and 1-7 PM). For the ${rule.checked} matched sections where both sides have a time, ${rule.wrong.length ? `the rule disagreed with the pull on ${rule.wrong.length}: ${rule.wrong.join(', ')}` : 'the rule gave the same start and end as the pull for every one'}. The ${sheet.flaggedTimes.length} sections the parser flagged as uncertain are listed in \`flaggedTimes\` in the JSON; a flag only means the rule was relied on, not that it is wrong.`, '');
+
+writeFileSync(here('../../docs/spring2027-comparison.md'), L.join('\n') + '\n');
+console.log(`matched ${matched}, agree ${fullyAgree}, sheetOnlyClasses ${sheetOnlyClasses.length}, pullOnlyClasses ${pullOnlyClasses.length}, real-issue classes ${real.length}, blank-instr classes ${blankOnly.length}, rule wrong ${rule.wrong.length}/${rule.checked}`);
