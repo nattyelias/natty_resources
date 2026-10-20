@@ -2,6 +2,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { defaultConfig, termContext } from '../src/core/config.ts';
 import { allCourses, coursesForMode, filterCourses, gradCourses, offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
+import { findTwins } from '../src/core/twins.ts';
 import { verificationFor, verificationLabel } from '../src/core/verification.ts';
 
 const file = new URL('./courses.json', import.meta.url);
@@ -102,15 +103,33 @@ if (existsSync(extraFile)) {
   // View modes (coursesForMode in src/core/courses.ts)
   const gradMode = coursesForMode(all, 'grad', ctx);
   const underMode = coursesForMode(all, 'undergrad', ctx);
-  const gradIds = new Set(gradMode.map((m) => m.course.id));
+  // a twin pair is one grad card made of two records, so the grad side counts every record behind a card
+  const gradIds = new Set(gradMode.flatMap((m) => m.memberIds ?? [m.course.id]));
+  const underIds = new Set(underMode.map((m) => m.course.id));
   const bothIds = underMode.filter((m) => gradIds.has(m.course.id));
+  const gradOnlyCount = gradMode.filter((m) => !(m.memberIds ?? [m.course.id]).some((id) => underIds.has(id))).length;
   const distinct = (list) => new Set(list.map((m) => m.displayCode)).size;
   console.log('\nView modes:');
   console.log(`  grad: ${gradMode.length} classes (${distinct(gradMode)} distinct display codes)`);
   console.log(`  undergrad: ${underMode.length} classes (${distinct(underMode)} distinct display codes)`);
   console.log(`  In both modes: ${bothIds.length}`);
-  console.log(`  Grad only: ${gradMode.length - bothIds.length}, undergrad only: ${underMode.length - bothIds.length}`);
-  if (gradMode.length !== grad.length || gradMode.some((m, i) => m.course.id !== grad[i].course.id)) { console.log('  Grad mode is not exactly gradCourses()'); process.exitCode = 1; }
+  console.log(`  Grad only: ${gradOnlyCount}, undergrad only: ${underMode.length - bothIds.length}`);
+  // Twin classes (src/core/twins.ts): a 4000-level and a 5000-level record that are the same class. Both records stay in the data.
+  const { pairs, nearMisses } = findTwins(all, ctx);
+  const kinds = (k) => pairs.filter((p) => p.kind === k).length;
+  console.log('\nTwin classes:');
+  console.log(`  Pairs: ${pairs.length} (existing+extra ${kinds('existing+extra')}, extra+extra ${kinds('extra+extra')}, existing+existing ${kinds('existing+existing')})`);
+  console.log(`  Near-misses (same title, different times): ${nearMisses.length}`);
+  console.log(`  Grad list before de-duplication: ${grad.length}, after: ${gradMode.length} (${grad.length - gradMode.length} fewer, one per pair)`);
+  if (process.argv.includes('--twins')) {
+    for (const p of pairs) console.log(`    ${p.kind.padEnd(15)} ${p.lower.code} + ${p.upper.code}  ${p.lower.title} | ${p.upper.title}`);
+    for (const n of nearMisses) console.log(`    NEAR-MISS ${n.lower.code} (${n.lower.id}) vs ${n.upper.code} (${n.upper.id}): ${JSON.stringify(n.lowerSlots)} vs ${JSON.stringify(n.upperSlots)}`);
+  }
+  // Grad mode is gradCourses() with each pair as one card: every record is listed once, and nothing is dropped.
+  const covered = gradMode.flatMap((m) => m.memberIds ?? [m.course.id]);
+  if (new Set(covered).size !== covered.length || covered.length !== grad.length || !grad.every((g) => covered.includes(g.course.id))) { console.log('  Grad mode does not cover gradCourses() exactly once'); process.exitCode = 1; }
+  if (gradMode.length !== grad.length - pairs.length) { console.log('  Grad count is not (gradCourses minus pairs)'); process.exitCode = 1; }
+  if (underMode.some((m) => pairs.some((p) => p.upper.id === m.course.id))) { console.log('  Undergrad lists a 5000-level twin record'); process.exitCode = 1; }
   const wrongGrad = gradMode.filter((m) => !/\b[5-9]\d{3}$/.test(m.displayCode) && !m.course.level?.startsWith('Grad'));
   const wrongUnder = underMode.filter((m) => !/\b[0-4]\d{3}$/.test(m.displayCode));
   console.log(`  Display codes out of range: grad ${wrongGrad.length}, undergrad ${wrongUnder.length}`);

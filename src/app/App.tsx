@@ -67,14 +67,15 @@ const SEASON_WORD: Record<SeasonName, string> = { fall: 'Fall', spring: 'Spring'
 const SEASON_COLOR: Record<SeasonName, string> = { fall: '#C27800', spring: '#E0558F' };
 
 // The two modes. Each lists the classes for it, with the code to display (a 5000-level code in Grad, an under-5000 code in Undergrad).
-const MODE_ENTRIES: Record<ViewMode, { course: Course; displayCode: string }[]> = {
+const MODE_ENTRIES: Record<ViewMode, { course: Course; displayCode: string; memberIds?: string[] }[]> = {
   grad: coursesForMode(COURSES, 'grad', TERM_CONTEXT),
   undergrad: coursesForMode(COURSES, 'undergrad', TERM_CONTEXT),
 };
-const DISPLAY_CODES: Record<ViewMode, Map<string, string>> = {
-  grad: new Map(MODE_ENTRIES.grad.map(e => [e.course.id, e.displayCode])),
-  undergrad: new Map(MODE_ENTRIES.undergrad.map(e => [e.course.id, e.displayCode])),
-};
+// In Grad mode a twin pair (ATLS 4040 and ATLS 5040) is ONE merged card (src/core/twins.ts). Both of its records get the card's code,
+// and a class page opened for either record shows the merged card. Both records stay in the data.
+const codesFor = (entries: typeof MODE_ENTRIES[ViewMode]) => new Map(entries.flatMap(e => (e.memberIds ?? [e.course.id]).map(id => [id, e.displayCode] as const)));
+const DISPLAY_CODES: Record<ViewMode, Map<string, string>> = { grad: codesFor(MODE_ENTRIES.grad), undergrad: codesFor(MODE_ENTRIES.undergrad) };
+const GRAD_CARD_OF = new Map<string, Course>(MODE_ENTRIES.grad.flatMap(e => (e.memberIds ?? [e.course.id]).map(id => [id, e.course] as const)));
 const displayCodeOf = (c: Course, mode: ViewMode) => DISPLAY_CODES[mode].get(c.id) ?? c.code;
 const ModeContext = createContext<ViewMode>(DEFAULT_MODE);
 const useMode = () => useContext(ModeContext);
@@ -4118,6 +4119,8 @@ export default function App() {
   }
 
   const px = isMobile ? 16 : SPACING.pagePx;
+  // the class page's record: in Grad mode a twin pair shows as its merged card
+  const pageCourse = route.name === 'class' ? (mode === 'grad' ? GRAD_CARD_OF.get(route.course.id) ?? route.course : route.course) : null;
 
   const nav = null;
   const navView: BarItem | null = route.name === 'home' ? 'browse' : route.name === 'calendar' ? 'calendar' : route.name === 'saved' ? 'saved' : null;
@@ -4156,11 +4159,11 @@ export default function App() {
         <div>
           <Fragment>
             {route.name === 'class' ? (
-              <DetailPage key="detail" course={route.course}
-                isSaved={savedIds.has(route.course.id)}
-                onBookmark={el=>pressBookmark(route.course, el)}
+              <DetailPage key="detail" course={pageCourse ?? route.course}
+                isSaved={savedIds.has((pageCourse ?? route.course).id)}
+                onBookmark={el=>pressBookmark(pageCourse ?? route.course, el)}
                 onBack={goBack}
-                onAddToPlan={e => openPicker(route.course.id, e?.currentTarget)}
+                onAddToPlan={e => openPicker((pageCourse ?? route.course).id, e?.currentTarget)}
                 onStep={stepClass}
                 nav={nav}
               />

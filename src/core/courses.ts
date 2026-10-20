@@ -2,6 +2,8 @@
 
 import { upcomingTerms } from './terms.ts';
 import type { TermContext } from './terms.ts';
+import { findTwins, mergeTwin } from './twins.ts';
+import type { TwinPair } from './twins.ts';
 import type { CourseData, Level, Section, ViewMode } from './types.ts';
 
 type HasTerms = { termsOffered: string[] };
@@ -109,27 +111,44 @@ export interface ModeCourse<C extends CourseData = CourseData> {
   displayCode: string;
   /** Why it is a graduate option (grad mode only). */
   reason?: GradReason;
+  /** For a twin pair shown as one card (grad mode): the ids of both records, 4000-level first. `course` is then the merged card. */
+  memberIds?: string[];
 }
 
 /**
- * grad:      exactly gradCourses(); displayCode is the 5000-level code when the class has one (its own, else a
- *            cross-list code on its upcoming-term sections), otherwise its own code.
- * undergrad: every class offered in an upcoming term whose own code is under 5000, plus any class with an
- *            under-5000 cross-list code on its upcoming-term sections; displayCode is the under-5000 code
- *            (its own, else the cross-list one).
+ * grad:      gradCourses(), with each twin pair (see twins.ts) shown as ONE card: the 5000-level record merged with its original
+ *            (mergeTwin), displayed with the 5000-level code. Every other class is as gradCourses() lists it; its displayCode is the
+ *            5000-level code when the class has one (its own, else a cross-list code on its upcoming-term sections), otherwise its own code.
+ * undergrad: every class offered in an upcoming term whose own code is under 5000, plus any class with an under-5000 cross-list
+ *            code on its upcoming-term sections; displayCode is the under-5000 code (its own, else the cross-list one). The
+ *            5000-level record of a twin pair is left out, so the pair shows once, as its 4000-level record.
  */
 export function coursesForMode<C extends CourseData>(all: C[], mode: ViewMode, ctx: TermContext): ModeCourse<C>[] {
+  const { pairs } = findTwins(all, ctx);
   if (mode === 'grad') {
-    return gradCourses(all, ctx).map(({ course, reason }) => {
+    const pairOf = new Map<string, TwinPair<C>>();
+    for (const p of pairs) { pairOf.set(p.lower.id, p); pairOf.set(p.upper.id, p); }
+    const shown = new Set<string>();
+    const result: ModeCourse<C>[] = [];
+    for (const { course, reason } of gradCourses(all, ctx)) {
+      const pair = pairOf.get(course.id);
+      if (pair) {
+        if (shown.has(pair.upper.id)) continue; // the pair's other record already made the card
+        shown.add(pair.upper.id);
+        result.push({ course: mergeTwin(pair), displayCode: pair.upper.code, reason, memberIds: [pair.lower.id, pair.upper.id] });
+        continue;
+      }
       const codes = upcomingCodes(course, ctx);
       const own = codes.find((c) => c.code === course.code);
       const displayCode = own && own.number >= 5000 ? own.code : (codes.find((c) => c.number >= 5000)?.code ?? course.code);
-      return { course, displayCode, reason };
-    });
+      result.push({ course, displayCode, reason });
+    }
+    return result;
   }
+  const upperOfPair = new Set(pairs.map((p) => p.upper.id));
   const out: ModeCourse<C>[] = [];
   for (const course of all) {
-    if (!upcomingTerms(course.termsOffered, ctx).length) continue;
+    if (!upcomingTerms(course.termsOffered, ctx).length || upperOfPair.has(course.id)) continue;
     const codes = upcomingCodes(course, ctx);
     const own = codes.find((c) => c.code === course.code);
     const under = own && own.number < 5000 ? own : codes.find((c) => c.number < 5000);
