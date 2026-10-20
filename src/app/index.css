@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: #FFFFFF;
+  --color-foreground: #000000;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #000000;
+  --color-muted: #EDEDED;
+  --color-border: #E0E0E0;
+  --color-muted-foreground: #666666;
+}
+
+:root {
+  --font-sans: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', 'Arial', 'Inter', sans-serif;
+  --accent: #2563EB; /* the app's accent blue (5.2:1 on white): the tile hover and focus ring */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  /* Stops a stray pull-down (easy to trigger on mobile while the keyboard is opening and the
+     page is pinned at the top) from firing the browser's native pull-to-refresh, which reloads
+     the page and drops all in-memory state, including the current search and route. */
+  overscroll-behavior-y: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #FFFFFF;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbars at rest */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toast-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(8px); }
+}
+
+@keyframes bookmark-bounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.3); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.bookmark-bounce {
+  animation: bookmark-bounce 0.35s ease-out forwards;
+}
+
+@keyframes dropdown-in {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dropdown-enter {
+  animation: dropdown-in 0.18s ease-out forwards;
+}
+
+@keyframes glow-drift-1 {
+  0%   { transform: translate(0px, 0px) scale(1);    opacity: 0.18; }
+  40%  { transform: translate(18px, -12px) scale(1.12); opacity: 0.10; }
+  70%  { transform: translate(-8px, 16px) scale(0.95);  opacity: 0.20; }
+  100% { transform: translate(0px, 0px) scale(1);    opacity: 0.18; }
+}
+
+@keyframes glow-drift-2 {
+  0%   { transform: translate(0px, 0px) scale(1);    opacity: 0.12; }
+  35%  { transform: translate(-20px, 10px) scale(1.08); opacity: 0.20; }
+  65%  { transform: translate(14px, -18px) scale(0.92);  opacity: 0.09; }
+  100% { transform: translate(0px, 0px) scale(1);    opacity: 0.12; }
+}
+
+@keyframes glow-drift-3 {
+  0%   { transform: translate(0px, 0px) scale(1);    opacity: 0.10; }
+  50%  { transform: translate(12px, 20px) scale(1.15); opacity: 0.18; }
+  100% { transform: translate(0px, 0px) scale(1);    opacity: 0.10; }
+}
+
+input::placeholder {
+  color: #444;
+  opacity: 1;
+}
+
+:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Text for screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Printing a plan: hide the whole site and print only the open Share or print dialog's plan */
+@media print {
+  #root,
+  .no-print {
+    display: none !important;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  .dialog-backdrop {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .dialog-panel {
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .print-scroll {
+    max-height: none !important;
+    overflow: visible !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .print-title {
+    font-size: 26px !important;
+  }
+  li {
+    break-inside: avoid;
+  }
+}
+
+/* A whole card is one link: the title link stretches over the card, controls sit above it */
+.card-link {
+  color: inherit;
+  text-decoration: none;
+}
+.card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius, 0);
+}
+.card-link:focus-visible {
+  outline: none;
+}
+.card-link:focus-visible::after {
+  /* a two-tone ring: the card's own hue at its edge, near-black just outside, so it shows on any hue */
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--card-hue, var(--ink));
+}
+.card-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Skip link: hidden until it gets keyboard focus */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 3000;
+  transform: translateY(-200%);
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 2px solid #fff;
+  border-radius: 100px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid #000;
+  outline-offset: 2px;
+}
+
+/* Focus ring that shows on dark backgrounds too */
+.mobile-nav button:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: -3px;
+}
+main:focus {
+  outline: none;
+}
+
+/* Frosted glass: translucent dark tint (kept dark enough for AA contrast with white text over white content) plus a strong blur */
+.glass {
+  background: rgba(20, 20, 20, 0.76);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.glass.is-on {
+  background: rgba(78, 78, 78, 0.8);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass { background: #141414; -webkit-backdrop-filter: none; backdrop-filter: none; border-color: transparent; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22); }
+  .glass.is-on { background: #3a3a3a; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: #141414; border-color: transparent; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22); }
+  .glass.is-on { background: #3a3a3a; }
+}
+
+/* Reduce motion: no animations or smooth scrolling */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Calendar: buttons scale up about 3% while pressed (soft, quick); none of it when motion is reduced */
+.cal-press { transition: transform 120ms ease-out; }
+.cal-press:active { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) {
+  .cal-press:active { transform: none; }
+}
+
+/* ─── Shared look: one definition for each role ───────────────────────────────
+   Filled button (primary action), outlined chip (filter/tag toggles), search field.
+   The same values are read in App.tsx through the UI tokens, so a color or radius changes in one place. */
+:root {
+  --ink: #1A1A1A;          /* near-black: filled buttons and strong text */
+  --line: #767676;         /* outlines that must reach 3:1 against white */
+  --line-soft: #D0D0D0;    /* quiet borders */
+  --field-fill: #F2F2F2;   /* search field fill */
+  --radius-button: 100px;  /* buttons are pills */
+  --radius-chip: 8px;      /* chips are rounded rectangles, so they never read as buttons */
+  --radius-field: 12px;    /* the search field */
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  background: var(--field-fill);
+  border: 1px solid var(--line-soft);
+  border-bottom: 2px solid var(--line);
+  border-radius: var(--radius-field);
+  transition: border-color 120ms ease-out, box-shadow 120ms ease-out, background-color 120ms ease-out;
+}
+.search-field:hover { border-color: #A8A8A8; border-bottom-color: var(--line); }
+.search-field:focus-within {
+  background: #FFF;
+  border-color: var(--ink);
+  border-bottom-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.22);
+}
+.search-field input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search-field input:focus-visible { outline: none; }
+.search-field input::placeholder { color: #595959; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .search-field { transition: none; }
+}
+
+/* Tags: a stronger ring in the tag's own hue on hover, and a two-tone ring on keyboard focus */
+.tag-pill { transition: box-shadow 120ms ease-out; }
+.tag-pill:hover { box-shadow: 0 0 0 2px var(--tag-line, var(--ink)); }
+.tag-pill:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 2px var(--tag-line, var(--ink)); }
+@media (prefers-reduced-motion: reduce) { .tag-pill { transition: none; } }
+
+/* Area filter buttons: a clear keyboard ring on the whole button (circle and label) */
+.area-btn { border-radius: 14px; }
+.area-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 1px; }
+
+/* Class tiles: white, glossy, 24px radius. Hover and keyboard focus scale up with a blue ring and glow; press squeezes. */
+.tile {
+  position: relative;
+  height: 100%;
+  cursor: pointer;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F6F6F9 100%);
+  border: 1px solid #E0E0E0;
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 6px 16px rgba(0, 0, 0, 0.06), inset 0 1px 0 #FFFFFF, inset 0 3px 8px rgba(255, 255, 255, 0.9);
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+.tile:has(.card-link:focus-visible) {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 3px var(--accent), 0 0 26px 4px rgba(37, 99, 235, 0.30), 0 10px 28px rgba(0, 0, 0, 0.12), inset 0 1px 0 #FFFFFF;
+}
+/* Hover only where there is a real hover: on a phone a tap leaves :hover stuck on, which would keep the tile enlarged after it closes. */
+@media (hover: hover) {
+  .tile:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 3px var(--accent), 0 0 26px 4px rgba(37, 99, 235, 0.30), 0 10px 28px rgba(0, 0, 0, 0.12), inset 0 1px 0 #FFFFFF;
+  }
+}
+.tile:active:not(:has(.tile-ctl :active)) { transform: scale(0.98); }
+/* no underline on the title: the whole tile reacts instead */
+.tile .card-link:hover { text-decoration: none; }
+/* the tile itself shows the focus ring, so the link's own overlay ring is switched off here */
+.tile .card-link:focus-visible::after { outline: none; box-shadow: none; }
+.tile-title .card-link {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 340px) { .tile-title .card-link { -webkit-line-clamp: 3; } }
+@media (prefers-reduced-motion: reduce) {
+  .tile { transition: none; }
+  .tile:hover, .tile:has(.card-link:focus-visible), .tile:active:not(:has(.tile-ctl :active)) { transform: none; }
+}
+
+/* External links: a clear hover and focus state that stays squarer than the pill buttons */
+.external-action:hover { background: #F2F2F2; }
+.external-action:active { background: #E8E8E8; }
+
+/* ─── Page transitions (View Transitions API; see src/lib/transition.ts) ─────────────────────────────────────────────
+   Only transform and opacity animate on our own pseudo-elements. The browser itself moves and sizes the hero's group.
+   The header and the bottom bar have their own names and no animation, so they stay still. */
+::view-transition-group(site-header),
+::view-transition-group(site-nav) { animation: none; }
+::view-transition-old(site-header),
+::view-transition-old(site-nav) { display: none; }
+::view-transition-new(site-header),
+::view-transition-new(site-nav) { animation: none; }
+
+/* The cover grows into the hero (or back into its tile) without stretching: both snapshots are cover-fitted into the box. */
+::view-transition-group(class-hero) { animation-duration: 420ms; animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); will-change: transform, opacity; }
+html[data-vt="close"]::view-transition-group(class-hero) { animation-duration: 320ms; }
+::view-transition-image-pair(class-hero) { overflow: hidden; animation: vt-radius-open 420ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+html[data-vt="close"]::view-transition-image-pair(class-hero) { animation: vt-radius-close 320ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+::view-transition-old(class-hero),
+::view-transition-new(class-hero) { width: 100%; height: 100%; object-fit: cover; animation-duration: 420ms; animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+html[data-vt="close"]::view-transition-old(class-hero),
+html[data-vt="close"]::view-transition-new(class-hero) { animation-duration: 320ms; }
+@keyframes vt-radius-open  { from { border-radius: 23px 23px 0 0; } to { border-radius: 16px; } }
+@keyframes vt-radius-close { from { border-radius: 16px; } to { border-radius: 23px 23px 0 0; } }
+
+/* open: the grid dims a little, scales to 0.97 and fades out while the class page fades in */
+html[data-vt="open"]::view-transition { background: rgba(0, 0, 0, 0.05); }
+html[data-vt="open"]::view-transition-old(root) { animation: vt-grid-out 420ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+html[data-vt="open"]::view-transition-new(root) { animation: vt-fade-in 300ms ease-out both; }
+/* close: the page fades away while the grid settles back from 0.97 */
+html[data-vt="close"]::view-transition-old(root) { animation: vt-fade-out 220ms ease-in both; }
+html[data-vt="close"]::view-transition-new(root) { animation: vt-grid-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+/* close with the tile off screen: a quick fade and slide down */
+html[data-vt="close-away"]::view-transition-old(root),
+html[data-vt="close-away"]::view-transition-old(class-hero) { animation: vt-away 200ms ease-in both; }
+html[data-vt="close-away"]::view-transition-new(root) { animation: vt-fade-in 200ms ease-out both; }
+/* previous / next class: a 200ms horizontal slide, no zoom */
+html[data-vt="slide-next"]::view-transition-old(root) { animation: vt-slide-out-left 200ms ease-out both; }
+html[data-vt="slide-next"]::view-transition-new(root) { animation: vt-slide-in-right 200ms ease-out both; }
+html[data-vt="slide-prev"]::view-transition-old(root) { animation: vt-slide-out-right 200ms ease-out both; }
+html[data-vt="slide-prev"]::view-transition-new(root) { animation: vt-slide-in-left 200ms ease-out both; }
+/* any other page change: a short cross-fade */
+html[data-vt="fade"]::view-transition-old(root) { animation: vt-fade-out 200ms ease-out both; }
+html[data-vt="fade"]::view-transition-new(root) { animation: vt-fade-in 200ms ease-out both; }
+/* reduced motion: a 100ms cross-fade only, no zoom, no scaling */
+html[data-vt="rm"]::view-transition-old(root) { animation: vt-fade-out 100ms linear both; }
+html[data-vt="rm"]::view-transition-new(root) { animation: vt-fade-in 100ms linear both; }
+@keyframes vt-fade-in { from { opacity: 0; } }
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-grid-out { to { opacity: 0; transform: scale(0.97); } }
+@keyframes vt-grid-in { from { opacity: 0; transform: scale(0.97); } }
+@keyframes vt-away { to { opacity: 0; transform: translateY(24px); } }
+@keyframes vt-slide-out-left { to { opacity: 0; transform: translateX(-40px); } }
+@keyframes vt-slide-in-right { from { opacity: 0; transform: translateX(40px); } }
+@keyframes vt-slide-out-right { to { opacity: 0; transform: translateX(40px); } }
+@keyframes vt-slide-in-left { from { opacity: 0; transform: translateX(-40px); } }
+
+/* Motion modes (see src/lib/motion.ts): "simple" keeps the ring and glow but drops every scale; "off" drops the transitions too. */
+html[data-motion="simple"] .tile:hover,
+html[data-motion="simple"] .tile:has(.card-link:focus-visible),
+html[data-motion="simple"] .tile:active:not(:has(.tile-ctl :active)),
+html[data-motion="off"] .tile:hover,
+html[data-motion="off"] .tile:has(.card-link:focus-visible),
+html[data-motion="off"] .tile:active:not(:has(.tile-ctl :active)) { transform: none; }
+html[data-motion="off"] .tile,
+html[data-motion="off"] .cal-press,
+html[data-motion="off"] .tag-pill,
+html[data-motion="off"] .area-btn { transition: none; }
+
+/* Plan folders on the Saved page */
+.plan-folder { position: relative; box-sizing: border-box; height: 100%; display: flex; flex-direction: column; padding: 36px 0 0; color: #000; font-family: var(--font-sans); background: none; border: 0; text-align: left; }
+.plan-folder-link { display: block; height: 0; overflow: visible; --card-radius: 24px; text-decoration: none; }
+.plan-folder-body { flex: 1; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; padding: 14px; min-height: 120px; background: #FFF; border: 1px solid #E0E0E0; border-radius: 24px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); transition: box-shadow 150ms ease-out; }
+/* the tab: same fill and border as the body, drawn 1px over the body's top border so the two read as one shape */
+.plan-folder-tab { position: absolute; top: 0; left: 20px; z-index: 1; box-sizing: border-box; display: flex; align-items: center; height: 37px; min-width: 96px; max-width: 70%; padding: 0 14px; background: #FFF; border: 1px solid #E0E0E0; border-bottom: 0; border-radius: 16px 16px 0 0; clip-path: inset(-4px -4px 0 -4px); }
+.plan-folder-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 16px; font-weight: 700; line-height: 36px; color: #000; }
+.plan-folder:hover .plan-folder-body { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09); }
+/* the focus ring goes around the whole folder shape: the body and the tab */
+.plan-folder-link:focus-visible { outline: none; }
+.plan-folder-link:focus-visible::after { outline: none; box-shadow: none; }
+.plan-folder:has(.plan-folder-link:focus-visible) .plan-folder-body, .plan-folder:has(.plan-folder-link:focus-visible) .plan-folder-tab,
+.plan-folder-new:focus-visible .plan-folder-body, .plan-folder-new:focus-visible .plan-folder-tab { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.55); }
+.plan-folder-new { cursor: pointer; align-items: stretch; }
+.plan-folder-new:focus-visible { outline: none; }
+.plan-folder-new .plan-folder-body { border: 2px dashed #000; box-shadow: none; align-items: center; justify-content: center; }
+.plan-folder-new .plan-folder-tab { height: 38px; border: 2px dashed #000; border-bottom: 0; }
+
+/* The save notification: slides up and fades in; with reduced motion it only fades */
+.save-toast { animation: toast-in 0.2s ease; }
+.save-toast-btn:focus-visible { outline: 2px solid #FFF; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .save-toast { animation: toast-fade 0.2s ease; } }
+html[data-motion="off"] .save-toast { animation: none; }
+@keyframes toast-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* Icon buttons with a tooltip on hover and keyboard focus. Not laid out until shown, so it never widens the page. */
+.icon-tip::after {
+  content: attr(data-tip); display: none; position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+  background: #141414; color: #FFF; font-size: 14px; line-height: 1.3; padding: 6px 10px; border-radius: 8px; white-space: nowrap;
+  pointer-events: none; z-index: 5;
+}
+.icon-tip:first-child::after { left: 0; transform: none; }
+.icon-tip:last-child::after { left: auto; right: 0; transform: none; }
+.icon-tip:focus-visible::after { display: block; }
+@media (hover: hover) { .icon-tip:hover::after { display: block; } }
+
+/* Plan channel tiles: glossy cover tiles that grow a blue ring on hover and focus */
+.channel {
+  position: relative; border-radius: 28px; background: #FFF; border: 1px solid #E0E0E0; cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06), 0 10px 24px rgba(0, 0, 0, 0.10);
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+.channel-cover { position: relative; aspect-ratio: 4 / 3; border-radius: 27px 27px 0 0; overflow: hidden; }
+.channel-cover::before { /* the faint white gloss along the top edge */
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 46%; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.12) 55%, rgba(255, 255, 255, 0) 100%);
+}
+.channel .card-link { text-decoration: none; color: inherit; }
+.channel .card-link:hover { text-decoration: none; }
+.channel .card-link:focus-visible { outline: none; }
+.channel:has(.card-link:focus-visible) {
+  transform: scale(1.05); z-index: 3;
+  box-shadow: 0 0 0 3px var(--accent), 0 0 24px 4px rgba(37, 99, 235, 0.30), 0 18px 36px rgba(0, 0, 0, 0.20);
+}
+@media (hover: hover) {
+  .channel:hover {
+    transform: scale(1.05); z-index: 3;
+    box-shadow: 0 0 0 3px var(--accent), 0 0 24px 4px rgba(37, 99, 235, 0.30), 0 18px 36px rgba(0, 0, 0, 0.20);
+  }
+}
+.channel:active { transform: scale(0.97); }
+.channel-slot { transition: transform 150ms ease-out, box-shadow 150ms ease-out, background 150ms ease-out; }
+.channel-slot:hover, .channel-slot:focus-visible { transform: scale(1.03); background: #EEEEF4; outline: none; box-shadow: 0 0 0 3px var(--accent), 0 0 18px 2px rgba(37, 99, 235, 0.25); }
+@media (prefers-reduced-motion: reduce) {
+  .channel, .channel-slot { transition: none; }
+  .channel:hover, .channel:has(.card-link:focus-visible), .channel:active, .channel-slot:hover, .channel-slot:focus-visible { transform: none; }
+}
+html[data-motion="off"] .channel, html[data-motion="off"] .channel-slot { transition: none; }
+html[data-motion="off"] .channel:hover, html[data-motion="off"] .channel:has(.card-link:focus-visible), html[data-motion="off"] .channel:active { transform: none; }
+
+
+/* The back button: a round arrow button and a bold label in one pill */
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 14px 0 0; border: 0; border-radius: 24px; background: none;
+  color: #1A1A1A; font-family: var(--font-sans); font-size: 16px; font-weight: 700; text-decoration: none; cursor: pointer;
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+}
+.back-btn-arrow { width: 48px; height: 48px; box-sizing: border-box; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; background: #FFF; border: 2px solid #1A1A1A; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16); }
+.back-btn:hover, .back-btn:focus-visible { transform: scale(1.05); outline: none; box-shadow: 0 0 0 3px var(--accent); }
+.back-btn:active { transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) { .back-btn { transition: none; } .back-btn:hover, .back-btn:focus-visible, .back-btn:active { transform: none; } }
+html[data-motion="off"] .back-btn { transition: none; }
+html[data-motion="off"] .back-btn:hover, html[data-motion="off"] .back-btn:focus-visible, html[data-motion="off"] .back-btn:active { transform: none; }
+
+/* The season key above the class grid: one line, never wraps (the gaps shrink first) */
+.season-key { display: flex; flex-wrap: nowrap; align-items: center; column-gap: 14px; margin: 0; font-size: 15px; line-height: 1.3; color: #444; white-space: nowrap; }
+.season-key-item { display: inline-flex; align-items: center; gap: 6px; }
+@media (max-width: 380px) { .season-key-item { gap: 4px; } }
+
+/* tooltips on the plan tile's overlay buttons open toward the tile's inside */
+.icon-tip.icon-tip-end::after, .icon-tip.icon-tip-end:first-child::after, .icon-tip.icon-tip-end:last-child::after { left: auto; right: 0; transform: none; }
+
+/* The advisor row's button is filled accent blue (set inline); only the hover and press colors live here */
+.external-action.advisor-btn:hover { background: #1D4ED8 !important; }
+.external-action.advisor-btn:active { background: #1E40AF !important; }
+.external-action.advisor-btn:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
