@@ -34,7 +34,7 @@ import { semester } from './config/semester';
 import { buildCover, COVER_W, COVER_H } from './lib/cover';
 import { getEntrance, reducedMotion, transition, zoomSourceFor } from './lib/transition';
 import { motionMode } from './lib/motion';
-import { APP_NAME, DEFAULT_MODE, defaultConfig, termContext } from '../core/config.ts';
+import { APP_COPY, APP_NAME, DEFAULT_MODE, defaultConfig, termContext } from '../core/config.ts';
 import { allCourses, coursesForMode, firstUpcomingSection, showInstructors, upcomingInstructors } from '../core/courses.ts';
 import { readMode, writeMode } from '../core/mode.ts';
 import { availability, isUpcoming, lastOffered, searchTermNote, seasonOf, termRank, upcomingTerms } from '../core/terms.ts';
@@ -3548,15 +3548,7 @@ function parseRoute(): Route {
   return { name: 'notfound', kind: 'page' };
 }
 
-const ABOUT_TEXT = [
-  "ATLAS has more than 40 focus electives. Game design. Fabrication. Sound. AR/VR. Branding. AI. Accessibility.",
-  "That's a lot of opportunity. But too many students never see it, because the information is scattered, outdated or contradictory.",
-  "Picking your classes shouldn't depend on who you know or how many tabs you can keep open. Every student deserves to see every option, understand what it means for their degree, and plan with confidence.",
-  "This is about the student experience. It should feel simple. It should feel honest. And it should feel like it was made for you.",
-  "That's what this guide is for.",
-  "Saved classes and plans are kept on this device only. Clearing your browser or switching devices will remove them.",
-  "Always confirm with CU class search and your advisor.",
-];
+const ABOUT_TEXT = APP_COPY.aboutText;
 
 function AboutPage() {
   const isMobile = useWindowWidth() < 640;
@@ -3595,6 +3587,7 @@ function SiteFooter({ isMobile, hideChecked = false }: { isMobile: boolean; hide
   const small = { display:'inline-flex', alignItems:'center', justifyContent:'center', gap:4, minHeight:44, minWidth:44, padding:0, border:0, borderRadius:0, background:'none', color:'#444', fontSize:14, fontWeight:500, textDecoration:'underline', textUnderlineOffset:3 } as const;
   return (
     <footer style={{ margin:isMobile ? '0 16px' : `0 ${SPACING.pagePx}px`, padding:isMobile ? `24px 0 calc(${BAR_H} + 88px)` : '24px 0 96px', borderTop:'1px solid #E0E0E0', display:'flex', flexDirection:'column', gap:4, maxWidth:'70ch' }}>
+      <p style={{ margin:0, fontSize:14, lineHeight:1.4, color:'#444' }}>{APP_COPY.footerDisclaimer}</p>
       <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', columnGap:20 }}>
         {feedback && <ExternalAction href={feedback} sr="(opens in a new tab)" style={small}>Give feedback</ExternalAction>}
         <AppLink to="#/about" style={small}>About</AppLink>
@@ -4177,9 +4170,10 @@ export default function App() {
               <motion.div key="grid" initial={getEntrance() === 'fade' ? { opacity:0 } : false} animate={{ opacity:1, transition:{ duration:0.2 } }}>
                 {/* Header */}
                 <div style={{ display:'flex', flexDirection:isMobile?'column':'row', alignItems:'flex-start', justifyContent:isMobile?'flex-start':'space-between', gap:isMobile?16:0, marginBottom:isMobile?12:SPACING.headingMb }}>
-                  <div style={{ display:'flex', flexDirection:'column', gap:12, width:'100%' }}>
+                  <div style={{ width:'100%' }}>
                     <h1 style={{ fontSize:isMobile?32:40, fontWeight:700, letterSpacing:'-0.03em', color:'#000', margin:0, lineHeight:1.15 }}>{APP_NAME}</h1>
-                    <ModeToggle mode={mode} onChange={chooseMode} />
+                    <p style={{ margin:'8px 0 0', fontSize:14, lineHeight:1.4, color:'#444', maxWidth:'62ch' }}>{APP_COPY.tagline}</p>
+                    <div style={{ marginTop:12 }}><ModeToggle mode={mode} onChange={chooseMode} /></div>
                   </div>
                 </div>
 

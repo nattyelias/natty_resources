@@ -23,7 +23,25 @@ export interface CoreConfig {
 }
 
 /** The app's name, shown in the header and the tab title. */
-export const APP_NAME = 'Classes';
+export const APP_NAME = 'Focus Electives';
+
+/**
+ * The app's copy: the tagline under the name, the About text and the footer line. Word for word as in the original site
+ * (commit ae27a28). Renaming the app or removing any of this is an edit to this one object (and APP_NAME above).
+ */
+export const APP_COPY = {
+  tagline: "A student-made guide to ATLAS focus electives. Independent and unofficial.",
+  aboutText: [
+    "ATLAS has more than 40 focus electives. Game design. Fabrication. Sound. AR/VR. Branding. AI. Accessibility.",
+    "That's a lot of opportunity. But too many students never see it, because the information is scattered, outdated or contradictory.",
+    "Picking your classes shouldn't depend on who you know or how many tabs you can keep open. Every student deserves to see every option, understand what it means for their degree, and plan with confidence.",
+    "This is about the student experience. It should feel simple. It should feel honest. And it should feel like it was made for you.",
+    "That's what this guide is for.",
+    "Saved classes and plans are kept on this device only. Clearing your browser or switching devices will remove them.",
+    "Built by an ATLAS student, for ATLAS students. Not an official CU or ATLAS tool. Always confirm with CU class search and your advisor.",
+  ],
+  footerDisclaimer: "Independent and unofficial. A student-built guide, not an official CU Boulder or ATLAS tool.",
+};
 
 /** The mode shown when nothing valid has been saved. */
 export const DEFAULT_MODE: ViewMode = 'grad';
