@@ -116,3 +116,23 @@ export interface ClassVerification {
 
 /** Which side of the catalog the app shows: graduate options or undergraduate options. */
 export type ViewMode = 'grad' | 'undergrad';
+
+// ─── Schedule conflicts (src/core/conflicts.ts) ───
+
+/** Where two sections overlap: the clock times (24-hour HH:MM) and the dates (MM-DD, both "" when the full term was assumed). */
+export interface OverlapWindow { start: string; end: string; from: string; to: string }
+
+/** Two sections that overlap: the weekdays they share (letters M T W R F S U, R is Thursday) and the window. */
+export interface SectionOverlap { days: string; window: OverlapWindow }
+
+/** One overlap between two DIFFERENT first-choice classes of a plan. classA and classB are course ids, sectionA and sectionB section numbers. */
+export interface PlanConflict { classA: string; classB: string; sectionA: string; sectionB: string; days: string; overlapWindow: OverlapWindow }
+
+export interface PlanConflicts {
+  conflicts: PlanConflict[];
+  /** Course ids of the first-choice classes with no posted times, which can't be checked. */
+  untimed: string[];
+}
+
+/** The part of a plan the conflict check reads. */
+export interface PlanItemsLike { items: { id: string; role: string }[] }

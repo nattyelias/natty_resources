@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { defaultConfig, termContext } from '../src/core/config.ts';
 import { allCourses, coursesForMode, filterCourses, gradCourses, offeredInUpcomingTerms, ranOnlyInPastTerms } from '../src/core/courses.ts';
 import { findTwins } from '../src/core/twins.ts';
+import { runConflictTests } from './test-conflicts.mjs';
 import { verificationFor, verificationLabel } from '../src/core/verification.ts';
 
 const file = new URL('./courses.json', import.meta.url);
@@ -147,3 +148,14 @@ if (existsSync(extraFile)) {
   const orphans = Object.keys(vctx.verification?.sections ?? {}).filter((id) => !known.has(id));
   console.log(`  Verification entries for no class in the data: ${orphans.length}${orphans.length ? ' (' + orphans.join(', ') + ')' : ''}`);
 }
+
+// ─── Schedule conflict logic (src/core/conflicts.ts, tests in data/test-conflicts.mjs) ───
+{
+  const t = runConflictTests();
+  console.log('\nConflict tests:');
+  console.log(`  ${t.passed} passed, ${t.failed} failed`);
+  for (const r of t.results.filter((x) => !x.ok)) console.log(`    FAIL ${r.name}${r.detail ? ' -> ' + r.detail : ''}`);
+  console.log(`  Real data (Spring 2027 plan of ATLS 4040, 4060, 4201): ${t.real.conflicts.length} overlap(s), ${t.real.untimed.length} untimed`);
+  if (t.failed) process.exitCode = 1;
+}
+
