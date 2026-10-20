@@ -3550,9 +3550,12 @@ function parseRoute(): Route {
 
 const ABOUT_TEXT = APP_COPY.aboutText;
 
+// The feedback form's address, or '' while the link is switched off (semester.showFeedbackLink).
+const feedbackUrl = () => (semester.showFeedbackLink ? semester.feedbackFormUrl.trim() : '');
+
 function AboutPage() {
   const isMobile = useWindowWidth() < 640;
-  const feedback = semester.feedbackFormUrl.trim();
+  const feedback = feedbackUrl();
   return (
     <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }} transition={{ duration:0.25 }}>
       <h1 style={{ margin:0, fontSize:isMobile ? 32 : 40, fontWeight:700, letterSpacing:'-0.03em', lineHeight:1.15, color:'#000' }}>About</h1>
@@ -3583,15 +3586,20 @@ function NotFoundPage({ message }: { message: string }) {
 }
 
 function SiteFooter({ isMobile, hideChecked = false }: { isMobile: boolean; hideChecked?: boolean }) {
-  const feedback = semester.feedbackFormUrl.trim();
+  const feedback = feedbackUrl();
+  const showLinks = !!feedback || semester.showAboutLink;
+  const note = semester.showFooterDisclaimer ? APP_COPY.footerDisclaimer : '';
+  const hasContent = !!note || showLinks || !hideChecked; // an empty footer keeps its spacing but draws no line
   const small = { display:'inline-flex', alignItems:'center', justifyContent:'center', gap:4, minHeight:44, minWidth:44, padding:0, border:0, borderRadius:0, background:'none', color:'#444', fontSize:14, fontWeight:500, textDecoration:'underline', textUnderlineOffset:3 } as const;
   return (
-    <footer style={{ margin:isMobile ? '0 16px' : `0 ${SPACING.pagePx}px`, padding:isMobile ? `24px 0 calc(${BAR_H} + 88px)` : '24px 0 96px', borderTop:'1px solid #E0E0E0', display:'flex', flexDirection:'column', gap:4, maxWidth:'70ch' }}>
-      <p style={{ margin:0, fontSize:14, lineHeight:1.4, color:'#444' }}>{APP_COPY.footerDisclaimer}</p>
-      <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', columnGap:20 }}>
-        {feedback && <ExternalAction href={feedback} sr="(opens in a new tab)" style={small}>Give feedback</ExternalAction>}
-        <AppLink to="#/about" style={small}>About</AppLink>
-      </div>
+    <footer style={{ margin:isMobile ? '0 16px' : `0 ${SPACING.pagePx}px`, padding:isMobile ? `24px 0 calc(${BAR_H} + 88px)` : '24px 0 96px', borderTop:hasContent ? '1px solid #E0E0E0' : 'none', display:'flex', flexDirection:'column', gap:4, maxWidth:'70ch' }}>
+      {note && <p style={{ margin:0, fontSize:14, lineHeight:1.4, color:'#444' }}>{note}</p>}
+      {showLinks && (
+        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', columnGap:20 }}>
+          {feedback && <ExternalAction href={feedback} sr="(opens in a new tab)" style={small}>Give feedback</ExternalAction>}
+          {semester.showAboutLink && <AppLink to="#/about" style={small}>About</AppLink>}
+        </div>
+      )}
       {!hideChecked && <span style={{ fontSize:14, lineHeight:1.4, color:'#444' }}>Data last checked: {formatDate(semester.dataLastChecked)}</span>}
     </footer>
   );
@@ -4171,9 +4179,10 @@ export default function App() {
                 {/* Header */}
                 <div style={{ display:'flex', flexDirection:isMobile?'column':'row', alignItems:'flex-start', justifyContent:isMobile?'flex-start':'space-between', gap:isMobile?16:0, marginBottom:isMobile?12:SPACING.headingMb }}>
                   <div style={{ width:'100%' }}>
-                    <h1 style={{ fontSize:isMobile?32:40, fontWeight:700, letterSpacing:'-0.03em', color:'#000', margin:0, lineHeight:1.15 }}>{APP_NAME}</h1>
-                    <p style={{ margin:'8px 0 0', fontSize:14, lineHeight:1.4, color:'#444', maxWidth:'62ch' }}>{APP_COPY.tagline}</p>
-                    <div style={{ marginTop:12 }}><ModeToggle mode={mode} onChange={chooseMode} /></div>
+                    {/* The title is visually hidden but stays in the page as the h1 for screen readers (semester.showHomeTitle brings it back). */}
+                    <h1 className={semester.showHomeTitle ? undefined : 'sr-only'} style={semester.showHomeTitle ? { fontSize:isMobile?32:40, fontWeight:700, letterSpacing:'-0.03em', color:'#000', margin:0, lineHeight:1.15 } : undefined}>{APP_NAME}</h1>
+                    {semester.showTagline && <p style={{ margin:'8px 0 0', fontSize:14, lineHeight:1.4, color:'#444', maxWidth:'62ch' }}>{APP_COPY.tagline}</p>}
+                    <div style={semester.showHomeTitle || semester.showTagline ? { marginTop:12 } : undefined}><ModeToggle mode={mode} onChange={chooseMode} /></div>
                   </div>
                 </div>
 

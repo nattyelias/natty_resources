@@ -57,8 +57,18 @@ interface SemesterSettings {
   advisorCardClassNote: string;
   /** The short label on the header's advisor button (same booking address). */
   advisorHeaderLabel: string;
-  /** Address of your feedback form. The footer's "Give feedback" link appears once this is filled in. */
+  /** Address of your feedback form. The "Give feedback" link (footer and About page) shows it when showFeedbackLink is on. */
   feedbackFormUrl: string;
+  /** Show the app name as the visible title on Home. Off: the h1 stays in the page for screen readers only (visually hidden). */
+  showHomeTitle: boolean;
+  /** Show the tagline under the Home title (APP_COPY.tagline in src/core/config.ts). */
+  showTagline: boolean;
+  /** Show the footer line (APP_COPY.footerDisclaimer in src/core/config.ts). */
+  showFooterDisclaimer: boolean;
+  /** Show the About link in the footer. The About page and the #/about address stay in place either way. */
+  showAboutLink: boolean;
+  /** Show the "Give feedback" link in the footer and on the About page. Needs feedbackFormUrl. */
+  showFeedbackLink: boolean;
 }
 
 export const semester: SemesterSettings = {
@@ -83,6 +93,11 @@ export const semester: SemesterSettings = {
   advisorCardClassNote: 'This one may need checking.',
   advisorHeaderLabel: 'Meet an advisor',
   feedbackFormUrl: 'https://forms.gle/wdVvYTLZjv5w3z4U8',
+  showHomeTitle: false,
+  showTagline: false,
+  showFooterDisclaimer: false,
+  showAboutLink: false,
+  showFeedbackLink: false,
 };
 
 /** True once classSearchTermCode is set, meaning CU has posted nextTermName. */
