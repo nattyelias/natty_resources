@@ -1,3 +1,6 @@
+import verification from '../../../data/verification.json';
+import { defaultConfig, termContext } from '../../core/config.ts';
+
 // The only place semester settings live. Change these each term, then follow
 // SEMESTER-UPDATE.md in the project root.
 
@@ -59,8 +62,8 @@ interface SemesterSettings {
 }
 
 export const semester: SemesterSettings = {
-  classSearchTermCode: null,
-  currentTermName: 'Fall 2026', // update this every term: the app says nothing when a class is running in it
+  classSearchTermCode: defaultConfig.classSearchTermCode, // the term code and term names come from src/core/config.ts
+  currentTermName: defaultConfig.currentTermName,
   showRunningNow: false,
   showNonMajorFilter: false,
   showCountsTowardFilter: false,
@@ -70,8 +73,8 @@ export const semester: SemesterSettings = {
   showCalendar: false,
   showCalendarSettings: false,
   enforcePlanTerms: true,
-  nextTermName: 'Spring 2027',
-  dataLastChecked: '2026-09-26',
+  nextTermName: defaultConfig.nextTermName,
+  dataLastChecked: verification.meta.checkedAt, // the date of the last class search check (data/verification.json)
   advisorBookingUrl: 'https://bookings.cloud.microsoft/book/CS_BridgetAdvisingHours@o365.colorado.edu/?ismsaljsauthenabled=true',
   advisorCardHeadline: 'Not sure what to take?',
   advisorCardText: 'Talk it through with an advisor.',
@@ -83,4 +86,4 @@ export const semester: SemesterSettings = {
 };
 
 /** True once classSearchTermCode is set, meaning CU has posted nextTermName. */
-export const nextTermPosted = semester.classSearchTermCode !== null;
+export const nextTermPosted = termContext(defaultConfig).nextTermPosted;

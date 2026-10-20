@@ -27,45 +27,70 @@ const CATEGORY_COLORS: Record<string, string> = {
 // No area hue is blue: blue is kept for controls. Each is bright enough to read as the area's color on a solid circle and still 3:1 or better against white (the icon on it is white).
 
 import coursesData from '../../data/courses.json';
+import extraData from '../../data/courses-extra.json';
+import verificationData from '../../data/verification.json';
 import photosData from './data/class-photos.json';
-import { semester, nextTermPosted } from './config/semester';
+import { semester } from './config/semester';
 import { buildCover, COVER_W, COVER_H } from './lib/cover';
 import { getEntrance, reducedMotion, transition, zoomSourceFor } from './lib/transition';
 import { motionMode } from './lib/motion';
-import { availability, lastOffered, searchTermNote, seasonOf, termRank } from './lib/terms';
-import { creditRange, creditsLabel, creditsText, parseSaved, planAsText, planTermText, planWarnings, roleLabel, PLAN_YEARS, SEASONS, serializeSaved, STORAGE_KEY } from './lib/plans';
-import type { ExportItem, Plan, PlanItem, PlanRole, SavedState } from './lib/plans';
+import { APP_NAME, DEFAULT_MODE, defaultConfig, termContext } from '../core/config.ts';
+import { allCourses, coursesForMode, firstUpcomingSection, showInstructors, upcomingInstructors } from '../core/courses.ts';
+import { readMode, writeMode } from '../core/mode.ts';
+import { availability, isUpcoming, lastOffered, searchTermNote, seasonOf, termRank, upcomingTerms } from '../core/terms.ts';
+import { creditRange, creditsLabel, creditsText, parseSaved, planAsText, planTermText, planWarnings, roleLabel, PLAN_YEARS, SEASONS, serializeSaved, STORAGE_KEY } from '../core/plans.ts';
+import type { ExportItem, Plan, PlanItem, PlanRole, SavedState } from '../core/plans.ts';
+import { verificationFor, verificationLabel } from '../core/verification.ts';
+import type { Course, CourseData, Section as ClassSection, ViewMode } from '../core/types.ts';
+import { ModeToggle } from './ModeToggle';
 
-interface Course {
-  id: string; code: string; specialTopic: boolean; title: string; credits: string; category: string;
-  countsToward: string; termsOffered: string[]; notOfferedRecently: boolean; instructors: { name: string; url: string }[]; advisorConfirmation: { by: string; date: string; auditMayNotListIt: boolean } | null; instructorsByTerm: Partial<Record<string, string>>; instructor: string; instructorTitle: string; instructorUrl: string;
-  description: string; tools: string[]; image: string;
-  categorySecondary: string; classNumber: string; instructorFullName: string; crossListings: string; sessionLength: string;
-  format: string; extraCost: string; consentRequired: string; unlocks: string; searchKeywords: string;
-  prereqRequired: string; prereqRecommended: string; noRequiredPrereqs: boolean; restriction: string; openToNonMajors: boolean;
-  /** Optional class photo: a path under public/ (class-photos/...), its alt text (required with a photo) and a credit line. */
-  photo: string; photoAlt: string; photoCredit: string;
-  /** Optional posted meeting times, by term (see MEETING-TIMES.md). A class with none has no entry. */
-  sectionsByTerm?: Partial<Record<string, ClassSection[]>>;
-}
-interface ClassSection { classNumber: string; title: string; section: string; type: string; campus: string; days: string; start: string; end: string; meets: string; instructor: string; dates: string; online: boolean; variesBySection: boolean }
+// Course and ClassSection (Section) come from src/core/types.ts.
 // Photos live in src/data/class-photos.json (see public/class-photos/README.md), so a data refresh never touches them.
 // A photo with no alt text is dropped, so a tile never shows an undescribed image.
 const PHOTO_ENTRIES = photosData as Record<string, { photo?: string; photoAlt?: string; photoCredit?: string }>;
-const withPhoto = (c: Omit<Course, 'photo' | 'photoAlt' | 'photoCredit'>): Course => {
+const withPhoto = (c: CourseData): Course => {
   const e = PHOTO_ENTRIES[c.id];
   if (e?.photo && !e.photoAlt?.trim()) { console.error(`class-photos.json: ${c.id} has a photo but no photoAlt, so the photo is ignored.`); return { ...c, photo: '', photoAlt: '', photoCredit: '' }; }
   return { ...c, photo: e?.photo ?? '', photoAlt: e?.photoAlt ?? '', photoCredit: e?.photoCredit ?? '' };
 };
 const photoUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
-const COURSES: Course[] = coursesData.map(withPhoto);
+// All 102 classes: courses.json plus courses-extra.json (src/core). The class list on Home comes from coursesForMode below.
+const COURSES: Course[] = allCourses(coursesData, extraData).map(withPhoto);
+
+// What counts as past or upcoming, and the current and next term, come from src/core/config.ts.
+const TERM_CONTEXT = termContext(defaultConfig);
+const nextTermPosted = TERM_CONTEXT.nextTermPosted;
+
+// Season markers (one shared component further down): only these two words ever appear.
+type SeasonName = 'fall' | 'spring';
+const SEASON_WORD: Record<SeasonName, string> = { fall: 'Fall', spring: 'Spring' };
+const SEASON_COLOR: Record<SeasonName, string> = { fall: '#C27800', spring: '#E0558F' };
+
+// The two modes. Each lists the classes for it, with the code to display (a 5000-level code in Grad, an under-5000 code in Undergrad).
+const MODE_ENTRIES: Record<ViewMode, { course: Course; displayCode: string }[]> = {
+  grad: coursesForMode(COURSES, 'grad', TERM_CONTEXT),
+  undergrad: coursesForMode(COURSES, 'undergrad', TERM_CONTEXT),
+};
+const DISPLAY_CODES: Record<ViewMode, Map<string, string>> = {
+  grad: new Map(MODE_ENTRIES.grad.map(e => [e.course.id, e.displayCode])),
+  undergrad: new Map(MODE_ENTRIES.undergrad.map(e => [e.course.id, e.displayCode])),
+};
+const displayCodeOf = (c: Course, mode: ViewMode) => DISPLAY_CODES[mode].get(c.id) ?? c.code;
+const ModeContext = createContext<ViewMode>(DEFAULT_MODE);
+const useMode = () => useContext(ModeContext);
+function useDisplayCode() { const mode = useMode(); return (c: Course) => displayCodeOf(c, mode); }
+const VERIFICATION_CTX = { verification: verificationData };
+const safeStorage = () => { try { return window.localStorage; } catch { return null; } }; // storage can be blocked; the core functions cope with null
+const crossListCodesOf = (c: Course) => Object.values(c.sectionsByTerm ?? {}).flatMap(list => (list ?? []).map(sec => sec.crossListCode ?? ''));
 
 const normalizeText = (v: string) => v.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 const compactText = (v: string) => v.replace(/\s+/g, '');
 const SEARCH_INDEX = new Map(COURSES.map(c => {
   const text = normalizeText([
-    c.title, c.code, c.category, c.categorySecondary, c.description, c.instructor, c.instructorFullName,
-    c.crossListings, c.searchKeywords, c.tools.join(' '),
+    c.title, c.code, DISPLAY_CODES.grad.get(c.id) ?? '', DISPLAY_CODES.undergrad.get(c.id) ?? '', c.category, c.categorySecondary, c.description,
+    // the instructors of independent study classes are never shown, so they are not searchable either
+    ...(showInstructors(c) ? [c.instructor, c.instructorFullName, upcomingInstructors(c, TERM_CONTEXT)] : []),
+    c.crossListings, ...crossListCodesOf(c), c.searchKeywords, c.tools.join(' '),
   ].join(' '));
   return [c.id, `${text} ${compactText(text)}`];
 }));
@@ -130,21 +155,19 @@ function BackButton({ label, ariaLabel, to, onClick, restoreSavedScroll = false 
 
 const STATIC_FILTERS = [
   { key: 'crit', label: 'Critical Perspectives', test: (c: Course) => c.countsToward.includes('Critical Perspectives') },
-  { key: 'runningNow', label: 'Running now', test: (c: Course) => availabilityOf(c).kind === 'now' },
+  { key: 'runningNow', label: 'Running now', test: (c: Course) => availabilityOf(c).kind === 'next' },
   { key: 'notOffered', label: 'Not offered recently', test: (c: Course) => availabilityOf(c).kind === 'none' },
   { key: 'focus', label: 'Focus', test: (c: Course) => c.countsToward.includes('Focus') },
   { key: 'noPrereq', label: 'No prerequisites', test: (c: Course) => c.noRequiredPrereqs },
   { key: 'openToNonMajors', label: 'Open to non-majors', test: (c: Course) => c.openToNonMajors },
 ] as const;
-// One chip per term a class has run in, labeled with the term's own name ("Fall 2026") and in time order. The terms come
-// from the data (plus the current and next term from semester.ts if any class ran in them), so a new term adds its chip
-// by itself and nothing here names a season or year.
-const TERM_NAMES = [...new Set([...COURSES.flatMap(c => c.termsOffered), semester.currentTermName, semester.nextTermName])]
-  .filter(t => COURSES.some(c => c.termsOffered.includes(t)))
-  .sort((x, y) => termRank(x) - termRank(y));
+// One chip per season that has an upcoming term (Spring today). The chip is the shared season marker, so its text is exactly "Spring" or
+// "Fall", and it keeps the classes offered in an upcoming term of that season. Past terms are history and get no chip.
+const UPCOMING_SEASONS = [...new Set(Object.entries(defaultConfig.termStatus).filter(([, status]) => status === 'upcoming').map(([term]) => term)
+  .filter(term => COURSES.some(c => c.termsOffered.includes(term))).sort((x, y) => termRank(x) - termRank(y)).map(term => seasonOf(term)))] as SeasonName[];
 type QuickKey = typeof STATIC_FILTERS[number]['key'] | `term:${string}`;
 const TERM_FILTERS: { key: QuickKey; label: string; test: (c: Course) => boolean }[] =
-  TERM_NAMES.map(t => ({ key: `term:${t}` as const, label: t, test: (c: Course) => c.termsOffered.includes(t) }));
+  UPCOMING_SEASONS.map(season => ({ key: `term:${season}` as const, label: SEASON_WORD[season], test: (c: Course) => c.termsOffered.some(t => seasonOf(t) === season && isUpcoming(t, TERM_CONTEXT)) }));
 const QUICK_FILTERS: { key: QuickKey; label: string; test: (c: Course) => boolean }[] = [...STATIC_FILTERS, ...TERM_FILTERS];
 // The filter panel groups them under small labels. Counts toward chips wear their tag hue.
 // Within a group, Availability and Counts toward match ANY chosen chip; Requirements must match ALL of them.
@@ -188,16 +211,15 @@ const CU_SEARCH_TITLE: Record<string, string | null> = {
 function narrowTitle(c: Course): string {
   if (!sharesNumber(c)) return '';
   const kind = availabilityOf(c).kind;
-  if (kind !== 'now' && kind !== 'next') return '';
+  if (kind !== 'next') return '';
   const override = CU_SEARCH_TITLE[c.id];
   if (override === null) return '';
   return (override ?? c.title.split(':').pop() ?? '').replace(/[^\p{L}\p{N}\s-]/gu, ' ').replace(/\s+/g, ' ').trim();
 }
-const TERM_CONTEXT = { currentTermName: semester.currentTermName, nextTermName: semester.nextTermName, nextTermPosted };
 const availabilityOf = (c: Course) => availability(c, TERM_CONTEXT);
 // The app says nothing about a class that is running this term. Availability is only worth a line when something is off
 // (not posted, not offered recently, offered next term instead). semester.showRunningNow brings the old wording back.
-const showsAvailability = (c: Course) => semester.showRunningNow || availabilityOf(c).kind !== 'now';
+const showsAvailability = (c: Course) => semester.showRunningNow || availabilityOf(c).kind === 'none';
 // A class has an exception when something is off: it isn't running this term, or its requirement tag says to check with an advisor.
 // Only these classes get the advisor card on their page.
 const hasException = (c: Course) => showsAvailability(c) || countsTag(c) === 'Check with advisor';
@@ -243,7 +265,8 @@ const requiredPrereq = (c: Course) => {
   if (!v || /^none( listed)?\.?$/i.test(v)) return 'No prerequisites';
   return v.replace(/^none\b/i, 'No prerequisites');
 };
-const countsTag = (c: Course) => COUNTS_SHORT[c.countsToward] ?? 'Check with advisor';
+// A class with no requirement tag at all (the records in courses-extra.json carry none) has nothing to flag. A tag we do not recognise still says "Check with advisor".
+const countsTag = (c: Course) => c.countsToward.trim() === '' ? '' : COUNTS_SHORT[c.countsToward] ?? 'Check with advisor';
 
 // A color AND a shape per requirement tag, so the meaning survives grayscale and colorblindness,
 // not just a color swatch. Each shape/color pair repeats everywhere the tag appears (cards, the
@@ -272,10 +295,8 @@ const tagPill = (course: Course): React.CSSProperties => {
 };
 
 // Availability pills are neutral grays that differ in weight, so they never compete with the tag hues.
-const AVAIL_PILL: Record<'now' | 'next' | 'past' | 'none', React.CSSProperties> = {
-  now:  { background: '#E4E4E4', border: '1px solid #5A5A5A', color: '#1A1A1A', fontWeight: 700 },
+const AVAIL_PILL: Record<'next' | 'none', React.CSSProperties> = {
   next: { background: '#E4E4E4', border: '1px solid #5A5A5A', color: '#1A1A1A', fontWeight: 700 },
-  past: { background: '#F4F4F4', border: '1px solid #767676', color: '#333333', fontWeight: 500 },
   none: { background: '#FFFFFF', border: '1px dashed #767676', color: '#444444', fontWeight: 400 },
 };
 function AvailabilityPill({ course, full = false }: { course: Course; full?: boolean }) {
@@ -411,7 +432,7 @@ function ResultsBar({ count, anyActive, onClear, tight = false, flush = false, t
 // A filter chip: outlined with no fill when off; a pale tint, a stronger border and a checkmark when on. A rounded
 // rectangle, not a pill, so it never reads as a button. `hue` (a pale fill and a strong line) tints it by category or tag.
 function FilterChip({ label, on, onClick, hue, dot, marker, season }: {
-  label: string; on: boolean; onClick: () => void; hue?: { fill: string; line: string }; dot?: string; marker?: { color: string; shape: TagShape }; season?: SeasonKind;
+  label: string; on: boolean; onClick: () => void; hue?: { fill: string; line: string }; dot?: string; marker?: { color: string; shape: TagShape }; season?: { season: SeasonName; upcoming: boolean };
 }) {
   const line = hue?.line ?? UI.ink;
   return (
@@ -419,11 +440,11 @@ function FilterChip({ label, on, onClick, hue, dot, marker, season }: {
       style={{ ...outlinedChip, position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 8, textAlign: 'left',
         ...(on ? { background: hue?.fill ?? '#ECECEC', border: `2px solid ${line}`, padding: '5px 13px', fontWeight: 600 } : {}) }}>
       {on && season && <span aria-hidden="true" style={{ position: 'absolute', top: -7, right: -7, width: 18, height: 18, borderRadius: '50%', background: UI.ink, display: 'grid', placeItems: 'center' }}><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg></span>}
-      {season && <SeasonGlyph kind={season} size={20} />}
+      {season && <SeasonMarker season={season.season} upcoming={season.upcoming} size={20} />}
       {on && !season && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={UI.ink} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" style={{ flexShrink: 0 }}><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>}
       {marker && <TagMarker shape={marker.shape} color={marker.color} />}
       {dot && !marker && <span aria-hidden="true" style={{ width: 8, height: 8, borderRadius: '50%', background: dot, flexShrink: 0 }} />}
-      {label}
+      {!season && label}
     </button>
   );
 }
@@ -454,7 +475,7 @@ function FilterControl({ active, onToggle, onClear, count }: { active: Set<Quick
                       const tk = FILTER_TAG_KEY[k];
                       return <FilterChip key={k} label={f.label} on={active.has(k)} onClick={() => onToggle(k)}
                         hue={tk ? { fill: TAG_THEME[tk].fill, line: TAG_THEME[tk].line } : undefined} marker={tk ? tagStyleOf(tk) : undefined}
-                        season={k.startsWith('term:') && (seasonOf(f.label) === 'fall' || seasonOf(f.label) === 'spring') ? seasonOf(f.label) as SeasonKind : undefined} />;
+                        season={k.startsWith('term:') ? { season: seasonOf(f.label) as SeasonName, upcoming: true } : undefined} />;
                     })}
                   </div>
                 </section>
@@ -476,7 +497,7 @@ function QuickFilters({ active, onToggle, count, anyActive, onClear, onClearQuic
   return (
     <div style={{ display: 'flex', flexWrap: condensed ? 'nowrap' : 'wrap', alignItems: 'center', columnGap: 16 }}>
       <FilterControl active={active} onToggle={onToggle} onClear={onClearQuick} count={count} />
-      <ResultsBar count={count} anyActive={anyActive} onClear={onClear} flush trailing={condensed ? <span className="sr-only"><SeasonKey /></span> : <SeasonKey />} />
+      <ResultsBar count={count} anyActive={anyActive} onClear={onClear} flush />
     </div>
   );
 }
@@ -1054,55 +1075,78 @@ interface PlanActions {
 // season icons. Requirement tags live on the class page, Plans and exports. The title link stretches over the whole card (.card-link::after), so the
 // card is one tap target; only the bookmark sits above it. Photos live on the class page.
 // Credits only when they are not the usual 3: "ATLS 3150", "ATLS 4339 · 1 credit", "ATLS 4519 · Special topic".
-const cardMeta = (c: Course) => c.specialTopic ? `${c.code} · Special topic` : c.credits.trim() === '3' ? c.code : `${c.code} · ${creditsLabel(c.credits)}`;
+const cardMeta = (c: Course, code: string) => [code, c.specialTopic ? 'Special topic' : '', c.credits.trim() ? creditsLabel(c.credits) : ''].filter(Boolean).join(' · ');
 
 // Availability as plain text with a small status dot: filled when it runs, half when it ran before, a ring when it doesn't.
 function AvailabilityLine({ course }: { course: Course }) {
   const a = availabilityOf(course);
-  const text = a.kind === 'now' ? 'Running now' : a.short;
   const dot: React.CSSProperties = a.kind === 'none'
     ? { border: '2px solid #5A5A5A', background: 'transparent' }
-    : a.kind === 'past' ? { border: '2px solid #5A5A5A', background: 'linear-gradient(90deg, #5A5A5A 50%, transparent 50%)' }
     : { border: '2px solid #1A1A1A', background: '#1A1A1A' };
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 16, lineHeight: 1.35, color: a.kind === 'none' ? '#444' : '#1A1A1A', fontWeight: a.kind === 'now' || a.kind === 'next' ? 600 : 400 }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 16, lineHeight: 1.35, color: a.kind === 'none' ? '#444' : '#1A1A1A', fontWeight: a.kind === 'next' ? 600 : 400 }}>
       <span aria-hidden="true" style={{ ...dot, width: 10, height: 10, minWidth: 10, borderRadius: '50%', boxSizing: 'border-box', marginTop: 5 }} />
-      <span style={{ overflowWrap: 'anywhere' }}>{text}</span>
+      <span style={{ overflowWrap: 'anywhere' }}>{a.short}</span>
     </div>
   );
 }
 
-// Season icons say when a class has run: a leaf for each Fall, a blossom for each Spring (leaves first), all drawn the
-// same way. A class not offered recently gets a dash in a circle. Each is a 44px button that opens a small tooltip.
-type SeasonKind = 'fall' | 'spring' | 'none';
-const SEASON_COLOR: Record<SeasonKind, string> = { fall: '#C27800', spring: '#E0558F', none: '#5A5A5A' };
-// the words next to a season icon: the full wording, or the short one where a tile is too narrow for it
-const SEASON_WORD: Record<SeasonKind, string> = { fall: 'Fall semester', spring: 'Spring semester', none: 'Not offered' };
-const SEASON_SHORT: Record<SeasonKind, string> = { fall: 'Fall', spring: 'Spring', none: 'Not offered' };
-// the short word is what people see; the longer meaning is for screen readers
-const SEASON_LABEL: Record<SeasonKind, string> = { fall: 'Fall semester', spring: 'Spring semester', none: 'Not offered recently' };
-function SeasonGlyph({ kind, size = 28 }: { kind: SeasonKind; size?: number }) {
+// How far to trust a class's times: the line from verificationLabel (src/core/verification.ts), with a small status mark.
+// Confirmed is a filled dot, differs is the amber exclamation mark, pending is a half dot, not checked is a ring.
+function TrustLine({ course, align = 'center' }: { course: Course; align?: 'center' | 'start' }) {
+  const t = verificationFor(course.id, VERIFICATION_CTX);
+  const mark = t.status === 'confirmed' ? <span style={{ width: 10, height: 10, minWidth: 10, borderRadius: '50%', boxSizing: 'border-box', border: '2px solid #1A1A1A', background: '#1A1A1A' }} />
+    : t.status === 'mismatch' ? <TagMarker shape="exclaim" color="#8A6A00" size={12} />
+    : t.status === 'pending' ? <span style={{ width: 10, height: 10, minWidth: 10, borderRadius: '50%', boxSizing: 'border-box', border: '2px solid #5A5A5A', background: 'linear-gradient(90deg, #5A5A5A 50%, transparent 50%)' }} />
+    : <span style={{ width: 10, height: 10, minWidth: 10, borderRadius: '50%', boxSizing: 'border-box', border: '2px solid #5A5A5A', background: 'transparent' }} />;
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={SEASON_COLOR[kind]} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
-      {kind === 'fall' && <><path d="M5 19C5 10 10 5 19 5c0 9-5 14-14 14z" /><path d="M5 19l8-8" /></>}
-      {kind === 'spring' && <>{[0, 72, 144, 216, 288].map(a => <ellipse key={a} cx="12" cy="6.3" rx="2.7" ry="3.6" transform={`rotate(${a} 12 12)`} />)}<circle cx="12" cy="12" r="1.4" /></>}
-      {kind === 'none' && <><circle cx="12" cy="12" r="8.5" /><path d="M8 12h8" /></>}
+    <div data-trust={t.status} style={{ display: 'flex', alignItems: 'flex-start', justifyContent: align === 'center' ? 'center' : 'flex-start', gap: 6, fontSize: 13, lineHeight: 1.35, color: t.status === 'mismatch' ? '#4A3900' : '#444', fontWeight: t.status === 'mismatch' ? 600 : 400, textAlign: align === 'center' ? 'center' : 'left' }}>
+      <span aria-hidden="true" style={{ display: 'inline-flex', marginTop: 3, flexShrink: 0 }}>{mark}</span>
+      <span style={{ overflowWrap: 'anywhere' }}>{verificationLabel(t.status, t.checkedAt)}</span>
+    </div>
+  );
+}
+
+// Season markers: ONE component, and its text is exactly "Spring" or "Fall" wherever it appears (cards, class page, filters).
+// Filled = offered in an upcoming term. Outlined = it ran in that season before. A class that has never run gets the plain
+// "Not offered recently" text from the core availability logic instead.
+function SeasonGlyph({ kind, size = 28, filled = false }: { kind: SeasonName; size?: number; filled?: boolean }) {
+  const color = SEASON_COLOR[kind];
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      {kind === 'fall' && <><path d="M5 19C5 10 10 5 19 5c0 9-5 14-14 14z" fill={filled ? color : 'none'} /><path d="M5 19l8-8" stroke={filled ? '#FFF' : color} /></>}
+      {kind === 'spring' && <>{[0, 72, 144, 216, 288].map(a => <ellipse key={a} cx="12" cy="6.3" rx="2.7" ry="3.6" transform={`rotate(${a} 12 12)`} fill={filled ? color : 'none'} />)}<circle cx="12" cy="12" r="1.4" fill={filled ? '#FFF' : 'none'} stroke={filled ? '#FFF' : color} /></>}
     </svg>
   );
 }
-const seasonKindsFor = (c: Course): SeasonKind[] => {
-  if (availabilityOf(c).kind === 'none') return ['none'];
-  const kinds: SeasonKind[] = [
-    ...c.termsOffered.filter(t => seasonOf(t) === 'fall').map((): SeasonKind => 'fall'),
-    ...c.termsOffered.filter(t => seasonOf(t) === 'spring').map((): SeasonKind => 'spring'),
-  ];
-  return kinds.length ? kinds : ['none'];
-};
+function SeasonMarker({ season, upcoming, size = 22 }: { season: SeasonName; upcoming: boolean; size?: number }) {
+  const word = SEASON_WORD[season];
+  const meaning = upcoming ? 'offered in an upcoming term' : 'ran in this season before';
+  return (
+    <span role="img" aria-label={`${word}, ${meaning}`} title={`${word}: ${meaning}`} data-season={season} data-state={upcoming ? 'filled' : 'outlined'}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: 4, minHeight: 28, padding: '0 6px', fontFamily: 'var(--font-sans)', fontSize: 13, lineHeight: 1.1, whiteSpace: 'nowrap', color: '#333', fontWeight: upcoming ? 700 : 400 }}>
+      <SeasonGlyph kind={season} size={size} filled={upcoming} />
+      <span aria-hidden="true">{word}</span>
+    </span>
+  );
+}
+const SEASON_ORDER: SeasonName[] = ['fall', 'spring'];
+// The seasons a class has run in (any term, so history counts), and whether each is offered in an upcoming term.
+const seasonMarksFor = (c: Course): { season: SeasonName; upcoming: boolean }[] => SEASON_ORDER.flatMap(season => {
+  const terms = c.termsOffered.filter(t => seasonOf(t) === season);
+  return terms.length ? [{ season, upcoming: terms.some(t => isUpcoming(t, TERM_CONTEXT)) }] : [];
+});
+const seasonsOfClass = (c: Course): SeasonName[] => seasonMarksFor(c).map(m => m.season);
+function SeasonMarks({ course }: { course: Course }) {
+  const marks = seasonMarksFor(course);
+  if (!marks.length) return <span style={{ padding: '0 6px', fontSize: 13, lineHeight: 1.3, color: '#444' }}>{availabilityOf(course).short}</span>;
+  return <>{marks.map(m => <SeasonMarker key={m.season} {...m} />)}</>;
+}
 // The one rule for whether a class may go in a plan: a Spring plan takes classes that have run in a Spring term, a Fall plan those
-// that have run in a Fall term (the same data as the leaf and blossom icons). Not-offered classes fit neither. A plan with no term,
+// that have run in a Fall term (past terms count as history). A class that has never run fits neither. A plan with no term,
 // or an old Summer term, takes anything, and so does everything when semester.enforcePlanTerms is off.
 function planTermFit(course: Course, planTerm: string): { ok: boolean; reason: string; seasons: string[] } {
-  const seasons = [...new Set(seasonKindsFor(course).filter(k => k !== 'none'))] as string[];
+  const seasons = seasonsOfClass(course) as string[];
   const planSeason = seasonOf(planTerm);
   if (!semester.enforcePlanTerms || (planSeason !== 'spring' && planSeason !== 'fall') || seasons.includes(planSeason)) return { ok: true, reason: '', seasons };
   if (seasons.length === 0) return { ok: false, reason: 'Not offered recently. Ask an advisor.', seasons };
@@ -1115,55 +1159,12 @@ const planMismatchLabel = (course: Course, planTerm: string) => {
 };
 // The term to suggest for a new plan made from a class: its own season, else the next upcoming term.
 function suggestedTermFor(course: Course) {
-  const seasons = [...new Set(seasonKindsFor(course).filter(k => k !== 'none'))];
+  const seasons = [...new Set(seasonsOfClass(course))];
   const [nextSeason, nextYear] = semester.nextTermName.split(' ');
   if (seasons.length !== 1) return semester.nextTermName;
   const want = seasons[0] === 'fall' ? 'Fall' : 'Spring';
   if (want === nextSeason) return semester.nextTermName;
   return want === 'Fall' ? `Fall ${nextYear}` : `Spring ${Number(nextYear) + 1}`;
-}
-
-function SeasonIconButton({ id, kind, short = false }: { id: string; kind: SeasonKind; short?: boolean }) {
-  const { openId, setOpenId } = useContext(TagTooltipContext);
-  const open = openId === id;
-  const [rect, setRect] = useState<DOMRect | null>(null);
-  const ref = useRef<HTMLButtonElement>(null);
-  return (
-    <span style={{ position: 'relative', zIndex: 1, display: 'inline-flex' }}>
-      <button ref={ref} type="button" className="tag-pill" aria-label={SEASON_LABEL[kind]} aria-haspopup="dialog" aria-expanded={open}
-        onClick={e => { e.stopPropagation(); setRect(ref.current?.getBoundingClientRect() ?? null); setOpenId(open ? null : id); }}
-        style={{ ['--tag-line' as string]: SEASON_COLOR[kind], minWidth: 44, height: 44, padding: '0 6px', border: 0, borderRadius: 12, background: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 3, cursor: 'pointer', color: '#333', fontFamily: 'var(--font-sans)' }}>
-        <SeasonGlyph kind={kind} size={26} />
-        <span aria-hidden="true" style={{ fontSize: 13, lineHeight: 1.1, whiteSpace: 'nowrap' }}>{(short ? SEASON_SHORT : SEASON_WORD)[kind]}</span>
-      </button>
-      {open && (
-        <AnchoredPopover rect={rect} ariaLabel={SEASON_LABEL[kind]} width={220} onClose={() => setOpenId(null)}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.5, color: '#000' }}>{SEASON_WORD[kind]}</p>
-            <button onClick={() => setOpenId(null)} aria-label="Close"
-              style={{ width: 44, height: 44, minWidth: 44, flexShrink: 0, margin: '-10px -10px -10px 0', background: 'none', border: 0, color: '#000', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" focusable="false"><path d="M18 6L6 18M6 6l12 12" /></svg>
-            </button>
-          </div>
-        </AnchoredPopover>
-      )}
-    </span>
-  );
-}
-// The season key: one always-visible line above the class grid. Plain information: no buttons and no tooltips. The words are short;
-// screen readers get the longer meaning.
-function SeasonKey() {
-  const items: SeasonKind[] = ['fall', 'spring']; // the dash and "Not offered" stay on the cards themselves
-  return (
-    <div className="season-key" role="note" aria-label="What the season icons mean">
-      {items.map(kind => (
-        <span key={kind} className="season-key-item">
-          <SeasonGlyph kind={kind} size={18} />
-          <span>{SEASON_WORD[kind]}</span>
-        </span>
-      ))}
-    </div>
-  );
 }
 
 // The area filter: a row of round icon buttons that scrolls sideways and never wraps. Each circle is the same AreaBadge
@@ -1338,6 +1339,10 @@ function ClassTile({ course, saved, onBookmark, index, onSelect }: {
 }) {
   const phone = useWindowWidth() < 640;
   const hasPhoto = !!course.photo;
+  const code = useDisplayCode()(course);
+  const first = firstUpcomingSection(course, TERM_CONTEXT);
+  const instructor = showInstructors(course) ? upcomingInstructors(course, TERM_CONTEXT) : '';
+  const detail: React.CSSProperties = { fontSize: 14, lineHeight: 1.3, color: '#444', overflowWrap: 'anywhere' };
   return (
     <motion.div layout={motionMode === 'full'} style={{ minWidth: 0 }}
       initial={motionMode === 'full' ? { opacity: 0, y: 12 } : false} animate={{ opacity: 1, y: 0, transition: { duration: motionMode === 'full' ? 0.35 : 0, ease: EASE, delay: Math.min(index, 12) * 0.025 } }} exit={motionMode === 'full' ? { opacity: 0, transition: { duration: 0.2 } } : undefined}>
@@ -1357,9 +1362,13 @@ function ClassTile({ course, saved, onBookmark, index, onSelect }: {
           <h2 className="tile-title" style={{ margin: 0, fontSize: phone ? 16 : 18, fontWeight: 700, lineHeight: 1.3, letterSpacing: '-0.01em', color: '#000', maxWidth: '100%' }}>
             <AppLink to={classHref(course)} className="card-link" onClick={onSelect ? e => { e.preventDefault(); onSelect(course); } : undefined}>{course.title}</AppLink>
           </h2>
-          <div style={{ fontSize: 14, lineHeight: 1.3, color: '#444', overflowWrap: 'anywhere' }}>{cardMeta(course)}</div>
+          <div style={{ fontSize: 14, lineHeight: 1.3, color: '#444', overflowWrap: 'anywhere' }}>{cardMeta(course, code)}</div>
+          {first && <div style={detail}>{sectionLine(first)}</div>}
+          {first?.room && <div style={detail}>{first.room}</div>}
+          {instructor && <div style={detail}>{instructor}</div>}
+          <TrustLine course={course} />
           <div className="tile-ctl" role="group" aria-label={`${course.title}: when it has run, and save`} style={{ position: 'relative', zIndex: 1, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
-            {seasonKindsFor(course).map((k, i, all) => <SeasonIconButton key={`${k}-${i}`} id={`${course.id}:${k}:${i}`} kind={k} short={phone || all.length > 1} />)}
+            <SeasonMarks course={course} />
             <BookmarkButton saved={saved} title={course.title} onPress={onBookmark} />
           </div>
           {semester.showRunningNow && <AvailabilityLine course={course} />}
@@ -1413,8 +1422,7 @@ function planSummary(courses: Course[]) {
   for (const c of courses) {
     const kind = availabilityOf(c).kind;
     if (kind === 'none' || countsTag(c) === 'Check with advisor') advisor++;
-    else if (kind === 'now' || kind === 'next') running++;
-    else notPosted++;
+    else running++; // offered in an upcoming term
   }
   return { running, notPosted, advisor };
 }
@@ -1444,6 +1452,7 @@ const attentionOf = (course: Course, term: string) => planWarnings({
 // A class in a plan as a channel tile: a glossy cover, the course code as the title, the class name beneath. Tapping it opens the
 // class. Two small round buttons sit over the cover's bottom-right corner: search, and a menu (change first choice / backup, remove).
 function PlanChannelTile({ course, role, term, onSetRole, onRemove }: { course: Course; role: PlanRole; term: string; onSetRole: (role: PlanRole) => void; onRemove: () => void }) {
+  const code = useDisplayCode()(course);
   const needsCheck = attentionOf(course, term) !== '';
   const mismatch = planMismatchLabel(course, term);
   const menu: [string, () => void, boolean][] = [
@@ -1473,7 +1482,7 @@ function PlanChannelTile({ course, role, term, onSetRole, onRemove }: { course: 
         </div>
         <div style={{ padding: '10px 14px 14px', textAlign: 'center', minWidth: 0 }}>
           <h3 style={{ margin: 0, fontSize: 22, fontWeight: 800, letterSpacing: '-0.01em', lineHeight: 1.2, color: '#000' }}>
-            <AppLink to={classHref(course)} className="card-link" aria-label={`${course.code}, ${course.title}${role === 'backup' ? ', backup' : ''}${needsCheck ? ', needs checking' : ''}${mismatch ? `, ${mismatch}` : ''}`}>{course.code}</AppLink>
+            <AppLink to={classHref(course)} className="card-link" aria-label={`${code}, ${course.title}${role === 'backup' ? ', backup' : ''}${needsCheck ? ', needs checking' : ''}${mismatch ? `, ${mismatch}` : ''}`}>{code}</AppLink>
           </h3>
           <div style={{ marginTop: 2, fontSize: 15, lineHeight: 1.3, color: '#444', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', overflowWrap: 'anywhere' }}>{course.title}</div>
           {mismatch && (
@@ -2582,7 +2591,7 @@ function SavedClassTile({ course, actions }: { course: Course; actions: SavedAct
   const [open, setOpen] = useState(false);
   const prereq = requiredPrereq(course);
   const hasPrereq = prereq !== 'No prerequisites';
-  const meta = course.specialTopic ? `${course.code} · Special topic` : `${course.code} · ${creditsLabel(course.credits)}`;
+  const meta = cardMeta(course, useDisplayCode()(course));
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0, height: '100%' }}>
       <article className="tile" data-zoom-card data-course={course.id} style={{ ['--card-hue' as string]: accentFor(course.category), ['--card-radius' as string]: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', position: 'relative', minWidth: 0, height: 'auto' }}>
@@ -2595,7 +2604,7 @@ function SavedClassTile({ course, actions }: { course: Course; actions: SavedAct
           </h3>
           <div style={{ fontSize: 14, lineHeight: 1.3, color: '#444', overflowWrap: 'anywhere' }}>{meta}</div>
           <div className="tile-ctl" role="group" aria-label={`${course.title}: when it has run`} style={{ position: 'relative', zIndex: 1, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
-            {seasonKindsFor(course).map((k, i, all) => <SeasonIconButton key={`${k}-${i}`} id={`${course.id}:saved:${k}:${i}`} kind={k} short={phone || all.length > 1} />)}
+            <SeasonMarks course={course} />
           </div>
         </div>
       </article>
@@ -2898,63 +2907,47 @@ function dateRange(v: string) {
 const sectionTopic = (s: ClassSection) => (s.title.split(':').pop() ?? '').trim();
 function sectionLine(s: ClassSection) {
   if (s.variesBySection) return 'Varies by section';
-  if (s.online || !s.days || !s.start || !s.end) return 'Online, no set time';
+  if (s.online) return 'Online, no set time';
+  if (!s.days || !s.start || !s.end) return s.meets || 'No set time'; // e.g. "No Time Assigned", as posted
   return `${s.days.split('').map(d => DAY_NAMES[d] ?? d).join('/')} ${timeRange(s.start, s.end)}`;
 }
 function ClassTimes({ course }: { course: Course }) {
-  const [all, setAll] = useState(false);
   const headingId = useId();
   const byTerm = course.sectionsByTerm ?? {};
-  // Only the semesters the class runs in. Fall classes show Fall, Spring classes show Spring, a class in both shows both.
-  const terms = [...course.termsOffered].sort((a, b) => Number(b === semester.currentTermName) - Number(a === semester.currentTermName));
-  const everyTopic = new Set(terms.flatMap(t => (byTerm[t] ?? []).map(sectionTopic)));
-  const showTopics = everyTopic.size > 1;
-  const rows = terms.flatMap(term => {
-    const seen = new Set<string>();
-    return (byTerm[term] ?? []).flatMap(s => {
-      const key = [showTopics ? sectionTopic(s) : '', sectionLine(s), s.dates].join('|');
-      if (seen.has(key)) return [];
-      seen.add(key);
-      return [{ term, topic: showTopics ? sectionTopic(s) : '', line: sectionLine(s), dates: s.dates ? dateRange(s.dates) : '' }];
-    });
-  });
-  const LIMIT = 3;
-  const shown = all ? rows : rows.slice(0, LIMIT);
-  const labelled = terms.length > 1; // a heading only when the class runs in more than one semester
-  const seasonOf = (term: string) => term.split(' ')[0];
-  const groups = terms.map(term => ({ term, items: shown.filter(r => r.term === term), empty: !rows.some(r => r.term === term) }))
-    .filter(g => g.items.length || g.empty);
+  // Only the upcoming terms (past terms are history and stay out of this card), and every section of each one.
+  const terms = upcomingTerms(course.termsOffered, TERM_CONTEXT);
+  const hideInstructors = !showInstructors(course);
+  const labelled = terms.length > 1; // a heading only when the class is offered in more than one upcoming term
+  const small: React.CSSProperties = { fontSize: 14, lineHeight: 1.4, color: '#444', overflowWrap: 'anywhere' };
   return (
     <section aria-labelledby={headingId} style={{ boxSizing:'border-box', width:'100%', padding:'14px 16px', background:'#F3F3F5', borderRadius:16, color:'#000' }}>
       <h2 id={headingId} style={{ margin:0, fontFamily:'var(--font-sans)', fontSize:16, fontWeight:700, lineHeight:1.3 }}>Class times</h2>
-      {terms.length === 0 && <p style={{ margin:'6px 0 0', fontSize:16, lineHeight:1.5 }}>Times not posted yet</p>}
-      {groups.map(g => (
-        <div key={g.term} style={{ marginTop:10 }}>
-          {labelled && <div style={{ fontSize:14, lineHeight:1.4, fontWeight:600 }}>{seasonOf(g.term)}</div>}
-          {g.empty ? (
-            <p style={{ margin:labelled ? '4px 0 0' : '-4px 0 0', fontSize:16, lineHeight:1.5 }}>Times not posted yet</p>
-          ) : (
-            <>
-              <ul style={{ listStyle:'none', margin:'4px 0 0', padding:0, display:'flex', flexDirection:'column', gap:8 }}>
-                {g.items.map((r, i) => (
-                  <li key={i} style={{ minWidth:0 }}>
-                    {r.topic && <div style={{ fontSize:14, lineHeight:1.4, color:'#444', overflowWrap:'anywhere' }}>{r.topic}</div>}
-                    <div style={{ fontSize:16, lineHeight:1.4, fontWeight:600 }}>{r.line}</div>
-                    {r.dates && <div style={{ fontSize:14, lineHeight:1.4, color:'#444' }}>{r.dates}</div>}
+      <div style={{ marginTop: 6 }}><TrustLine course={course} align="start" /></div>
+      {terms.length === 0 && <p style={{ margin:'8px 0 0', fontSize:16, lineHeight:1.5 }}>{availabilityOf(course).full}</p>}
+      {terms.map(term => {
+        const sections = [...(byTerm[term] ?? [])].sort((a, b) => a.section.localeCompare(b.section));
+        return (
+          <div key={term} style={{ marginTop:10 }}>
+            {labelled && <div style={{ fontSize:14, lineHeight:1.4, fontWeight:600 }}>{term.split(' ')[0]}</div>}
+            {sections.length === 0 ? (
+              <p style={{ margin:labelled ? '4px 0 0' : '-4px 0 0', fontSize:16, lineHeight:1.5 }}>Times not posted yet</p>
+            ) : (
+              <ul style={{ listStyle:'none', margin:'4px 0 0', padding:0, display:'flex', flexDirection:'column', gap:12 }}>
+                {sections.map(s => (
+                  <li key={`${s.section}-${s.classNumber}`} style={{ minWidth:0 }}>
+                    <div style={small}>{[`Section ${s.section}`, s.type, s.title && s.title !== course.title ? s.title : ''].filter(Boolean).join(' · ')}</div>
+                    <div style={{ fontSize:16, lineHeight:1.4, fontWeight:600 }}>{sectionLine(s)}</div>
+                    {s.dates && <div style={small}>{dateRange(s.dates)}</div>}
+                    {(s.room || s.mode) && <div style={small}>{[s.room, s.mode].filter(Boolean).join(' · ')}</div>}
+                    {!hideInstructors && s.instructor && <div style={small}>{s.instructor}</div>}
+                    {s.notes && <div style={small}>{s.notes}</div>}
                   </li>
                 ))}
               </ul>
-              {g.term !== semester.currentTermName && <p style={{ margin:'8px 0 0', fontSize:14, lineHeight:1.4, color:'#444' }}>Based on {g.term}. {semester.nextTermName} times aren't posted yet.</p>}
-            </>
-          )}
-        </div>
-      ))}
-      {rows.length > LIMIT && (
-        <button type="button" aria-expanded={all} onClick={() => setAll(v => !v)}
-          style={{ minHeight:44, margin:'4px 0 -6px', padding:'0 4px', border:0, background:'none', color:'#000', fontSize:16, fontFamily:'var(--font-sans)', fontWeight:500, textDecoration:'underline', textUnderlineOffset:3, cursor:'pointer' }}>
-          {all ? 'Show fewer' : 'Show all'}
-        </button>
-      )}
+            )}
+          </div>
+        );
+      })}
     </section>
   );
 }
@@ -3003,14 +2996,15 @@ function AreaIconButton({ id, area }: { id: string; area: string }) {
 }
 
 function ClassMeta({ course }: { course: Course }) {
+  const code = useDisplayCode()(course);
   const areas = areasOf(course);
-  const extras = [course.specialTopic ? 'Special topic' : '', course.credits.trim() !== '3' ? creditsLabel(course.credits) : ''].filter(Boolean);
+  const extras = [course.specialTopic ? 'Special topic' : '', course.credits.trim() ? creditsLabel(course.credits) : ''].filter(Boolean);
   return (
     <div data-meta style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', columnGap: 4, margin: 0, fontFamily: 'var(--font-sans)', fontSize: 16, lineHeight: 1.5, color: '#444' }}>
-      <span style={{ marginRight: 6 }}>{[course.code, ...extras].join(' · ')}</span>
+      <span style={{ marginRight: 6 }}>{[code, ...extras].join(' · ')}</span>
       {areas.map(a => <AreaIconButton key={a} id={`${course.id}:area:${a}`} area={a} />)}
       <span data-seasons style={{ display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center' }}>
-        {seasonKindsFor(course).map((k, i) => <SeasonIconButton key={`${k}-${i}`} id={`${course.id}:${k}:${i}:meta`} kind={k} />)}
+        <SeasonMarks course={course} />
       </span>
     </div>
   );
@@ -3019,7 +3013,16 @@ function ClassMeta({ course }: { course: Course }) {
 // "Taught by Danny Rankin": plain text, with an inline underlined link (and a small external icon) for each instructor who has
 // a People page. Left out when the class has no instructor.
 function TaughtBy({ course }: { course: Course }) {
-  const people = course.instructors.length ? course.instructors : course.instructor ? [{ name: course.instructor, url: '' }] : [];
+  if (!showInstructors(course)) return null; // independent study: the instructors are never listed
+  // The names come from the upcoming term. A name links to the person's People page when we have it (matched on last name and first initial).
+  const names = upcomingInstructors(course, TERM_CONTEXT).split(', ').map(n => n.trim()).filter(Boolean);
+  const people = names.length
+    ? names.map(n => {
+        const parts = n.split(' ');
+        const bio = course.instructors.find(b => { const bp = b.name.split(' '); return bp[bp.length - 1].toLowerCase() === parts[parts.length - 1].toLowerCase() && bp[0][0]?.toLowerCase() === parts[0][0]?.toLowerCase(); });
+        return { name: bio?.name ?? n, url: bio?.url ?? '' };
+      })
+    : course.instructors.length ? course.instructors : course.instructor ? [{ name: course.instructor, url: '' }] : [];
   if (!people.length) return null;
   return (
     <p data-instructors style={{ margin: 0, fontSize: 16, lineHeight: 1.5, color: '#000' }}>
@@ -3059,8 +3062,9 @@ function DetailPage({ course, isSaved, onBookmark, onBack, onAddToPlan, onStep, 
   // How this page entered: 'zoom' (opened from a tile: the text rises in a short stagger), 'fade' (deep link or reload, or no View
   // Transitions: a 200ms fade-in), or 'slide'/'none' (the transition itself does the work).
   const [entrance] = useState(getEntrance);
-  const stepIndex = useMemo(() => endNotOffered(COURSES).findIndex(c => c.id === course.id), [course.id]);
-  const stepCount = COURSES.length;
+  const order = MODE_ORDER[useMode()];
+  const stepIndex = useMemo(() => order.findIndex(c => c.id === course.id), [order, course.id]);
+  const stepCount = order.length;
   const [imgIdx, setImgIdx] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const accentColor = accentFor(course.category);
@@ -3551,7 +3555,7 @@ const ABOUT_TEXT = [
   "This is about the student experience. It should feel simple. It should feel honest. And it should feel like it was made for you.",
   "That's what this guide is for.",
   "Saved classes and plans are kept on this device only. Clearing your browser or switching devices will remove them.",
-  "Built by an ATLAS student, for ATLAS students. Not an official CU or ATLAS tool. Always confirm with CU class search and your advisor.",
+  "Always confirm with CU class search and your advisor.",
 ];
 
 function AboutPage() {
@@ -3591,7 +3595,6 @@ function SiteFooter({ isMobile, hideChecked = false }: { isMobile: boolean; hide
   const small = { display:'inline-flex', alignItems:'center', justifyContent:'center', gap:4, minHeight:44, minWidth:44, padding:0, border:0, borderRadius:0, background:'none', color:'#444', fontSize:14, fontWeight:500, textDecoration:'underline', textUnderlineOffset:3 } as const;
   return (
     <footer style={{ margin:isMobile ? '0 16px' : `0 ${SPACING.pagePx}px`, padding:isMobile ? `24px 0 calc(${BAR_H} + 88px)` : '24px 0 96px', borderTop:'1px solid #E0E0E0', display:'flex', flexDirection:'column', gap:4, maxWidth:'70ch' }}>
-      <p style={{ margin:0, fontSize:14, lineHeight:1.4, color:'#444' }}>Independent and unofficial. A student-built guide, not an official CU Boulder or ATLAS tool.</p>
       <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', columnGap:20 }}>
         {feedback && <ExternalAction href={feedback} sr="(opens in a new tab)" style={small}>Give feedback</ExternalAction>}
         <AppLink to="#/about" style={small}>About</AppLink>
@@ -3612,16 +3615,23 @@ const SORTS: { key: SortKey; label: string }[] = [
   { key:'recent', label:'Recently offered' },
   { key:'credits', label:'Credits' },
 ];
-const byNumber = (a: Course, b: Course) => a.code.localeCompare(b.code, 'en', { numeric:true }) || a.title.localeCompare(b.title);
+const byNumber = (mode: ViewMode) => (a: Course, b: Course) =>
+  displayCodeOf(a, mode).localeCompare(displayCodeOf(b, mode), 'en', { numeric:true }) || a.title.localeCompare(b.title);
 // Classes not offered recently go to the end of the default list. The sort is stable, so each group keeps its order.
 const endNotOffered = (list: Course[]) => [...list.filter(c => availabilityOf(c).kind !== 'none'), ...list.filter(c => availabilityOf(c).kind === 'none')];
-function sortCourses(list: Course[], key: SortKey) {
+function sortCourses(list: Course[], key: SortKey, mode: ViewMode) {
   const copy = [...list];
-  if (key === 'az') return copy.sort((a, b) => a.title.localeCompare(b.title) || byNumber(a, b));
-  if (key === 'recent') return copy.sort((a, b) => termRank(lastOffered(b.termsOffered)) - termRank(lastOffered(a.termsOffered)) || byNumber(a, b));
-  if (key === 'credits') return copy.sort((a, b) => (creditRange(a.credits)?.min ?? Infinity) - (creditRange(b.credits)?.min ?? Infinity) || byNumber(a, b));
-  return endNotOffered(copy.sort(byNumber));
+  const byNum = byNumber(mode);
+  if (key === 'az') return copy.sort((a, b) => a.title.localeCompare(b.title) || byNum(a, b));
+  if (key === 'recent') return copy.sort((a, b) => termRank(lastOffered(b.termsOffered)) - termRank(lastOffered(a.termsOffered)) || byNum(a, b));
+  if (key === 'credits') return copy.sort((a, b) => (creditRange(a.credits)?.min ?? Infinity) - (creditRange(b.credits)?.min ?? Infinity) || byNum(a, b));
+  return endNotOffered(copy.sort(byNum));
 }
+// The browse order of each mode, used by the previous and next class buttons.
+const MODE_ORDER: Record<ViewMode, Course[]> = {
+  grad: sortCourses(MODE_ENTRIES.grad.map(e => e.course), 'number', 'grad'),
+  undergrad: sortCourses(MODE_ENTRIES.undergrad.map(e => e.course), 'number', 'undergrad'),
+};
 
 
 function MobileFilterBar({ query, onQuery, quick, onToggleQuick, onClearQuick, count, anyActive, onClear }: {
@@ -3649,7 +3659,7 @@ function MobileFilterBar({ query, onQuery, quick, onToggleQuick, onClearQuick, c
         {anyActive && (
           <button onClick={onClear} style={{ minHeight:44, padding:'0 4px', border:0, background:'none', color:'#000', fontSize:16, fontFamily:'var(--font-sans)', fontWeight:500, textDecoration:'underline', textUnderlineOffset:3, cursor:'pointer' }}>Clear search and filters</button>
         )}
-        <div style={{ flexBasis: '100%' }}><ResultsBar flush count={count} anyActive={anyActive} onClear={onClear} hideClear trailing={<SeasonKey />} /></div>
+        <div style={{ flexBasis: '100%' }}><ResultsBar flush count={count} anyActive={anyActive} onClear={onClear} hideClear /></div>
       </div>
     </div>
   );
@@ -3721,6 +3731,11 @@ function CondensingToolbar({ query, onQuery, quick, onToggleQuick, onClearQuick,
 // ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
   const [initialSaved] = useState(loadSaved);
+  // Grad or Undergrad: read on load and saved on every change (src/core/mode.ts). Grad is the default.
+  const [mode, setMode] = useState<ViewMode>(() => readMode(safeStorage()));
+  const modeRef = useRef(mode);
+  modeRef.current = mode;
+  const chooseMode = (next: ViewMode) => { setMode(next); writeMode(safeStorage(), next); };
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
   // The search text also lives in ?q= so a search survives an unexpected reload instead of
   // silently resetting to nothing.
@@ -3774,8 +3789,10 @@ export default function App() {
   const mainRef = useRef<HTMLElement>(null);
   const lastPage = useRef<string | null>(null);
 
-  const filteredCourses = COURSES.filter(c => inCategories(c, selectedCategories) && matchesSearch(c, query) && passesQuick(c, quick));
-  const shownCourses = isMobile ? sortCourses(filteredCourses, 'number') : endNotOffered(filteredCourses);
+  // The class list for the active mode (coursesForMode), then the search and filters.
+  const modeCourses = useMemo(() => MODE_ENTRIES[mode].map(e => e.course), [mode]);
+  const filteredCourses = modeCourses.filter(c => inCategories(c, selectedCategories) && matchesSearch(c, query) && passesQuick(c, quick));
+  const shownCourses = sortCourses(filteredCourses, 'number', mode);
   const toggleQuick = (k: QuickKey) => setQuick(prev => { const n = new Set(prev); n.has(k) ? n.delete(k) : n.add(k); return n; });
 
   // One notification at a time; a new one replaces the old. It dismisses itself (see Toast).
@@ -3884,10 +3901,10 @@ export default function App() {
   }
 
   // Previous / next class (buttons and the arrow keys): a short horizontal slide in the browse order, not the zoom.
-  const classOrder = useMemo(() => endNotOffered(COURSES), []);
   function stepClass(dir: 1 | -1) {
     const cur = parseRoute(); // the address is up to date even while the last step is still animating
     if (cur.name !== 'class') return;
+    const classOrder = MODE_ORDER[modeRef.current];
     const i = classOrder.findIndex(c => c.id === cur.course.id);
     const target = classOrder[i + dir];
     if (!target) return;
@@ -3932,7 +3949,7 @@ export default function App() {
 
   // Each page gets its own tab title, and keyboard focus moves to the new page's content.
   useEffect(() => {
-    const name = 'Focus Electives';
+    const name = APP_NAME;
     document.title =
       route.name === 'class' ? `${route.course.title} · ${name}`
       : route.name === 'saved' ? `Saved · ${name}`
@@ -4105,6 +4122,7 @@ export default function App() {
   const navView: BarItem | null = route.name === 'home' ? 'browse' : route.name === 'calendar' ? 'calendar' : route.name === 'saved' ? 'saved' : null;
 
   return (
+    <ModeContext.Provider value={mode}>
     <TagTooltipProvider>
     <MotionConfig reducedMotion={motionMode === 'off' ? 'always' : 'user'}>
     <NavContext.Provider value={navigate}>
@@ -4159,9 +4177,9 @@ export default function App() {
               <motion.div key="grid" initial={getEntrance() === 'fade' ? { opacity:0 } : false} animate={{ opacity:1, transition:{ duration:0.2 } }}>
                 {/* Header */}
                 <div style={{ display:'flex', flexDirection:isMobile?'column':'row', alignItems:'flex-start', justifyContent:isMobile?'flex-start':'space-between', gap:isMobile?16:0, marginBottom:isMobile?12:SPACING.headingMb }}>
-                  <div>
-                    <h1 style={{ fontSize:isMobile?32:40, fontWeight:700, letterSpacing:'-0.03em', color:'#000', margin:0, lineHeight:1.15 }}>Focus Electives</h1>
-                    <p style={{ margin:'8px 0 0', fontSize:14, lineHeight:1.4, color:'#444', maxWidth:'62ch' }}>A student-made guide to ATLAS focus electives. Independent and unofficial.</p>
+                  <div style={{ display:'flex', flexDirection:'column', gap:12, width:'100%' }}>
+                    <h1 style={{ fontSize:isMobile?32:40, fontWeight:700, letterSpacing:'-0.03em', color:'#000', margin:0, lineHeight:1.15 }}>{APP_NAME}</h1>
+                    <ModeToggle mode={mode} onChange={chooseMode} />
                   </div>
                 </div>
 
@@ -4265,5 +4283,6 @@ export default function App() {
     </NavContext.Provider>
     </MotionConfig>
     </TagTooltipProvider>
+    </ModeContext.Provider>
   );
 }

@@ -22,6 +22,9 @@ export interface CoreConfig {
   termStatus: TermStatusMap;
 }
 
+/** The app's name, shown in the header and the tab title. */
+export const APP_NAME = 'Classes';
+
 /** The mode shown when nothing valid has been saved. */
 export const DEFAULT_MODE: ViewMode = 'grad';
 

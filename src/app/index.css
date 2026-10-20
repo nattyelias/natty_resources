@@ -513,10 +513,6 @@ html[data-motion="off"] .channel:hover, html[data-motion="off"] .channel:has(.ca
 html[data-motion="off"] .back-btn { transition: none; }
 html[data-motion="off"] .back-btn:hover, html[data-motion="off"] .back-btn:focus-visible, html[data-motion="off"] .back-btn:active { transform: none; }
 
-/* The season key above the class grid: one line, never wraps (the gaps shrink first) */
-.season-key { display: flex; flex-wrap: nowrap; align-items: center; column-gap: 14px; margin: 0; font-size: 15px; line-height: 1.3; color: #444; white-space: nowrap; }
-.season-key-item { display: inline-flex; align-items: center; gap: 6px; }
-@media (max-width: 380px) { .season-key-item { gap: 4px; } }
 
 /* tooltips on the plan tile's overlay buttons open toward the tile's inside */
 .icon-tip.icon-tip-end::after, .icon-tip.icon-tip-end:first-child::after, .icon-tip.icon-tip-end:last-child::after { left: auto; right: 0; transform: none; }
@@ -525,3 +521,59 @@ html[data-motion="off"] .back-btn:hover, html[data-motion="off"] .back-btn:focus
 .external-action.advisor-btn:hover { background: #1D4ED8 !important; }
 .external-action.advisor-btn:active { background: #1E40AF !important; }
 .external-action.advisor-btn:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+
+/* ── Mode toggle (Grad / Undergrad): a pill with a sliding filled indicator ── */
+.mode-toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 288px;
+  min-width: 0;
+  margin: 0;
+  padding: 4px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-button);
+  background: var(--field-fill);
+}
+.mode-toggle-indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc((100% - 8px) / 2);
+  border-radius: var(--radius-button);
+  background: var(--ink);
+  transform: translateX(calc(var(--index, 0) * 100%));
+  transition: transform 0.2s ease;
+}
+.mode-toggle-option {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  cursor: pointer;
+}
+.mode-toggle-option input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.mode-toggle-label {
+  position: relative;
+  padding: 0 16px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+.mode-toggle-option input:checked + .mode-toggle-label { color: #FFF; }
+/* the focus ring goes around the whole pill so the indicator never clips it */
+.mode-toggle:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .mode-toggle-indicator, .mode-toggle-label { transition: none; }
+}
